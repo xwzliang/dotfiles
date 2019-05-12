@@ -1,0 +1,41 @@
+" Settings for vim-plug
+
+" Install vim-plug if not already installed
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+call plug#begin('~/.vim/bundle')
+
+"" My useful plugins
+" Make sure use single quotes
+
+"" auto-pairs insert or delete brackets, parens, quotes in pair
+Plug 'jiangmiao/auto-pairs'
+
+"" vim-closetag auto close (X)HTML tags
+Plug 'alvan/vim-closetag'
+
+"" nerdcommenter for commenting
+Plug 'scrooloose/nerdcommenter'
+
+"" vim-surround quoting/parenthesizing made simple
+Plug 'tpope/vim-surround'
+
+"" vim-fugittive a Git wrapper for awesome
+Plug 'tpope/vim-fugitive'
+
+"" ctrlp.vim Fuzzy file, buffer, mru, tag, etc finder
+Plug 'ctrlpvim/ctrlp.vim'
+
+"" NERDTree a file system explorer
+Plug 'scrooloose/nerdtree'
+
+"" vim-gitgutter shows a git diff in the gutter (sign column) and stages/undoes hunks
+Plug 'airblade/vim-gitgutter'
+
+"" syntastic syntax checking hacks for vim
+Plug 'vim-syntastic/syntastic'
+
+" All of your Plugs must be added before the following line
+call plug#end()            " required
