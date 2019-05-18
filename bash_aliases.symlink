@@ -1,0 +1,7 @@
+# Additional settings for bash
+
+# Enable vi mode for bash
+set -o vi
+
+# for virtualenv
+source virtualenvwrapper.sh
