@@ -1,0 +1,16 @@
+! Source this file by running 
+! xrdb -merge .Xresources
+
+! Allow sixel graphics
+xterm*decTerminalID:decTerminalIDvt340
+
+! Font size
+xterm*font:     *-fixed-*-*-*-18-*
+
+xterm*background: black
+xterm*foreground: white
+
+! Window size
+xterm*geometry: 127x37
+
+xterm*saveLines: 50000
