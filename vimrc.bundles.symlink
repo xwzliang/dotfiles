@@ -37,8 +37,5 @@ Plug 'airblade/vim-gitgutter'
 "" syntastic syntax checking hacks for vim
 Plug 'vim-syntastic/syntastic'
 
-"" Instant Markdown previews
-Plug 'suan/vim-instant-markdown'
-
 " All of your Plugs must be added before the following line
 call plug#end()            " required
