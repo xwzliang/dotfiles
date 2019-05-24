@@ -9,7 +9,7 @@ apps_to_install=(
 	pandoc
 	w3m
 	xterm
-	libsixel
+	imagemagick
 	ffmpeg
 	mosh
 )
