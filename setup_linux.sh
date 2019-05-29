@@ -12,6 +12,7 @@ apps_to_install=(
 	imagemagick
 	ffmpeg
 	mosh
+	ocrmypdf
 )
 
 for app in "${apps_to_install[@]}"; do
