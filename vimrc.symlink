@@ -12,6 +12,8 @@ syntax on
 set tabstop=4
 set shiftwidth=4
 imap <tab> <C-p>
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
 
 "vim-closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
