@@ -12,6 +12,8 @@ syntax on
 set tabstop=4
 set shiftwidth=4
 imap <tab> <C-p>
+" Use Shift+Tab to insert tab in edit mode
+inoremap <S-Tab> <C-V><Tab>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
