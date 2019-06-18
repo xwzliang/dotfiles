@@ -13,6 +13,7 @@ apps_to_install=(
 	ffmpeg
 	mosh
 	ocrmypdf
+	hfsprogs
 )
 
 for app in "${apps_to_install[@]}"; do
