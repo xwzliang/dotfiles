@@ -5,3 +5,7 @@ set -o vi
 
 # for virtualenv
 source virtualenvwrapper.sh
+
+# Aliases
+
+alias rm_invalid_chars="rename 's/[^A-Za-z0-9._-]/_/g'"
