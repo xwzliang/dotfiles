@@ -14,6 +14,7 @@ apps_to_install=(
 	mosh
 	ocrmypdf
 	hfsprogs
+	rename
 )
 
 for app in "${apps_to_install[@]}"; do
