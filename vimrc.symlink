@@ -17,5 +17,8 @@ inoremap <S-Tab> <C-V><Tab>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+" For html files, indent two spaces
+autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
+
 "vim-closetag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
