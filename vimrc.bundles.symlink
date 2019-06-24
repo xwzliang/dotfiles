@@ -44,7 +44,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 
 "" syntastic syntax checking hacks for vim
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 
 " All of your Plugs must be added before the following line
 call plug#end()            " required
