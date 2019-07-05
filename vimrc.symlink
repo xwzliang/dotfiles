@@ -13,6 +13,22 @@ augroup myvimrchooks
 	autocmd bufwritepost .vimrc source $MYVIMRC
 augroup END
 
+
+" Settings for statusline
+" Always to show statusline 
+set laststatus=2
+" Define color UserNumber
+hi User1 ctermbg=darkgrey ctermfg=white guibg=black guifg=green
+" Customize statusline content
+set statusline=
+" Use color in User1
+set statusline+=%1*
+" Or use color same as function keyword highlight
+"set statusline+=%#function#
+" Show file name
+set statusline+=%f
+
+
 " Settings vim editing
 syntax on
 set tabstop=4
