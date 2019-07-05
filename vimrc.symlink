@@ -7,6 +7,12 @@ filetype plugin indent on
 " To ignore plugin indent changes, instead use:
 filetype plugin on
 
+" Automatically source vimrc on save when editting .vimrc
+augroup myvimrchooks
+	au!
+	autocmd bufwritepost .vimrc source $MYVIMRC
+augroup END
+
 " Settings vim editing
 syntax on
 set tabstop=4
