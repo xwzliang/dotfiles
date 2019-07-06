@@ -18,7 +18,7 @@ augroup END
 " Always to show statusline 
 set laststatus=2
 " Define color UserNumber
-hi User1 ctermbg=darkgrey ctermfg=white guibg=black guifg=green
+hi User1 ctermbg=brown ctermfg=black guibg=black guifg=green
 " Customize statusline content
 set statusline=
 " Use color in User1
