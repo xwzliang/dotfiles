@@ -1,5 +1,8 @@
 set -g default-terminal "xterm-256color"
 
+# focus events enabled for terminals that support them, for FocusGained event in vim and others
+set -g focus-events on
+
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
