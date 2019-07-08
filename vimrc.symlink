@@ -14,6 +14,16 @@ augroup myvimrchooks
 augroup END
 
 
+" Automatically reload file on change
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" Autoread does not reload file unless you do something like run external command (like !ls or !sh etc)
+set autoread
+" Trigger when cursor stops moving
+"au CursorHold,CursorHoldI * checktime
+"au FocusGained,BufEnter * :checktime
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+
+
 " Settings for statusline
 " Always to show statusline 
 set laststatus=2
