@@ -1,5 +1,45 @@
 set -g default-terminal "xterm-256color"
 
+
+# Setting the prefix from C-b to C-a
+set -g prefix C-a
+
+# Use prefix+r to reload .tmux.conf file in the current session
+bind r source-file ~/.tmux.conf \; display "~/.tmux.conf reloaded."
+
+# Center the window list in the status line
+set -g status-justify centre
+
+# Enable activity alerts in the status line
+# monitor-activity highlights the window name in the status line when there's activity in that window
+setw -g monitor-activity on
+# visual-activity tells tmux to show a message in the status line
+set -g visual-activity on
+
+# Use prefix ctrl-h and prefix ctrl-l to cycle through the windows, -r means let the command be repeatable within a given window of time, default repeat-time limit is 500 miliseconds and can be changed by repeat-time option
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
+
+# Set repeat-time 1 second
+set -g repeat-time 1000
+
+# Splitting panes with prefix | and -
+bind | split-window -h
+bind - split-window -v
+
+# Moving between panes with prefix h,j,k,l
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# Resize windows using prefix H,J,K,L
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+
 # focus events enabled for terminals that support them, for FocusGained event in vim and others
 set -g focus-events on
 
