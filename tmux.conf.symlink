@@ -23,9 +23,9 @@ bind -r C-l select-window -t :+
 # Set repeat-time 1 second
 set -g repeat-time 1000
 
-# Splitting panes with prefix | and -
-bind | split-window -h
-bind - split-window -v
+# Splitting panes with prefix v and prefix s
+bind v split-window -h
+bind s split-window -v
 
 # Moving between panes with prefix h,j,k,l
 bind h select-pane -L
@@ -33,11 +33,11 @@ bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
 
-# Resize windows using prefix H,J,K,L
-bind -r H resize-pane -L 5
-bind -r J resize-pane -D 5
-bind -r K resize-pane -U 5
-bind -r L resize-pane -R 5
+# Resize windows using prefix ctrl+arrow keys
+bind -r C-LEFT resize-pane -L 3
+bind -r C-DOWN resize-pane -D 3
+bind -r C-UP resize-pane -U 3
+bind -r C-RIGHT resize-pane -R 3
 
 
 # focus events enabled for terminals that support them, for FocusGained event in vim and others
