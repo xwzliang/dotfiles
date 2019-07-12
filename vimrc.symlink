@@ -38,6 +38,14 @@ set statusline+=%1*
 " Show file name
 set statusline+=%f
 
+" Set the color of the status line in window which is currently focused
+hi StatusLine ctermfg=brown ctermbg=black
+" Set the color of the status line in windows which are not currently focused
+hi StatusLineNC ctermfg=brown ctermbg=black
+" Set the color of vertical border when split
+hi VertSplit ctermfg=brown ctermbg=black
+" Remove the pipe | in the vertical border when split
+set fillchars+=vert:\ 
 
 " Use ctrl+h,j,k,l to navigate through windows
 nnoremap <C-h> <C-w>h
