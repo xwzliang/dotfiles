@@ -23,9 +23,14 @@ bind -r C-l select-window -t :+
 # Set repeat-time 1 second
 set -g repeat-time 1000
 
-# Splitting panes with prefix v and prefix s
-bind v split-window -h
-bind s split-window -v
+# Splitting panes with prefix v and prefix s (lauch in the current directory) and prefix | and - (lauch in the directory which tmux is initially started)
+bind | split-window -h
+bind - split-window -v
+bind v split-window -h -c "#{pane_current_path}"
+bind s split-window -v -c "#{pane_current_path}"
+
+# The default mapping for prefix s is to choose a session from list, now remapping to prefix S uppercase
+bind S choose-tree
 
 # Moving between panes with prefix h,j,k,l
 bind h select-pane -L
