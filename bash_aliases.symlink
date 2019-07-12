@@ -1,5 +1,9 @@
 # Additional settings for bash
 
+# Set default editor to vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # Enable vi mode for bash
 set -o vi
 
