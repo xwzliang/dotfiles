@@ -59,6 +59,19 @@ bind-key -T copy-mode-vi 'y' send -X copy-selection
 unbind p
 bind p paste-buffer
 
+
+# https://scripter.co/command-to-every-pane-window-session-in-tmux/
+# Send the same command to all panes/windows/sessions using prefix E
+bind E command-prompt -p "Command:" \
+       "run \"tmux list-panes -a -F '##{session_name}:##{window_index}.##{pane_index}' \
+              | xargs -I PANE tmux send-keys -t PANE '%1' Enter\""
+
+# Send the same command to all panes/windows in current session using prefix ctrl+ource ~/.bashrc
+bind C-e command-prompt -p "Command:" \
+         "run \"tmux list-panes -s -F '##{session_name}:##{window_index}.##{pane_index}' \
+               | xargs -I PANE tmux send-keys -t PANE '%1' Enter\""
+
+
 # focus events enabled for terminals that support them, for FocusGained event in vim and others
 set -g focus-events on
 
