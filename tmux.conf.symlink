@@ -39,6 +39,20 @@ bind -r C-DOWN resize-pane -D 3
 bind -r C-UP resize-pane -U 3
 bind -r C-RIGHT resize-pane -R 3
 
+# Automatically renumber windows when some are deleted
+set-option -g renumber-windows on
+
+# Enable vi keys to move around buffers in copy mode
+setw -g mode-keys vi
+# Use prefix escape to enter copy mode
+bind Escape copy-mode
+# Use v to start visual mode
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+# Use y to yank text into the buffer
+bind-key -T copy-mode-vi 'y' send -X copy-selection
+# Use p to paste the text
+unbind p
+bind p paste-buffer
 
 # focus events enabled for terminals that support them, for FocusGained event in vim and others
 set -g focus-events on
