@@ -27,8 +27,16 @@ for app in "${apps_to_install[@]}"; do
 	fi
 done
 
+
+# Clone TPM for tmux
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+	echo "Cloning TPM for tmux..."
+	git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+fi
+
+
 # git credential settings
-git_config_local_file=~/.gitconfig.local
+git_config_local_file=$HOME/.gitconfig.local
 if [ ! -f "$git_config_local_file" ]; then
 	read -rn 1 -p "Save git credentials to an unencrypted file to avoid writing? [y/N] " git_save_credential
 	if [[ $git_save_credential =~ ^([Yy])$ ]]; then
