@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Install apps using apt
 apps_to_install=(
 	vim
 	python3
@@ -24,6 +25,28 @@ for app in "${apps_to_install[@]}"; do
 		apt install -y ${app}
 	else
 		echo -e "${app} already installed, will skip it"
+	fi
+done
+
+
+# Install apps using other methods
+
+command_exists() {
+	command -v "$@" > /dev/null 2>&1
+}
+
+declare -A apps_other_methods
+
+apps_other_methods=(
+	["docker"]="wget -qO- https://get.docker.com/ | sh"
+)
+
+for app_other in "${!apps_other_methods[@]}"; do
+	if ! command_exists $app_other; then
+		echo -e "${app_other} not installed, will install it\n"
+		eval ${apps_other_methods[$app_other]}
+	else
+		echo -e "${app_other} already installed, will skip it"
 	fi
 done
 
