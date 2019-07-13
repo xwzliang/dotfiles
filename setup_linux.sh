@@ -51,11 +51,22 @@ for app_other in "${!apps_other_methods[@]}"; do
 done
 
 
-# Clone TPM for tmux
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-	echo "Cloning TPM for tmux..."
-	git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
-fi
+# Clone repository using git
+
+declare -A repos_git_clone
+
+repos_git_clone=(
+	["$HOME/.tmux/plugins/tpm"]="https://github.com/tmux-plugins/tpm"
+)
+
+for directory_git_local in "${!repos_git_clone[@]}"; do
+	if [ ! -d $directory_git_local ]; then
+		echo -e "${directory_git_local} not exists, will clone it using git\n"
+		git clone ${repos_git_clone[$directory_git_local]} $directory_git_local
+	else
+		echo -e "${directory_git_local} already exists, will skip it"
+	fi
+done
 
 
 # git credential settings
