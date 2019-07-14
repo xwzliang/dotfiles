@@ -70,7 +70,14 @@ cnoremap <C-l> <Right>
 syntax on
 set tabstop=4
 set shiftwidth=4
+" Use Tab for auto completion
 imap <tab> <C-p>
+" move vertically by visual line instead of real line using j and k, so if a long line gets visually wrapped into multiple lines, j and k won't skip over
+nnoremap j gj
+nnoremap k gk
+" move to beginning/end of line using B and E
+nnoremap B ^
+nnoremap E $
 " Use Shift+Tab to insert tab in edit mode
 inoremap <S-Tab> <C-V><Tab>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
