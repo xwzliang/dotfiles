@@ -19,3 +19,10 @@ fi
 
 alias rm_invalid_chars="rename 's/[^A-Za-z0-9._-]/_/g'"
 alias ls_latest_file="ls -Art | tail -n 1"
+
+# Functions
+
+function mdless() {
+	local input_arg="${1:-README.md}"
+	pandoc "$input_arg" | w3m -T text/html
+}
