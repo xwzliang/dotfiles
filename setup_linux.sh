@@ -16,6 +16,7 @@ apps_to_install=(
 	ocrmypdf
 	hfsprogs
 	rename
+	elinks	# Full-Featured Text web Browser, advanced and well-established feature-rich text mode web browser
 )
 
 for app in "${apps_to_install[@]}"; do
