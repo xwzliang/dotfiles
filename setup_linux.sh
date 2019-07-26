@@ -17,6 +17,7 @@ apps_to_install=(
 	hfsprogs
 	rename
 	elinks	# Full-Featured Text web Browser, advanced and well-established feature-rich text mode web browser
+	python3-lxml
 )
 
 for app in "${apps_to_install[@]}"; do
