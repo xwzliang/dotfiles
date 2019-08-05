@@ -18,6 +18,9 @@ apps_to_install=(
 	rename
 	elinks	# Full-Featured Text web Browser, advanced and well-established feature-rich text mode web browser
 	python3-lxml
+	build-essential libtool autotools-dev automake pkg-config bsdmainutils	# Bitcoin Core Build Required
+	libssl-dev libevent-dev libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libminiupnpc-dev libzmq3-dev	# Bitcoin Core dependencies
+	libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev	# Bitcoin Core qt5
 )
 
 for app in "${apps_to_install[@]}"; do
