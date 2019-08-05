@@ -35,6 +35,8 @@ apps_to_install=(
 	libssl-dev libevent-dev libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libminiupnpc-dev libzmq3-dev	# Bitcoin Core dependencies
 	libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev	# Bitcoin Core qt5
 	libdb4.8-dev libdb4.8++-dev		# libdb_cxx via ppa: required by Bitcoin Core build
+	proxychains
+	shadowsocks-libev
 )
 
 for app in "${apps_to_install[@]}"; do
