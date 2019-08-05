@@ -1,5 +1,18 @@
 #!/usr/bin/env bash
 
+# Add repos using ppsh -p 49278 broliang@xwzliang.fun
+ppa_to_add=(
+	bitcoin/bitcoin
+)
+for app in "${ppa_to_add[@]}"; do
+	if ! grep -q "^deb .*${app}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
+		# commands to add the ppa ...
+		add-apt-repository ppa:${app} -y
+	fi
+done
+
+apt-get update
+
 # Install apps using apt
 apps_to_install=(
 	vim
@@ -21,6 +34,7 @@ apps_to_install=(
 	build-essential libtool autotools-dev automake pkg-config bsdmainutils	# Bitcoin Core Build Required
 	libssl-dev libevent-dev libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libminiupnpc-dev libzmq3-dev	# Bitcoin Core dependencies
 	libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler libqrencode-dev	# Bitcoin Core qt5
+	libdb4.8-dev libdb4.8++-dev		# libdb_cxx via ppa: required by Bitcoin Core build
 )
 
 for app in "${apps_to_install[@]}"; do
