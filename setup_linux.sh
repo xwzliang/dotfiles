@@ -37,6 +37,7 @@ apps_to_install=(
 	libdb4.8-dev libdb4.8++-dev		# libdb_cxx via ppa: required by Bitcoin Core build
 	proxychains
 	shadowsocks-libev
+	expect	# a language that talks with your interactive programs or scripts that require user interaction
 )
 
 for app in "${apps_to_install[@]}"; do
