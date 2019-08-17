@@ -70,6 +70,7 @@ cnoremap <C-l> <Right>
 syntax on
 set tabstop=4
 set shiftwidth=4
+set autoindent
 " Use Tab for auto completion
 imap <tab> <C-p>
 " move vertically by visual line instead of real line using j and k, so if a long line gets visually wrapped into multiple lines, j and k won't skip over
