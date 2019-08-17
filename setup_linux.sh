@@ -38,6 +38,7 @@ apps_to_install=(
 	proxychains
 	shadowsocks-libev
 	expect	# a language that talks with your interactive programs or scripts that require user interaction
+	bats	# Bash Automated Testing System
 )
 
 for app in "${apps_to_install[@]}"; do
