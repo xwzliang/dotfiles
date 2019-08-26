@@ -62,6 +62,7 @@ declare -A apps_other_methods
 
 apps_other_methods=(
 	["docker"]="wget -qO- https://get.docker.com/ | sh"
+	["youtube-dl"]="curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl && chmod a+rx /usr/local/bin/youtube-dl"
 )
 
 for app_other in "${!apps_other_methods[@]}"; do
