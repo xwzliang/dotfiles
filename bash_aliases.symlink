@@ -1,5 +1,8 @@
 # Additional settings for bash
 
+# For a colored prompt
+force_color_prompt=yes
+
 # Set default editor to vim
 export VISUAL=vim
 export EDITOR="$VISUAL"
