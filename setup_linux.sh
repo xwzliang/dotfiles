@@ -39,6 +39,8 @@ apps_to_install=(
 	shadowsocks-libev
 	expect	# a language that talks with your interactive programs or scripts that require user interaction
 	bats	# Bash Automated Testing System
+	virtualbox		# A general-purpose full virtualizer
+	vagrant		# A tool for building and managing virtual machine environments in a single workflow
 )
 
 for app in "${apps_to_install[@]}"; do
