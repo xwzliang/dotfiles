@@ -15,6 +15,7 @@ apt-get update
 
 # Install apps using apt
 apps_to_install=(
+	dconf-tools		# A low-level configuration system
 	vim
 	python3
 	tmux
