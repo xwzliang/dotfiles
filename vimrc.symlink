@@ -90,6 +90,15 @@ autocmd BufNewFile * execute 'silent! 1s/.*/#!\/usr\/bin\/env ' . (empty(&filety
 " Below command will add shebang only if filetype is not empty
 "autocmd BufNewFile * if !empty(&filetype) | execute 'silent! 1s/.*/#!\/usr\/bin\/env ' . &filetype . '\r\r'| :startinsert | endif
 
+" automatically give executable permissions if file begins with shebang
+function MakeScriptExecuteable()
+	if getline(1) =~ "^#!.*/bin/"
+	silent !chmod +x %
+	endif
+endfunction
+
+au BufWritePost * call MakeScriptExecuteable()
+
 
 " For html files, indent two spaces
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2 expandtab
