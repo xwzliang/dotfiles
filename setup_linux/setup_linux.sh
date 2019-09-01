@@ -99,4 +99,4 @@ done
 
 # git credential settings, import setting_git_credential.sh
 dir="$(dirname "$0")"
-"$dir/setting_git_credential.sh"
+"$dir/git_setup.sh"
