@@ -97,6 +97,10 @@ for directory_git_local in "${!repos_git_clone[@]}"; do
 done
 
 
-# git credential settings, import setting_git_credential.sh
 dir="$(dirname "$0")"
-"$dir/git_setup.sh"
+
+# git credential settings, import setting_git_credential.sh
+$dir/git_setup.sh
+
+# vim settings
+$dir/vim_setup.sh
