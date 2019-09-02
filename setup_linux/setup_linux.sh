@@ -27,6 +27,7 @@ apps_to_install=(
 	imagemagick
 	ffmpeg
 	mosh
+	djvulibre-bin	# djvulibre including ddjvu
 	ocrmypdf
 	hfsprogs
 	rename
