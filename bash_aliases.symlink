@@ -29,3 +29,8 @@ function mdless() {
 	local input_arg="${1:-README.md}"
 	pandoc "$input_arg" | w3m -T text/html
 }
+
+
+# Proxy
+export https_proxy=socks5://127.0.0.1:1080
+export http_proxy=socks5://127.0.0.1:1080
