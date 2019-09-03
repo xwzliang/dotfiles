@@ -21,7 +21,6 @@ fi
 # Aliases
 
 alias rm_invalid_chars="rename 's/[^A-Za-z0-9._-]/_/g'"
-alias ls_latest_file="ls -Art | tail -n 1"
 
 # Functions
 
@@ -29,6 +28,8 @@ function mdless() {
 	local input_arg="${1:-README.md}"
 	pandoc "$input_arg" | w3m -T text/html
 }
+
+newest() { ls -dt "$@" | head -1; }		# Print the newest file or directory
 
 
 # Proxy
