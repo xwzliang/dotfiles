@@ -43,6 +43,7 @@ apps_to_install=(
 	bats	# Bash Automated Testing System
 	virtualbox		# A general-purpose full virtualizer
 	vagrant		# A tool for building and managing virtual machine environments in a single workflow
+	check		# A unit testing framework for C
 )
 
 for app in "${apps_to_install[@]}"; do
