@@ -44,6 +44,7 @@ apps_to_install=(
 	virtualbox		# A general-purpose full virtualizer
 	vagrant		# A tool for building and managing virtual machine environments in a single workflow
 	check		# A unit testing framework for C
+	ruby-full
 )
 
 for app in "${apps_to_install[@]}"; do
