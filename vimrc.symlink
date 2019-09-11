@@ -86,9 +86,13 @@ cmap w!! w !sudo tee > /dev/null %
 
 
 " Automatically add shebang and two lines below, then go into insert mode
-"autocmd BufNewFile * execute 'silent! 1s/.*/#!\/usr\/bin\/env ' . (empty(&filetype) ? '' : ' '.&filetype) . '\r\r'| :startinsert
-" Below command will add shebang if filetype is not empty and not in skip list
-autocmd BufNewFile * if (!empty(&filetype) && (filetype!="c")) | execute 'silent! 1s/.*/#!\/usr\/bin\/env ' . &filetype . '\r\r'| :startinsert | endif
+" Below command will add shebang if filetype is in shebang_filetype_list
+let shebang_filetype_list=[
+	\ 'python3',
+	\ 'bash',
+	\ 'bats',
+\ ]
+autocmd BufNewFile * if (index(shebang_filetype_list, &filetype)>=0) | execute 'silent! 1s/.*/#!\/usr\/bin\/env ' . &filetype . '\r\r'| :startinsert | endif
 
 " automatically give executable permissions if file begins with shebang
 function MakeScriptExecuteable()
