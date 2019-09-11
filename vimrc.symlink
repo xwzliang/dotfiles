@@ -86,9 +86,9 @@ cmap w!! w !sudo tee > /dev/null %
 
 
 " Automatically add shebang and two lines below, then go into insert mode
-autocmd BufNewFile * execute 'silent! 1s/.*/#!\/usr\/bin\/env ' . (empty(&filetype) ? '' : ' '.&filetype) . '\r\r'| :startinsert
-" Below command will add shebang only if filetype is not empty
-"autocmd BufNewFile * if !empty(&filetype) | execute 'silent! 1s/.*/#!\/usr\/bin\/env ' . &filetype . '\r\r'| :startinsert | endif
+"autocmd BufNewFile * execute 'silent! 1s/.*/#!\/usr\/bin\/env ' . (empty(&filetype) ? '' : ' '.&filetype) . '\r\r'| :startinsert
+" Below command will add shebang if filetype is not empty and not in skip list
+autocmd BufNewFile * if (!empty(&filetype) && (filetype!="c")) | execute 'silent! 1s/.*/#!\/usr\/bin\/env ' . &filetype . '\r\r'| :startinsert | endif
 
 " automatically give executable permissions if file begins with shebang
 function MakeScriptExecuteable()
