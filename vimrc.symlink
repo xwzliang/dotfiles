@@ -64,6 +64,9 @@ cnoremap <C-h> <Left>
 cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 cnoremap <C-l> <Right>
+" Use ctrl+w,b in command line
+cnoremap <C-b> <C-Left>
+cnoremap <C-w> <C-Right>
 
 
 " Settings vim editing
