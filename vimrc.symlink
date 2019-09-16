@@ -87,6 +87,8 @@ inoremap <S-Tab> <C-V><Tab>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+" Change default leader key
+let mapleader = " "
 
 " Automatically add shebang and two lines below, then go into insert mode
 " Below command will add shebang if filetype is in shebang_filetype_list
