@@ -117,10 +117,14 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 
 
 " Nerdcommenter
-
 let g:NERDCustomDelimiters = { 
 	\ 'bash': { 'left': '#','right': '' },
 	\ 'bats': { 'left': '#','right': '' },
 \ }
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+
+
+" NerdTree
+" open NERDTree with Ctrl+n 
+map <C-n> :NERDTreeToggle<CR>
