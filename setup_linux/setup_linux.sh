@@ -45,6 +45,7 @@ apps_to_install=(
 	vagrant		# A tool for building and managing virtual machine environments in a single workflow
 	check		# A unit testing framework for C
 	ruby-full
+	glimpse		# A very popular UNIX indexing and query system to search quickly through entire file systems, including agrep
 )
 
 for app in "${apps_to_install[@]}"; do
