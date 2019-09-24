@@ -120,6 +120,7 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 let g:NERDCustomDelimiters = { 
 	\ 'bash': { 'left': '#','right': '' },
 	\ 'bats': { 'left': '#','right': '' },
+	\ 'python3': { 'left': '#','right': '' },
 \ }
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
