@@ -27,6 +27,7 @@ export unity_path=`find /var/lib/gems/ -type d -name "unity" | grep -v cmock`/sr
 alias rm_invalid_chars="rename 's/[^A-Za-z0-9._-]/_/g'"
 alias mount_write_to_HFS="mount -o remount,rw,force"
 alias oldlinks="find . -type l -print | perl -nle '-e || print'"
+alias unset_proxy="unset ALL_PROXY all_proxy http_proxy https_proxy"
 
 # Functions
 
@@ -57,3 +58,5 @@ set_proxy() {
 	export http_proxy=socks5://127.0.0.1:1080
 }
 
+# Unset proxy when bash is initialized
+unset_proxy
