@@ -15,6 +15,9 @@ apt-get update
 
 # Install apps using apt
 apps_to_install=(
+	git
+	curl
+	net-tools
 	dconf-tools		# A low-level configuration system
 	vim
 	python3
