@@ -15,7 +15,7 @@ for config_file in $dir/*symlink*; do
 		# This construction replaces all occurrences of ';' (the initial // means global replace) in the string IN with ' ' (a single space), then interprets the space-delimited string as an array (that's what the surrounding parentheses do).
 		split_name=(${config_name//'_symlink_'/ })
 		folder_name=.${split_name[0]}
-		name_in_home_dir=.${split_name[1]}
+		name_in_home_dir=${split_name[1]}
 		config_home_path=$HOME/$folder_name/$name_in_home_dir
 		mkdir -p $HOME/$folder_name
 	fi
