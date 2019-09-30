@@ -17,6 +17,7 @@ for config_file in $dir/*symlink*; do
 		folder_name=.${split_name[0]}
 		name_in_home_dir=.${split_name[1]}
 		config_home_path=$HOME/$folder_name/$name_in_home_dir
+		mkdir -p $HOME/$folder_name
 	fi
 	# if config file already exists, print a message
 	if [ -f $config_home_path ]; then
