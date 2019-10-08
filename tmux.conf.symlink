@@ -76,6 +76,7 @@ bind C-e command-prompt -p "Command:" \
 set -g focus-events on
 
 # List of plugins
+# Use prefix + I to fetch the plugin and source it
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 ## tmux-resurrect enables saving and restoring tmux sessions manually
