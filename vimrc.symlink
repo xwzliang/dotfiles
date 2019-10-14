@@ -90,6 +90,9 @@ cmap w!! w !sudo tee > /dev/null %
 " Change default leader key
 let mapleader = " "
 
+" For shell script, highlight bash syntax, not POSIX shell.
+let g:is_bash = 1
+
 " Automatically add shebang and two lines below, then go into insert mode
 " Below command will add shebang if filetype is in shebang_filetype_list
 let shebang_filetype_list=[
