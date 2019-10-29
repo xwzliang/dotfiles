@@ -8,3 +8,8 @@
 
 ;; Changing tab width
 (setq-default tab-width 4)
+
+;; Change code indentation style for C
+(add-hook 'c-mode-hook
+	'(lambda()
+		(c-set-style "cc-mode")))
