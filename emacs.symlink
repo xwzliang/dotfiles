@@ -1,6 +1,10 @@
 ;; Disable menu-bar-mode
 (menu-bar-mode -1)
 
+;; Change color for modeline to dark orange
+(set-face-background 'mode-line "#af5f00")
+(set-face-background 'mode-line-inactive "#af5f00")
+
 ;; Config evil mode
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
