@@ -5,6 +5,10 @@
 (set-face-background 'mode-line "#af5f00")
 (set-face-background 'mode-line-inactive "#af5f00")
 
+;; Change color for prompt in mini-buffer
+(set-face-foreground 'minibuffer-prompt "white")
+
+
 ;; Config evil mode
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
