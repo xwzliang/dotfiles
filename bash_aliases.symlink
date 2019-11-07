@@ -3,6 +3,9 @@
 # For a colored prompt
 force_color_prompt=yes
 
+# Set remote display to let commands use default display
+export DISPLAY=:0
+
 # Set default editor to vim
 export VISUAL=vim
 export EDITOR="$VISUAL"
