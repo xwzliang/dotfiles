@@ -9,9 +9,12 @@
 ;; Disable menu-bar-mode
 (menu-bar-mode -1)
 
-;; Change color for modeline to dark orange
+;; Change background color for modeline to dark orange
 (set-face-background 'mode-line "#af5f00")
 (set-face-background 'mode-line-inactive "#af5f00")
+
+;; Change foreground color for active modeline to black
+(set-face-foreground 'mode-line "black")
 
 ;; Change color for prompt in mini-buffer
 (set-face-foreground 'minibuffer-prompt "white")
