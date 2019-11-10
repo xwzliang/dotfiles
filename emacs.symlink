@@ -28,6 +28,9 @@
 ;; Changing tab width
 (setq-default tab-width 4)
 
+;; Use tab key to complete
+(global-set-key "\t" 'dabbrev-expand)
+
 ;; Change code indentation style for C
 (add-hook 'c-mode-hook
 	'(lambda()
