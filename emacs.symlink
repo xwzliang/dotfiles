@@ -20,21 +20,25 @@
 (set-face-foreground 'minibuffer-prompt "white")
 
 
-;; Config evil mode
-(add-to-list 'load-path "~/.emacs.d/evil")
-(require 'evil)
-(evil-mode 1)
-
 ;; Changing tab width
 (setq-default tab-width 4)
 
 ;; Use tab key to complete
 (global-set-key "\t" 'dabbrev-expand)
 
+
 ;; Change code indentation style for C
 (add-hook 'c-mode-hook
 	'(lambda()
 		(c-set-style "cc-mode")))
+
+
+;; Package settings
+
+;; Config evil mode
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode 1)
 
 ;; settings for smartparens package
 (require 'smartparens-config)
