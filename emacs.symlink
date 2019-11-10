@@ -32,3 +32,7 @@
 (add-hook 'c-mode-hook
 	'(lambda()
 		(c-set-style "cc-mode")))
+
+;; settings for smartparens package
+(require 'smartparens-config)
+(smartparens-global-mode 1)
