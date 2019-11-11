@@ -52,3 +52,22 @@
 
 ;; settings for git-gutter
 (global-git-gutter-mode +1)
+
+;; settings for neotree
+(require 'neotree)
+;; Use F8 to toggle neotree globally
+(global-set-key [f8] 'neotree-toggle)
+;; Use ctrl+n to toggle neotree in evil normal state
+(define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
+ (add-hook 'neotree-mode-hook
+    (lambda ()
+      (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+      (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
+      (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
+      (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
+      (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
+      (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
+      (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
+      (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+      (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
+      (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
