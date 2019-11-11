@@ -46,3 +46,6 @@
 
 ;; settings for evil-surround
 (global-evil-surround-mode 1)
+
+;; settings for evil-nerd-commenter
+(evilnc-default-hotkeys)
