@@ -43,3 +43,6 @@
 ;; settings for smartparens package
 (require 'smartparens-config)
 (smartparens-global-mode 1)
+
+;; settings for evil-surround
+(global-evil-surround-mode 1)
