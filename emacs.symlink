@@ -49,3 +49,6 @@
 
 ;; settings for evil-nerd-commenter
 (evilnc-default-hotkeys)
+
+;; settings for git-gutter
+(global-git-gutter-mode +1)
