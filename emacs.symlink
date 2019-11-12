@@ -26,6 +26,9 @@
 ;; Use tab key to complete
 (global-set-key "\t" 'dabbrev-expand)
 
+;; Use shift tab (<backtab>) to insert tab
+(global-set-key (kbd "<backtab>") (lambda () (interactive) (insert "\t")))
+
 
 ;; Change code indentation style for C
 (add-hook 'c-mode-hook
