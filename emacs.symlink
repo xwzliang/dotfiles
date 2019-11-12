@@ -71,3 +71,6 @@
       (define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
       (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
       (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
+;; settings for helm
+(helm-mode 1)
