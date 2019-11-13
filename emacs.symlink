@@ -41,6 +41,9 @@
 ;; Enable sh-mode for .bats file
 (add-to-list 'auto-mode-alist '("\\.bats\\'" . sh-mode))
 
+;; Automatically give executable permissions if file begins with shebang
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
 
 ;; Package settings
 
