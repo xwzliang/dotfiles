@@ -80,3 +80,6 @@
 
 ;; settings for helm
 (helm-mode 1)
+
+;; settings for magit
+(global-set-key (kbd "C-x g") 'magit-status)
