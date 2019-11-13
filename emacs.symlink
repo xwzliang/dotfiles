@@ -38,6 +38,9 @@
 	'(lambda()
 		(c-set-style "cc-mode")))
 
+;; Enable sh-mode for .bats file
+(add-to-list 'auto-mode-alist '("\\.bats\\'" . sh-mode))
+
 
 ;; Package settings
 
