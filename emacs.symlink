@@ -30,6 +30,9 @@
 (global-set-key (kbd "<backtab>") (lambda () (interactive) (insert "\t")))
 
 
+;; Enable electric-pair-mode for inserting new line and indent automatically after brace
+(electric-pair-mode 1)
+
 ;; Change code indentation style for C
 (add-hook 'c-mode-hook
 	'(lambda()
