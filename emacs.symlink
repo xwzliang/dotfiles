@@ -133,4 +133,5 @@
       (newline)
       (newline)
       (evil-insert-state))))
- (add-hook 'find-file-hook 'my_hook)
+
+(add-hook 'find-file-hook 'my_hook)
