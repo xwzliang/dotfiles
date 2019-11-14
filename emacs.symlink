@@ -92,7 +92,7 @@
       (define-key evil-normal-state-local-map (kbd "I") 'neotree-hidden-file-toggle)
       (define-key evil-normal-state-local-map (kbd "z") 'neotree-stretch-toggle)
       (define-key evil-normal-state-local-map (kbd "R") 'neotree-refresh)
-      (define-key evil-normal-state-local-map (kbd "m") 'neotree-rename-node)
+      (define-key evil-normal-state-local-map (kbd "r") 'neotree-rename-node)
       (define-key evil-normal-state-local-map (kbd "c") 'neotree-create-node)
       (define-key evil-normal-state-local-map (kbd "p") 'neotree-copy-node)
       (define-key evil-normal-state-local-map (kbd "d") 'neotree-delete-node)
