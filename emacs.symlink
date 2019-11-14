@@ -106,6 +106,8 @@
 
 ;; settings for magit
 (global-set-key (kbd "C-x g") 'magit-status)
+(add-hook 'magit-post-refresh-hook
+          #'git-gutter:update-all-windows)
 
 ;; settings for evil-magit
 (require 'evil-magit)
