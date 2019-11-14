@@ -63,6 +63,9 @@
 (define-key evil-ex-completion-map "\C-l" 'forward-char)
 (define-key evil-ex-completion-map "\C-k" 'previous-complete-history-element)
 (define-key evil-ex-completion-map "\C-j" 'next-complete-history-element)
+; Use B,E to move to the beggining and end of line
+(define-key evil-motion-state-map "B" 'evil-beginning-of-line)
+(define-key evil-motion-state-map "E" 'evil-end-of-line)
 
 ;; settings for smartparens package
 (require 'smartparens-config)
