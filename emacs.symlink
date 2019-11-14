@@ -86,6 +86,8 @@
 
 ;; settings for helm
 (helm-mode 1)
+; Bind helm-M-x to M-x
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; settings for magit
 (global-set-key (kbd "C-x g") 'magit-status)
