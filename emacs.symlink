@@ -120,17 +120,17 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; For file extension in my_insert_file_type_list, insert shebang, two newline and enter evil-insert-state
- (defun my_hook()
-   (setq my_insert_file_type_list (list
-     "sh"
-	 "py"
-	 "bats"
-	   ))
-   (if (member (file-name-extension (buffer-name)) my_insert_file_type_list)
-     (progn
-       (insert-shebang)
-	   (newline)
-	   (newline)
-	   (evil-insert-state))))
+;; For file extension in my_insert_file_type_list and file has not been created yet, insert shebang, two newline and enter evil-insert-state
+(defun my_hook()
+  (setq my_insert_file_type_list (list
+    "sh"
+    "py"
+    "bats"
+   ))
+  (if (and (member (file-name-extension (buffer-name)) my_insert_file_type_list) (not (file-exists-p (buffer-name))))
+    (progn
+      (insert-shebang)
+      (newline)
+      (newline)
+      (evil-insert-state))))
  (add-hook 'find-file-hook 'my_hook)
