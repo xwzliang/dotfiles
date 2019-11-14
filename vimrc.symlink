@@ -90,7 +90,7 @@ cmap w!! w !sudo tee > /dev/null %
 nnoremap qn :w:bn
 
 " Change default leader key
-let mapleader = " "
+let mapleader = ","
 
 " For shell script, highlight bash syntax, not POSIX shell.
 let g:is_bash = 1
