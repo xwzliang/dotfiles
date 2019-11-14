@@ -56,6 +56,13 @@
 (global-set-key (kbd "M-l") 'evil-window-right)
 (global-set-key (kbd "M-j") 'evil-window-down)
 (global-set-key (kbd "M-k") 'evil-window-up)
+; Use C-h,j,k,l,b,w in ex command lines
+(define-key evil-ex-completion-map "\C-b" 'backward-word)
+(define-key evil-ex-completion-map "\C-w" 'forward-word)
+(define-key evil-ex-completion-map "\C-h" 'backward-char)
+(define-key evil-ex-completion-map "\C-l" 'forward-char)
+(define-key evil-ex-completion-map "\C-k" 'previous-complete-history-element)
+(define-key evil-ex-completion-map "\C-j" 'next-complete-history-element)
 
 ;; settings for smartparens package
 (require 'smartparens-config)
