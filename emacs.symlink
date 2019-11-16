@@ -142,7 +142,7 @@
  '(git-gutter:modified ((t (:foreground "white" :weight extra-light)))))
 
 ;; For file extension in my_insert_file_type_list and file has not been created yet, insert shebang, two newline and enter evil-insert-state
-(defun my_hook()
+(defun my_shebang_hook()
   (setq my_insert_file_type_list (list
     "sh"
     "py"
@@ -155,4 +155,4 @@
       (newline)
       (evil-insert-state))))
 
-(add-hook 'find-file-hook 'my_hook)
+(add-hook 'find-file-hook 'my_shebang_hook)
