@@ -33,6 +33,15 @@
 ;; Enable electric-pair-mode for inserting new line and indent automatically after brace
 (electric-pair-mode 1)
 
+;; Key bindings for mini-buffer
+;;(add-hook 'minibuffer-setup-hook
+  ;;(lambda ()
+    ;;(define-key minibuffer-local-map (kbd "C-H") 'left-char)
+    ;;(define-key minibuffer-local-map (kbd "C-l") 'right-char)
+    ;;(define-key minibuffer-local-map (kbd "C-k") 'previous-history-element)
+    ;;(define-key minibuffer-local-map (kbd "C-j") 'next-history-element)
+	;;))
+
 ;; Change code indentation style for C
 (add-hook 'c-mode-hook
 	'(lambda()
@@ -104,6 +113,15 @@
 (helm-mode 1)
 ; Bind helm-M-x to M-x
 (global-set-key (kbd "M-x") 'helm-M-x)
+; Use C-h,j,k,l,b,w in helm mode
+(define-key helm-map (kbd "C-j") 'helm-next-line)
+(define-key helm-map (kbd "C-k") 'helm-previous-line)
+(define-key helm-map (kbd "C-h") 'left-char)
+(define-key helm-map (kbd "C-l") 'right-char)
+(define-key helm-map (kbd "C-K") 'previous-history-element)
+(define-key helm-map (kbd "C-J") 'next-history-element)
+(define-key helm-map (kbd "C-b") 'left-word)
+(define-key helm-map (kbd "C-w") 'right-word)
 
 ;; settings for magit
 (global-set-key (kbd "C-x g") 'magit-status)
