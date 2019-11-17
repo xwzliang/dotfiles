@@ -32,3 +32,8 @@
 (define-key w3m-mode-map (kbd "u") 'w3m-scroll-down-or-previous-url)
 (define-key w3m-mode-map (kbd "y") 'evil-yank-line)
 (define-key w3m-mode-map (kbd "M-k") 'evil-window-up)
+
+(define-key w3m-url-completion-map (kbd "C-h") 'left-char)
+(define-key w3m-url-completion-map (kbd "C-l") 'right-char)
+(define-key w3m-url-completion-map (kbd "C-b") 'left-word)
+(define-key w3m-url-completion-map (kbd "C-w") 'right-word)
