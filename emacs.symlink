@@ -156,3 +156,13 @@
       (evil-insert-state))))
 
 (add-hook 'find-file-hook 'my_shebang_hook)
+
+
+;; Change appearance for w3m
+(defun my-w3m-faces ()
+  "Buffer-local face remapping for `w3m-mode-hook'."
+  (face-remap-add-relative 'default
+                           :background "white"
+                           :foreground "black"))
+
+(add-hook 'w3m-mode-hook #'my-w3m-faces)
