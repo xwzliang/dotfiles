@@ -118,8 +118,8 @@
 (define-key helm-map (kbd "C-k") 'helm-previous-line)
 (define-key helm-map (kbd "C-h") 'left-char)
 (define-key helm-map (kbd "C-l") 'right-char)
-(define-key helm-map (kbd "C-K") 'previous-history-element)
-(define-key helm-map (kbd "C-J") 'next-history-element)
+(define-key helm-map (kbd "C-p") 'previous-history-element)
+(define-key helm-map (kbd "C-n") 'next-history-element)
 (define-key helm-map (kbd "C-b") 'left-word)
 (define-key helm-map (kbd "C-w") 'right-word)
 
