@@ -7,3 +7,13 @@
 
 ;; Change home page
 (setq w3m-home-page "www.google.com")
+
+;; Default search engine
+(setq w3m-search-default-engine "google-en")
+; Use gg to replace google-en engine
+(add-to-list 'w3m-uri-replace-alist
+                  '("\\`gg:" w3m-search-uri-replace "google-en"))
+
+;; Use cookies
+(setq w3m-use-cookies t)
+(setq w3m-cookie-file "~/.emacs.d/cookie")
