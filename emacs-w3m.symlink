@@ -1,0 +1,9 @@
+;; Settings for proxy
+
+(setq w3m-no-proxy-domains '(
+							 "stackoverflow.com" 
+							 "stackexchange.com"
+							 ))
+
+;; Change home page
+(setq w3m-home-page "www.google.com")
