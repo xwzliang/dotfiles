@@ -6,7 +6,7 @@
 							 ))
 
 ;; Change home page
-(setq w3m-home-page "www.google.com")
+(setq w3m-home-page "https://github.com/xwzliang?tab=repositories")
 
 ;; Default search engine
 (setq w3m-search-default-engine "google-en")
