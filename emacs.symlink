@@ -34,13 +34,7 @@
 (electric-pair-mode 1)
 
 ;; Key bindings for mini-buffer
-;;(add-hook 'minibuffer-setup-hook
-  ;;(lambda ()
-    ;;(define-key minibuffer-local-map (kbd "C-H") 'left-char)
-    ;;(define-key minibuffer-local-map (kbd "C-l") 'right-char)
-    ;;(define-key minibuffer-local-map (kbd "C-k") 'previous-history-element)
-    ;;(define-key minibuffer-local-map (kbd "C-j") 'next-history-element)
-	;;))
+(define-key minibuffer-local-map (kbd "C-u") 'backward-kill-sentence)
 
 ;; Change code indentation style for C
 (add-hook 'c-mode-hook
