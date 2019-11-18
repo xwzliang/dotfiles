@@ -35,6 +35,10 @@
 
 ;; Key bindings for mini-buffer
 (define-key minibuffer-local-map (kbd "C-u") 'backward-kill-sentence)
+(define-key minibuffer-local-map (kbd "C-h") 'left-char)
+(define-key minibuffer-local-map (kbd "C-l") 'right-char)
+(define-key minibuffer-local-map (kbd "C-b") 'left-word)
+(define-key minibuffer-local-map (kbd "C-w") 'right-word)
 
 ;; Change code indentation style for C
 (add-hook 'c-mode-hook
