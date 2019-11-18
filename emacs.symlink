@@ -173,6 +173,8 @@
 ;; Change appearance for w3m
 (defun my-w3m-faces ()
   "Buffer-local face remapping for `w3m-mode-hook'."
+  (setq left-margin-width 5)
+  (setq right-margin-width 5)
   (face-remap-add-relative 'default
                            :background "white"
                            :foreground "black"))
