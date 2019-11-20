@@ -161,7 +161,8 @@
  ;; If there is more than one, they won't work right.
  '(git-gutter:added ((t (:foreground "white" :weight extra-light))))
  '(git-gutter:deleted ((t (:foreground "white" :weight extra-light))))
- '(git-gutter:modified ((t (:foreground "white" :weight extra-light)))))
+ '(git-gutter:modified ((t (:foreground "white" :weight extra-light))))
+ '(sh-heredoc ((t (:foreground "color-136" :weight normal)))))
 
 ;; For file extension in my_insert_file_type_list and file has not been created yet, insert shebang, two newline and enter evil-insert-state
 (defun my_shebang_hook()
