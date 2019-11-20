@@ -80,6 +80,10 @@
 (define-key evil-motion-state-map "B" 'evil-beginning-of-line)
 (define-key evil-motion-state-map "E" 'evil-end-of-line)
 
+; Use C-p to let helm show the kill ring
+(define-key evil-normal-state-map "\C-p" 'helm-show-kill-ring)
+
+
 ;; settings for smartparens package
 (require 'smartparens-config)
 (smartparens-global-mode 1)
