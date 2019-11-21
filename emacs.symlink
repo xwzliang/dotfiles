@@ -157,7 +157,8 @@
 	 ("php" . "php")
 	 ("sh" . "bash")
 	 ("pl" . "perl")
-	 ("bats" . "bats")))))
+	 ("bats" . "bats"))))
+ '(linum-format " %3d "))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -166,6 +167,7 @@
  '(git-gutter:added ((t (:foreground "white" :weight extra-light))))
  '(git-gutter:deleted ((t (:foreground "white" :weight extra-light))))
  '(git-gutter:modified ((t (:foreground "white" :weight extra-light))))
+ '(linum ((t (:background "black" :foreground "#6a6a6a" :width condensed))))
  '(sh-heredoc ((t (:foreground "color-136" :weight normal)))))
 
 ;; For file extension in my_insert_file_type_list and file has not been created yet, insert shebang, two newline and enter evil-insert-state
