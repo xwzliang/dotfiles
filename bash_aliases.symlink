@@ -69,5 +69,5 @@ set_privoxy() {
 	export http_proxy=http://127.0.0.1:8118
 }
 
-# Unset proxy when bash is initialized
-unset_proxy
+# Use privoxy when bash is initialized
+set_privoxy
