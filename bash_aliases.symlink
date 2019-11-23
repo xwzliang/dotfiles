@@ -76,8 +76,7 @@ test_proxy() {
 	else
 		echo proxy not ok.
 	fi
-	set_privoxy
 }
 
-# Use privoxy when bash is initialized
-set_privoxy
+# Unset proxy when bash is initialized
+unset_proxy
