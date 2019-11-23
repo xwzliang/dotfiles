@@ -69,5 +69,15 @@ set_privoxy() {
 	export http_proxy=http://127.0.0.1:8118
 }
 
+test_proxy() {
+	unset_proxy
+	if timeout 5 proxychains curl www.google.com &>/dev/null; then
+		echo proxy ok.
+	else
+		echo proxy not ok.
+	fi
+	set_privoxy
+}
+
 # Use privoxy when bash is initialized
 set_privoxy
