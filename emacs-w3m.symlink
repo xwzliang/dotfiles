@@ -1,5 +1,9 @@
 ;; Settings for proxy
 
+(setq w3m-command-arguments
+      (nconc w3m-command-arguments
+             '("-o" "https_proxy=https://127.0.0.1:8118/")))
+
 (setq w3m-no-proxy-domains '(
 							 "stackoverflow.com" 
 							 "stackexchange.com"
