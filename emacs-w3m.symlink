@@ -48,6 +48,7 @@
 (define-key w3m-mode-map (kbd "w") 'evil-forward-word-begin)
 (define-key w3m-mode-map (kbd "b") 'evil-backward-word-begin)
 (define-key w3m-mode-map (kbd "v") 'evil-visual-char)
+(define-key w3m-mode-map (kbd "M-l") 'evil-window-right)
 
 (define-key w3m-url-completion-map (kbd "C-h") 'left-char)
 (define-key w3m-url-completion-map (kbd "C-l") 'right-char)
