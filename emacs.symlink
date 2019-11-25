@@ -29,6 +29,11 @@
 ;; Use shift tab (<backtab>) to insert tab
 (global-set-key (kbd "<backtab>") (lambda () (interactive) (insert "\t")))
 
+;; For all major mode, treat underscore as part of the whole word
+(add-hook 'after-change-major-mode-hook
+                       (lambda ()
+                         (modify-syntax-entry ?_ "w")))
+
 
 ;; Enable electric-pair-mode for inserting new line and indent automatically after brace
 (electric-pair-mode 1)
