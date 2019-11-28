@@ -84,6 +84,8 @@
 ; Use B,E to move to the beggining and end of line
 (define-key evil-motion-state-map "B" 'evil-beginning-of-line)
 (define-key evil-motion-state-map "E" 'evil-end-of-line)
+; Use C-b to evil-scroll-up instead of evil-scroll-page-up
+(define-key evil-motion-state-map "\C-b" 'evil-scroll-up)
 
 ; Use C-p to let helm show the kill ring
 (define-key evil-normal-state-map "\C-p" 'helm-show-kill-ring)
