@@ -49,6 +49,12 @@
 (define-key w3m-mode-map (kbd "b") 'evil-backward-word-begin)
 (define-key w3m-mode-map (kbd "v") 'evil-visual-char)
 (define-key w3m-mode-map (kbd "M-l") 'evil-window-right)
+(define-key w3m-mode-map (kbd "M-p") 'w3m-previous-buffer)
+(define-key w3m-mode-map (kbd "M-n") 'w3m-next-buffer)
+(define-key w3m-mode-map (kbd "C-j") 'w3m-scroll-up)
+(define-key w3m-mode-map (kbd "C-k") 'w3m-scroll-down)
+(define-key w3m-mode-map (kbd "x") 'w3m-delete-buffer)
+(define-key w3m-mode-map (kbd "X") 'w3m-delete-other-buffers)
 
 (define-key w3m-url-completion-map (kbd "C-h") 'left-char)
 (define-key w3m-url-completion-map (kbd "C-l") 'right-char)
