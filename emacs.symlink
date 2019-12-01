@@ -4,6 +4,9 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Change backup dir
+(setq backup-directory-alist `(("." . "~/.emacs.d/my_backups")))
+
 (load-theme 'clues t)
 
 ;; Disable menu-bar-mode
