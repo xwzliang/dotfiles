@@ -168,7 +168,8 @@
 	 ("sh" . "bash")
 	 ("pl" . "perl")
 	 ("bats" . "bats"))))
- '(linum-format " %3d "))
+ '(linum-format " %3d ")
+ '(neo-confirm-create-file (quote off-p)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
