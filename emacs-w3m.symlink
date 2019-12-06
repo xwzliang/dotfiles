@@ -12,6 +12,9 @@
 ;; Change home page
 (setq w3m-home-page "https://github.com/xwzliang?tab=repositories")
 
+;; Default download dir
+(setq w3m-default-save-directory "~/Downloads")
+
 ;; Default search engine
 (setq w3m-search-default-engine "google-en")
 ; Use gg to replace google-en engine
