@@ -34,6 +34,7 @@ alias oldlinks="find . -type l -print | perl -nle '-e || print'"
 alias unset_proxy="unset ALL_PROXY all_proxy http_proxy https_proxy"
 # Use terminal emacs instead of GUI emacs
 alias emacs="emacs -nw"
+alias dropboxd="unset DISPLAY && dropboxd"
 
 # Functions
 
