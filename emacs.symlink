@@ -170,6 +170,7 @@
 	 ("pl" . "perl")
 	 ("bats" . "bats"))))
  '(linum-format " %3d ")
+ '(neo-confirm-create-directory (quote off-p))
  '(neo-confirm-create-file (quote off-p)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
