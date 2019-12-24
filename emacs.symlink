@@ -41,6 +41,9 @@
 ;; Enable electric-pair-mode for inserting new line and indent automatically after brace
 (electric-pair-mode 1)
 
+;; Automatically reload changed file in buffer
+(global-auto-revert-mode t)
+
 ;; Key bindings for mini-buffer
 (define-key minibuffer-local-map (kbd "C-u") 'backward-kill-sentence)
 (define-key minibuffer-local-map (kbd "C-h") 'left-char)
