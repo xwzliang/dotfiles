@@ -51,6 +51,7 @@
 (define-key minibuffer-local-map (kbd "C-b") 'left-word)
 (define-key minibuffer-local-map (kbd "C-w") 'right-word)
 (define-key minibuffer-local-map "\C-p" 'helm-show-kill-ring)
+(define-key minibuffer-local-map "\M-p" 'evil-paste-after)
 
 ;; Key bindings for *backtrace* buffer
 (add-hook 'debugger-mode-hook
