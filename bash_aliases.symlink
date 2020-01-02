@@ -29,7 +29,7 @@ export unity_path=`find /var/lib/gems/ -type d -name "unity" | grep -v cmock | h
 # Aliases
 
 alias rm_invalid_chars="rename 's/[^A-Za-z0-9._-]/_/g'"
-alias mount_write_to_HFS="mount -o remount,rw,force"
+alias mount_write_to_HFS="sudo mount -o remount,rw,force"
 alias oldlinks="find . -type l -print | perl -nle '-e || print'"
 alias unset_proxy="unset ALL_PROXY all_proxy http_proxy https_proxy"
 # Use terminal emacs instead of GUI emacs
