@@ -145,6 +145,9 @@
 (define-key helm-map (kbd "C-n") 'next-history-element)
 (define-key helm-map (kbd "C-b") 'left-word)
 (define-key helm-map (kbd "C-w") 'right-word)
+(define-key helm-map (kbd "C-u") 'helm-find-files-up-one-level)
+(define-key helm-map "\t" 'helm-execute-persistent-action)
+(define-key helm-read-file-map (kbd "C-l") 'right-char)
 
 ;; settings for magit
 (global-set-key (kbd "C-x g") 'magit-status)
