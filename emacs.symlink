@@ -118,7 +118,8 @@
 ;; Use F8 to toggle neotree globally
 (global-set-key [f8] 'neotree-toggle)
 ;; Use ctrl+n to toggle neotree in evil normal state
-(define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
+;; (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
+(define-key evil-normal-state-map (kbd "C-n") 'neotree-refresh)
  (add-hook 'neotree-mode-hook
     (lambda ()
       (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
