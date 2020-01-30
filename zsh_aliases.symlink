@@ -24,6 +24,7 @@ fi
 # Environment variables
 
 export PATH="$HOME/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export unity_path=`find /var/lib/gems/ -type d -name "unity" | grep -v cmock | head -1`/src
 
 # Aliases
