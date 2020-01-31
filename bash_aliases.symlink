@@ -14,7 +14,10 @@ export EDITOR="$VISUAL"
 set -o vi
 
 # for virtualenv
-source virtualenvwrapper.sh
+if [ -f virtualenvwrapper.sh ]; then
+	source virtualenvwrapper.sh
+	echo virtualenvwrapper.sh sourced.
+fi
 
 # Set terminal to automatically use tmux, with a tmux session named 'default'
 if [ -z "$TMUX" ]; then
