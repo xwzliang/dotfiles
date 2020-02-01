@@ -159,6 +159,8 @@
 ;; settings for evil-magit
 (require 'evil-magit)
 
+(evil-define-key evil-magit-state magit-mode-map "o" 'magit-file-checkout)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
