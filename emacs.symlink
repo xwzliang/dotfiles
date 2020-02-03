@@ -134,6 +134,7 @@
       (define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
       (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
 
+
 ;; settings for helm
 (helm-mode 1)
 ; Bind helm-M-x to M-x
@@ -147,9 +148,50 @@
 (define-key helm-map (kbd "C-n") 'next-history-element)
 (define-key helm-map (kbd "C-b") 'left-word)
 (define-key helm-map (kbd "C-w") 'right-word)
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 (define-key helm-map (kbd "C-u") 'helm-find-files-up-one-level)
 (define-key helm-map "\t" 'helm-execute-persistent-action)
 (define-key helm-read-file-map (kbd "C-l") 'right-char)
+
+;; helm-mini
+(global-set-key (kbd "C-x b") 'helm-mini)
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)
+
+;; helm-find-files
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(define-key helm-find-files-map (kbd "C-l") 'right-char)
+
+;; helm ack-grep (Ubuntu) or ack (MacOS)
+(if (eq system-type 'darwin)
+	(setq helm-grep-default-command
+		"ack -Hn --color --smart-case --no-group %e %p %f"
+		helm-grep-default-recurse-command
+		"ack -H --color --smart-case --no-group %e %p %f")
+	(setq helm-grep-default-command
+		"ack-grep -Hn --color --smart-case --no-group %e %p %f"
+		helm-grep-default-recurse-command
+		"ack-grep -H --color --smart-case --no-group %e %p %f"))
+
+;; helm-semantic-or-imenu
+(semantic-mode 1)
+(global-set-key (kbd "C-c h i") 'helm-semantic-or-imenu)
+(setq helm-semantic-fuzzy-match	t
+      helm-imenu-fuzzy-match	t)
+
+;; helm-all-mark-rings
+(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+
+;; others
+(global-set-key (kbd "C-c h m") 'helm-man-woman)	
+(global-set-key (kbd "C-c h /") 'helm-find)
+(global-set-key (kbd "C-c h l") 'helm-locate)
+(global-set-key (kbd "C-c h o") 'helm-occur)
+(global-set-key (kbd "C-c h a") 'helm-apropos)
+(global-set-key (kbd "C-c h i") 'helm-info)
+(define-key minibuffer-local-map (kbd "C-c h h") 'helm-minibuffer-history)
+(setq helm-apropos-fuzzy-match t)
+
 
 ;; settings for magit
 (global-set-key (kbd "C-x g") 'magit-status)
