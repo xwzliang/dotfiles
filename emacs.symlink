@@ -205,6 +205,15 @@
 (require 'helm-descbinds)
 (helm-descbinds-mode)
 
+;; projectile and helm-projectile
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+(setq projectile-switch-project-action 'helm-projectile)
+;; keymap prefix for projectile (C-c p)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p s a") 'helm-projectile-ack)
+
 
 ;; settings for magit
 (global-set-key (kbd "C-x g") 'magit-status)
