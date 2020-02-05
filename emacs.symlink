@@ -136,26 +136,30 @@
 
 
 ;; settings for helm
+(require 'helm)
+(require 'helm-config)
 (helm-mode 1)
+;; Change default prefix key
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
 ; Bind helm-M-x to M-x
 (global-set-key (kbd "M-x") 'helm-M-x)
-; Use C-h,j,k,l,b,w in helm mode
+; Use C-h,j,k,l,b,w,n,p,z in helm mode
 (define-key helm-map (kbd "C-j") 'helm-next-line)
 (define-key helm-map (kbd "C-k") 'helm-previous-line)
 (define-key helm-map (kbd "C-h") 'left-char)
 (define-key helm-map (kbd "C-l") 'right-char)
-(define-key helm-map (kbd "C-p") 'previous-history-element)
-(define-key helm-map (kbd "C-n") 'next-history-element)
-(define-key helm-map (kbd "C-d") 'helm-next-page)
-(define-key helm-map (kbd "C-b") 'helm-previous-page)
+(define-key helm-map (kbd "C-n") 'helm-next-page)
+(define-key helm-map (kbd "C-p") 'helm-previous-page)
 (define-key helm-map (kbd "C-w") 'right-word)
+(define-key helm-map (kbd "C-b") 'left-word)
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 (define-key helm-map (kbd "C-u") 'helm-find-files-up-one-level)
 (define-key helm-map "\t" 'helm-execute-persistent-action)
 (define-key helm-read-file-map (kbd "C-l") 'right-char)
 
 (setq
-      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      ;; helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
       helm-ff-file-name-history-use-recentf t
       ;; helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
       ;; helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
@@ -184,21 +188,14 @@
 
 ;; helm-semantic-or-imenu
 (semantic-mode 1)
-(global-set-key (kbd "C-c h i") 'helm-semantic-or-imenu)
 (setq helm-semantic-fuzzy-match	t
       helm-imenu-fuzzy-match	t)
 
 ;; helm-all-mark-rings
 (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
 
-;; others
-(global-set-key (kbd "C-c h m") 'helm-man-woman)	
-(global-set-key (kbd "C-c h /") 'helm-find)
-(global-set-key (kbd "C-c h l") 'helm-locate)
+;; helm-occur
 (global-set-key (kbd "C-c h o") 'helm-occur)
-(global-set-key (kbd "C-c h a") 'helm-apropos)
-(global-set-key (kbd "C-c h i") 'helm-info)
-(define-key minibuffer-local-map (kbd "C-c h h") 'helm-minibuffer-history)
 (setq helm-apropos-fuzzy-match t)
 
 ;; helm-descbinds
