@@ -9,8 +9,12 @@
 
 (load-theme 'clues t)
 
-;; Disable menu-bar-mode
+;; Disable bars
 (menu-bar-mode -1)
+(tool-bar-mode -1)
+(if (display-graphic-p)
+	; GUI
+	(toggle-scroll-bar -1))
 
 ;; Change background color for modeline to dark orange
 (set-face-background 'mode-line "#af5f00")
@@ -174,10 +178,14 @@
 
 ;; helm ack-grep (Ubuntu) or ack (MacOS)
 (if (eq system-type 'darwin)
-	(setq helm-grep-default-command
-		"ack -Hn --color --smart-case --no-group %e %p %f"
-		helm-grep-default-recurse-command
-		"ack -H --color --smart-case --no-group %e %p %f")
+	(progn
+	  (if (not (member "/usr/local/bin/" exec-path))
+		(add-to-list 'exec-path "/usr/local/bin/"))
+		(setq helm-grep-default-command
+			"ack -Hn --color --smart-case --no-group %e %p %f"
+			helm-grep-default-recurse-command
+			"ack -H --color --smart-case --no-group %e %p %f")
+	)
 	(setq helm-grep-default-command
 		"ack-grep -Hn --color --smart-case --no-group %e %p %f"
 		helm-grep-default-recurse-command
@@ -242,7 +250,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(bmkp-last-as-first-bookmark-file "/Users/broliang/.emacs.d/bookmarks")
  '(git-gutter:modified-sign "~")
  '(insert-shebang-file-types
    (quote
