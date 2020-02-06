@@ -255,7 +255,7 @@
   ;; rest
   ("H" helm-help)
   ("v" helm-execute-persistent-action)
-  ("d" helm-persistent-delete-marked)
+  ("d" helm-buffer-run-kill-persistent)
   ("f" helm-follow-mode))
 
 (define-key helm-map (kbd "<escape>") 'helm-like-unite/body)
