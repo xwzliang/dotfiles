@@ -50,7 +50,6 @@
 (define-key minibuffer-local-map (kbd "C-l") 'right-char)
 (define-key minibuffer-local-map (kbd "C-b") 'left-word)
 (define-key minibuffer-local-map (kbd "C-w") 'right-word)
-(define-key minibuffer-local-map "\C-p" 'helm-show-kill-ring)
 (define-key minibuffer-local-map "\M-p" 'evil-paste-after)
 
 ;; Key bindings for *backtrace* buffer
@@ -94,10 +93,6 @@
 (define-key evil-motion-state-map "E" 'evil-end-of-line)
 ; Use C-b to evil-scroll-up instead of evil-scroll-page-up
 (define-key evil-motion-state-map "\C-b" 'evil-scroll-up)
-
-; Use C-p to let helm show the kill ring
-(define-key evil-normal-state-map "\C-p" 'helm-show-kill-ring)
-(define-key evil-ex-completion-map "\C-p" 'helm-show-kill-ring)
 
 
 ;; settings for smartparens package
@@ -144,6 +139,8 @@
 (global-unset-key (kbd "C-x c"))
 ; Bind helm-M-x to M-x
 (global-set-key (kbd "M-x") 'helm-M-x)
+;; Global key M-y for helm-show-kill-ring
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 ; Use C-h,j,k,l,b,w,n,p,z in helm mode
 (define-key helm-map (kbd "C-j") 'helm-next-line)
 (define-key helm-map (kbd "C-k") 'helm-previous-line)
@@ -197,6 +194,16 @@
 ;; helm-occur
 (global-set-key (kbd "C-c h o") 'helm-occur)
 (setq helm-apropos-fuzzy-match t)
+
+;; helm-eshell-history
+(require 'helm-eshell)
+(add-hook 'eshell-mode-hook
+	#'(lambda ()
+		(define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)
+))
+
+;; helm-mini-buffer-history
+(define-key minibuffer-local-map (kbd "C-c C-l") 'helm-minibuffer-history)
 
 ;; helm-descbinds
 (require 'helm-descbinds)
