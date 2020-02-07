@@ -273,6 +273,15 @@
 (define-key projectile-mode-map (kbd "C-c p s a") 'helm-projectile-ack)
 
 
+;; iedit
+(require 'iedit)
+; Terminal cannot send C-; (or / . ,)
+(global-set-key (kbd "C-c s") 'iedit-mode)
+;; evil-iedit-state
+(require 'evil-iedit-state)
+(define-key iedit-mode-keymap (kbd "M-e") 'evil-iedit-state)
+
+
 ;; bookmark+
 (add-to-list 'load-path "~/.emacs.d/custom/bookmark-plus/")
 (require 'bookmark+)
