@@ -36,6 +36,9 @@
 ;; Use shift tab (<backtab>) to insert tab
 (global-set-key (kbd "<backtab>") (lambda () (interactive) (insert "\t")))
 
+;; More key bindings
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
 ;; For all major mode, treat underscore as part of the whole word
 (add-hook 'after-change-major-mode-hook
                        (lambda ()
