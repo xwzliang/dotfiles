@@ -282,6 +282,20 @@
 (define-key iedit-mode-keymap (kbd "M-e") 'evil-iedit-state)
 
 
+;; ggtags and helm-gtags
+(add-hook 'c-mode-common-hook
+    (lambda ()
+      (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+		(ggtags-mode 1)
+		(helm-gtags-mode)
+		)
+      (define-key evil-normal-state-local-map (kbd "M-.") 'ggtags-find-tag-dwim)
+	  ))
+(custom-set-variables
+ '(helm-gtags-prefix-key "\C-c t")
+ '(helm-gtags-suggested-key-mapping t))
+
+
 ;; bookmark+
 (add-to-list 'load-path "~/.emacs.d/custom/bookmark-plus/")
 (require 'bookmark+)
