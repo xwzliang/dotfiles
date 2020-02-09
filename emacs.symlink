@@ -27,6 +27,14 @@
 (set-face-foreground 'minibuffer-prompt "white")
 
 
+;; basic settings
+(setq
+      global-mark-ring-max 5000         ; increase mark ring to contains 5000 entries
+      mark-ring-max 5000                ; increase mark ring to contains 5000 entries
+	  kill-ring-max 5000				; increase kill-ring capacity
+      mode-require-final-newline t      ; add a newline to end of file
+)
+
 ;; Changing tab width
 (setq-default tab-width 4)
 
