@@ -301,6 +301,13 @@
 		)
       (define-key evil-normal-state-local-map (kbd "M-.") 'ggtags-find-tag-dwim)
 	  ))
+(setq
+	helm-gtags-prefix-key "\C-c t"
+	helm-gtags-suggested-key-mapping t
+	helm-gtags-path-style 'relative
+	helm-gtags-ignore-case t
+	helm-gtags-auto-update t
+)
 
 
 ;; bookmark+
@@ -341,11 +348,6 @@
 	 ("pl" . "perl")
 	 ("bats" . "bats"))))
  '(linum-format " %3d ")
- '(helm-gtags-prefix-key "\C-c t")
- '(helm-gtags-suggested-key-mapping t)
- '(helm-gtags-path-style 'relative)
- '(helm-gtags-ignore-case t)
- '(helm-gtags-auto-update t)
  '(neo-confirm-create-directory (quote off-p))
  '(neo-confirm-create-file (quote off-p)))
 (custom-set-faces
