@@ -35,6 +35,12 @@
       mode-require-final-newline t      ; add a newline to end of file
 )
 
+; Use M-h,j,k,l to move around windows
+(global-set-key (kbd "M-h") 'windmove-left)
+(global-set-key (kbd "M-l") 'windmove-right)
+(global-set-key (kbd "M-j") 'windmove-down)
+(global-set-key (kbd "M-k") 'windmove-up)
+
 ;; Changing tab width
 (setq-default tab-width 4)
 
@@ -107,11 +113,6 @@
 (evil-mode 1)
 ; change granularity level of undo
 (setq evil-want-fine-undo t)
-; Use M-h,j,k,l to move around windows
-(global-set-key (kbd "M-h") 'evil-window-left)
-(global-set-key (kbd "M-l") 'evil-window-right)
-(global-set-key (kbd "M-j") 'evil-window-down)
-(global-set-key (kbd "M-k") 'evil-window-up)
 ; Use C-h,j,k,l,b,w in ex command lines
 (define-key evil-ex-completion-map "\C-b" 'backward-word)
 (define-key evil-ex-completion-map "\C-w" 'forward-word)
