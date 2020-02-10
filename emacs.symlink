@@ -320,6 +320,17 @@
 )
 
 
+;; yasnippet and helm-c-yasnippet
+; Don't make aliases for the old style yas/ prefixed symbols
+(setq yas-alias-to-yas/prefix-p nil)
+(require 'yasnippet)
+(require 'helm-c-yasnippet)
+; helm pattern space match anyword greedy, "if else" replace to "if.*else"
+(setq helm-yas-space-match-any-greedy t)
+(global-set-key (kbd "C-c h y") 'helm-yas-complete)
+(yas-global-mode 1)
+
+
 ;; bookmark+
 (add-to-list 'load-path "~/.emacs.d/custom/bookmark-plus/")
 (require 'bookmark+)
