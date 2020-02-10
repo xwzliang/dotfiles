@@ -44,8 +44,12 @@
 ;; Use shift tab (<backtab>) to insert tab
 (global-set-key (kbd "<backtab>") (lambda () (interactive) (insert "\t")))
 
-;; More key bindings
+;; ibuffer settings
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(setq ibuffer-use-other-window t) ;; always display ibuffer in another window
+
+;; activate whitespace-mode to view all whitespace characters
+(global-set-key (kbd "C-c w") 'whitespace-mode)
 
 ;; For all major mode, treat underscore as part of the whole word
 (add-hook 'after-change-major-mode-hook
