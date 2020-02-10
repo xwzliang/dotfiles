@@ -101,6 +101,8 @@
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
+; change granularity level of undo
+(setq evil-want-fine-undo t)
 ; Use M-h,j,k,l to move around windows
 (global-set-key (kbd "M-h") 'evil-window-left)
 (global-set-key (kbd "M-l") 'evil-window-right)
