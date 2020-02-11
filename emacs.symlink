@@ -62,8 +62,25 @@
                        (lambda ()
                          (modify-syntax-entry ?_ "w")))
 
-;; Use e to edit in dired mode.
+;; dired
+(setq
+	dired-dwim-target t            ; if another Dired buffer is visible in another window, use that directory as target for Rename/Copy
+	dired-recursive-copies 'always         ; "always" means no asking
+	dired-recursive-deletes 'top           ; "top" means ask once for top level directory
+	dired-listing-switches "-lha"          ; human-readable listing
+)
 (require 'dired)
+;; automatically refresh dired buffer on changes
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+;; if it is not Windows, use the following listing switches to group directories first.
+(when (not (eq system-type 'windows-nt))
+  (setq dired-listing-switches "-lha --group-directories-first"))
+(require 'wdired)
+(setq
+	wdired-allow-to-change-permissions t   ; allow to edit permission bits
+	wdired-allow-to-redirect-links t       ; allow to edit symlinks
+ )
+; Use e to edit in dired mode.
 (define-key dired-mode-map (kbd "e") 'wdired-change-to-wdired-mode)
 
 ;; Enable electric-pair-mode for inserting new line and indent automatically after brace
