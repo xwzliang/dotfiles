@@ -364,6 +364,14 @@
 (require 'bm)
 
 
+;; expand-region
+(require 'expand-region)
+(global-set-key (kbd "M-+") 'er/expand-region)
+;; Unset M-_ in undo-tree-map (This line need to be placed after evil settings)
+(define-key undo-tree-map (kbd "M-_") nil)
+(global-set-key (kbd "M-_") 'er/contract-region)
+
+
 ;; settings for magit
 (global-set-key (kbd "C-x g") 'magit-status)
 (add-hook 'magit-post-refresh-hook
