@@ -504,3 +504,11 @@
 
 (add-hook 'text-mode-hook 'flyspell-mode)
 (add-hook 'org-mode-hook 'flyspell-mode)
+
+
+;; compliation-mode
+(require 'compile)
+(setq compilation-ask-about-save nil          ; Just save before compiling
+      compilation-always-kill t               ; Just kill old compile processes before starting the new one
+      compilation-scroll-output 'first-error) ; Automatically scroll to first
+(global-set-key (kbd "C-c c") 'compile)
