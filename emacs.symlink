@@ -372,6 +372,25 @@
 (global-set-key (kbd "M-_") 'er/contract-region)
 
 
+;; ibuffer-vc
+(add-hook 'ibuffer-hook
+          (lambda ()
+            (ibuffer-vc-set-filter-groups-by-vc-root)
+            (unless (eq ibuffer-sorting-mode 'alphabetic)
+              (ibuffer-do-sort-by-alphabetic))))
+(setq ibuffer-formats
+      '((mark modified read-only vc-status-mini " "
+              (name 18 18 :left :elide)
+              " "
+              (size 9 -1 :right)
+              " "
+              (mode 16 16 :left :elide)
+              " "
+              (vc-status 16 16 :left)
+              " "
+              filename-and-process)))
+
+
 ;; settings for magit
 (global-set-key (kbd "C-x g") 'magit-status)
 (add-hook 'magit-post-refresh-hook
