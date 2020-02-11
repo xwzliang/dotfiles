@@ -83,6 +83,10 @@
 ; Use e to edit in dired mode.
 (define-key dired-mode-map (kbd "e") 'wdired-change-to-wdired-mode)
 
+;; saveplace: remembers your location in a file when saving files
+(require 'saveplace)
+(toggle-save-place-globally 1)
+
 ;; Enable electric-pair-mode for inserting new line and indent automatically after brace
 (electric-pair-mode 1)
 
