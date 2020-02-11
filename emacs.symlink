@@ -107,6 +107,27 @@
 (persp-mode)
 
 
+;; company-mode
+(add-hook 'after-init-hook 'global-company-mode)
+(setq company-idle-delay 0)
+(setq company-backends
+	'((company-files
+		company-keywords
+		company-capf	; completion-at-point-functions backend
+		company-yasnippet
+		)
+		(company-abbrev company-dabbrev)))
+(with-eval-after-load 'company
+  (define-key company-active-map (kbd "C-j") #'company-select-next)
+  (define-key company-active-map (kbd "C-k") #'company-select-previous)
+)
+; Solve the conflicts with yasnippet of tab key binding
+(advice-add 'company-complete-common :before (lambda () 
+                                (setq my-company-point (point))))
+(advice-add 'company-complete-common :after (lambda () 
+                                (when (equal my-company-point (point)) (yas-expand))))
+
+
 ;; Config evil mode
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
@@ -381,6 +402,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-preview ((t (:background "black" :foreground "brightblack"))))
+ '(company-preview-common ((t (:inherit company-preview :foreground "brightblack"))))
+ '(company-scrollbar-bg ((t (:background "black"))))
+ '(company-scrollbar-fg ((t (:background "black"))))
+ '(company-tooltip ((t (:background "black" :foreground "white"))))
+ '(company-tooltip-annotation ((t (:foreground "yellow"))))
+ '(company-tooltip-common ((t (:foreground "gold3"))))
+ '(company-tooltip-selection ((t (:background "forestgreen"))))
  '(git-gutter:added ((t (:foreground "white" :weight extra-light))))
  '(git-gutter:deleted ((t (:foreground "white" :weight extra-light))))
  '(git-gutter:modified ((t (:foreground "white" :weight extra-light))))
