@@ -530,6 +530,11 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 
+;; golden-ratio
+(require 'golden-ratio)
+(golden-ratio-mode 1)
+
+
 ;; compliation-mode
 (require 'compile)
 (setq compilation-ask-about-save nil          ; Just save before compiling
