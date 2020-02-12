@@ -526,6 +526,10 @@
 (add-hook 'org-mode-hook 'flyspell-mode)
 
 
+;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+
 ;; compliation-mode
 (require 'compile)
 (setq compilation-ask-about-save nil          ; Just save before compiling
