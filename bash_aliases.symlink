@@ -64,13 +64,8 @@ function mdless() {
 newest() { ls -dt "$@" | head -1; }		# Print the newest file or directory
 
 set_proxy() {
-	if [[ "$(uname)" == "Darwin" ]]; then
-		export https_proxy=socks5://127.0.0.1:1086
-		export http_proxy=socks5://127.0.0.1:1086
-	else
-		export https_proxy=socks5://127.0.0.1:1080
-		export http_proxy=socks5://127.0.0.1:1080
-	fi
+	export https_proxy=socks5://127.0.0.1:1080
+	export http_proxy=socks5://127.0.0.1:1080
 }
 
 set_privoxy() {
@@ -80,7 +75,12 @@ set_privoxy() {
 
 test_proxy() {
 	unset_proxy
-	if timeout 5 proxychains curl www.google.com &>/dev/null; then
+	if [[ "$(uname)" == "Darwin" ]]; then
+		proxy_cmd=proxychains4
+	else
+		proxy_cmd=proxychains
+	fi
+	if timeout 5 $proxy_cmd curl www.google.com &>/dev/null; then
 		echo proxy ok.
 	else
 		echo proxy not ok.
