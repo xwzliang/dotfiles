@@ -251,6 +251,12 @@
       ;; helm-echo-input-in-header-line		t
 )
 
+; Don't show the first two lines (current dir and parent dir)
+(advice-add 'helm-ff-filter-candidate-one-by-one
+        :around (lambda (fcn file)
+                  (unless (string-match "\\(?:/\\|\\`\\)\\.\\{1,2\\}\\'" file)
+                    (funcall fcn file))))
+
 ;; helm-mini
 (global-set-key (kbd "C-x b") 'helm-mini)
 (setq helm-buffers-fuzzy-matching t
@@ -279,6 +285,10 @@
 (semantic-mode 1)
 (setq helm-semantic-fuzzy-match	t
       helm-imenu-fuzzy-match	t)
+; Show type in C/C++
+(with-eval-after-load 'helm-semantic
+      (push '(c-mode . semantic-format-tag-summarize) helm-semantic-display-style)
+      (push '(c++-mode . semantic-format-tag-summarize) helm-semantic-display-style))
 
 ;; helm-all-mark-rings
 (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
