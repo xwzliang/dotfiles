@@ -543,7 +543,17 @@
 
 
 ;; flycheck
+(require 'flycheck)
 (add-hook 'after-init-hook #'global-flycheck-mode)
+(add-to-list 'flycheck-gcc-include-path (getenv "unity_path"))
+(setq-default flycheck-disabled-checkers '(c/c++-clang))
+(setq-default flycheck-enabled-checkers '(c/c++-gcc))
+
+
+;; company-c-headers
+(require 'company-c-headers)
+(add-to-list 'company-backends 'company-c-headers)
+(add-to-list 'company-c-headers-path-system (getenv "unity_path"))
 
 
 ;; golden-ratio
