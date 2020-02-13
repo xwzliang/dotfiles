@@ -390,6 +390,12 @@
 	helm-gtags-auto-update t
 )
 
+(with-eval-after-load 'helm-gtags
+	(define-key helm-gtags-mode-map (kbd "C-c t a") 'helm-gtags-tags-in-this-function)
+	(define-key helm-gtags-mode-map (kbd "C-c t f") 'helm-gtags-find-files)
+	(define-key helm-gtags-mode-map (kbd "C-c t p") 'helm-gtags-parse-file)
+	(define-key helm-gtags-mode-map (kbd "C-c t S") 'helm-gtags-show-stack)
+)
 
 ;; yasnippet and helm-c-yasnippet
 ; Don't make aliases for the old style yas/ prefixed symbols
