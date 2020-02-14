@@ -479,6 +479,8 @@
 	 ("pl" . "perl")
 	 ("bats" . "bats"))))
  '(linum-format " %3d ")
+ '(mac-command-modifier (quote super))
+ '(mac-option-modifier (quote meta))
  '(neo-confirm-create-directory (quote off-p))
  '(neo-confirm-create-file (quote off-p)))
 (custom-set-faces
