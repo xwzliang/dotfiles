@@ -579,3 +579,7 @@
       compilation-always-kill t               ; Just kill old compile processes before starting the new one
       compilation-scroll-output 'first-error) ; Automatically scroll to first
 (global-set-key (kbd "C-c c") 'compile)
+
+
+;; Customize key bindings
+(global-set-key (kbd "C-c m f") 'toggle-frame-fullscreen)
