@@ -149,9 +149,13 @@
                                 (when (equal my-company-point (point)) (yas-expand))))
 
 
-;; Config evil mode
+;; evil-collection
+(setq evil-want-keybinding nil)
 (require 'evil)
 (evil-mode 1)
+(evil-collection-init)
+
+;; Config evil mode
 ; change granularity level of undo
 (setq evil-want-fine-undo t)
 ; Use C-h,j,k,l,b,w in ex command lines
