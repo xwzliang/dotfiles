@@ -580,5 +580,28 @@
 (global-set-key (kbd "C-c c") 'compile)
 
 
+;; org-mode
+(require 'org)
+(define-key org-mode-map (kbd "C-c a") 'org-agenda)
+(define-key org-mode-map (kbd "C-c l") 'org-agenda-list)
+(define-key org-mode-map (kbd "RET") 'org-insert-todo-heading)
+; Use M-h,j,k,l to move around windows
+(evil-define-key 'normal org-mode-map (kbd "M-h") 'windmove-left)
+(evil-define-key 'normal org-mode-map (kbd "M-l") 'windmove-right)
+(evil-define-key 'normal org-mode-map (kbd "M-j") 'windmove-down)
+(evil-define-key 'normal org-mode-map (kbd "M-k") 'windmove-up)
+; Change evil default key binding for tab (Only "TAB" works in terminal, "<tab>" not working in terminal, but works in graphic)
+(evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
+
+;; org-agenda-mode
+(add-hook 'org-agenda-mode-hook
+	(lambda ()
+		(local-set-key (kbd "j") 'org-agenda-next-line)
+		(local-set-key (kbd "k") 'org-agenda-previous-line)
+		(local-set-key (kbd "C-j") 'org-agenda-goto-date)
+		(local-set-key (kbd "K") 'org-agenda-capture)
+	))
+
+
 ;; Customize key bindings
 (global-set-key (kbd "C-c m f") 'toggle-frame-fullscreen)
