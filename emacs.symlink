@@ -16,6 +16,9 @@
 	; GUI
 	(toggle-scroll-bar -1))
 
+;; Disable the startup splash screen
+(setq inhibit-splash-screen t)
+
 ;; Change background color for modeline to dark orange
 (set-face-background 'mode-line "#af5f00")
 (set-face-background 'mode-line-inactive "#af5f00")
