@@ -463,6 +463,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(bmkp-last-as-first-bookmark-file "/Users/broliang/.emacs.d/bookmarks")
  '(git-gutter:modified-sign "~")
  '(insert-shebang-file-types
    (quote
@@ -599,7 +600,7 @@
 ; Add note and timestampt when item is rescheduled
 (setq org-log-reschedule 'note)
 ; agenda files
-(setq org-agenda-files '("~/Dropbox/agenda"))
+(setq org-agenda-files '("~/Dropbox/org"))
 ; org-refile
 (setq org-refile-targets '((org-agenda-files :maxlevel . 1)))
 ; provide refile targets as paths as well as filename. So a level 3 headline will be available as file/level1/level2/level3. 
@@ -607,6 +608,9 @@
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 ;; makes org-refile outline working with helm/ivy
 (setq org-outline-path-complete-in-steps nil)
+(setq org-enforce-todo-dependencies t)
+(setq org-enforce-todo-checkbox-dependencies t)
+(setq org-track-ordered-property-with-tag t)
 
 ;; org-agenda-mode
 (add-hook 'org-agenda-mode-hook
