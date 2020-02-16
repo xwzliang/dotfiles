@@ -593,6 +593,22 @@
 ; Change evil default key binding for tab (Only "TAB" works in terminal, "<tab>" not working in terminal, but works in graphic)
 (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
 
+; Log into a logbook drawer
+(setq org-log-into-drawer t)
+; Add timestampt when item is done
+(setq org-log-done 'time)
+; Add note and timestampt when item is rescheduled
+(setq org-log-reschedule 'note)
+; agenda files
+(setq org-agenda-files '("~/Dropbox/agenda"))
+; org-refile
+(setq org-refile-targets '((org-agenda-files :maxlevel . 1)))
+; provide refile targets as paths as well as filename. So a level 3 headline will be available as file/level1/level2/level3. 
+(setq org-refile-use-outline-path 'file)
+(setq org-refile-allow-creating-parent-nodes 'confirm)
+;; makes org-refile outline working with helm/ivy
+(setq org-outline-path-complete-in-steps nil)
+
 ;; org-agenda-mode
 (add-hook 'org-agenda-mode-hook
 	(lambda ()
