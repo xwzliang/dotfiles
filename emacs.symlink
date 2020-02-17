@@ -584,7 +584,9 @@
 (require 'org)
 (define-key org-mode-map (kbd "C-c a") 'org-agenda)
 (define-key org-mode-map (kbd "C-c l") 'org-agenda-list)
-(define-key org-mode-map (kbd "RET") 'org-insert-todo-heading)
+(define-key org-mode-map (kbd "M-RET") 'org-insert-todo-heading)
+(define-key org-mode-map (kbd "C-c C-x M-d") 'org-clock-remove-overlays)
+(define-key org-mode-map (kbd "C-c M-o") 'org-mark-ring-goto)
 ; Use M-h,j,k,l to move around windows
 (evil-define-key 'normal org-mode-map (kbd "M-h") 'windmove-left)
 (evil-define-key 'normal org-mode-map (kbd "M-l") 'windmove-right)
@@ -611,6 +613,8 @@
 (setq org-enforce-todo-dependencies t)
 (setq org-enforce-todo-checkbox-dependencies t)
 (setq org-track-ordered-property-with-tag t)
+(setq org-clock-into-drawer "CLOCKING")
+(setq org-id-locations-file "~/Dropbox/org/.org-id-locations")
 
 ;; org-agenda-mode
 (add-hook 'org-agenda-mode-hook
