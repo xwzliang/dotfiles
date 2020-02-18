@@ -582,6 +582,8 @@
 
 ;; org-mode
 (require 'org)
+; Need this to resolve id links
+(require 'org-id)
 (define-key org-mode-map (kbd "C-c a") 'org-agenda)
 (define-key org-mode-map (kbd "C-c l") 'org-agenda-list)
 (define-key org-mode-map (kbd "M-RET") 'org-insert-todo-heading)
@@ -615,6 +617,18 @@
 (setq org-track-ordered-property-with-tag t)
 (setq org-clock-into-drawer "CLOCKING")
 (setq org-id-locations-file "~/Dropbox/org/.org-id-locations")
+
+(add-hook 'org-mode-hook (lambda ()
+   "Beautify Org Checkbox Symbol"
+   (push '("[ ]" . "☐") prettify-symbols-alist)
+   (push '("[X]" . "☑" ) prettify-symbols-alist)
+   (prettify-symbols-mode)))
+
+; Add beamer for exporting option
+(add-to-list 'org-export-backends "beamer")
+; Enable org-habit
+(add-to-list 'org-modules 'org-habit)
+
 
 ;; org-agenda-mode
 (add-hook 'org-agenda-mode-hook
