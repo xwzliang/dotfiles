@@ -626,6 +626,16 @@
    (push '("[X]" . "☑" ) prettify-symbols-alist)
    (prettify-symbols-mode)))
 
+(setq org-capture-templates
+  '(
+    ("e" "Journal Entry"
+         entry (file+olp+datetree (lambda () (concat org-directory "/journal.org")))
+         "* %?")
+    ("j" "Journal Checklist"
+         checkitem (file+olp+datetree (lambda () (concat org-directory "/journal.org")))
+         "[/]\n- [ ] %?")
+))
+
 ; Add beamer for exporting option
 (add-to-list 'org-export-backends "beamer")
 ; Enable org-habit
@@ -660,3 +670,5 @@
 ;; Customize key bindings
 (global-set-key (kbd "C-c m f") 'toggle-frame-fullscreen)
 (global-set-key (kbd "C-c m c") 'cfw:open-org-calendar)
+(global-set-key (kbd "C-c m j") 'org-capture)
+(global-set-key (kbd "C-c m a") 'org-agenda)
