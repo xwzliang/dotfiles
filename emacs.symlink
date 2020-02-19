@@ -584,6 +584,11 @@
 (require 'org)
 ; Need this to resolve id links
 (require 'org-id)
+
+(setq org-directory "~/Dropbox/org")
+;; (setq org-id-locations-file "~/Dropbox/org/.org-id-locations")
+(setq org-id-locations-file (concat org-directory "/.org-id-locations"))
+
 (define-key org-mode-map (kbd "C-c a") 'org-agenda)
 (define-key org-mode-map (kbd "C-c l") 'org-agenda-list)
 (define-key org-mode-map (kbd "M-RET") 'org-insert-todo-heading)
@@ -603,8 +608,6 @@
 (setq org-log-done 'time)
 ; Add note and timestampt when item is rescheduled
 (setq org-log-reschedule 'note)
-; agenda files
-(setq org-agenda-files '("~/Dropbox/org"))
 ; org-refile
 (setq org-refile-targets '((org-agenda-files :maxlevel . 1)))
 ; provide refile targets as paths as well as filename. So a level 3 headline will be available as file/level1/level2/level3. 
@@ -616,7 +619,6 @@
 (setq org-enforce-todo-checkbox-dependencies t)
 (setq org-track-ordered-property-with-tag t)
 (setq org-clock-into-drawer "CLOCKING")
-(setq org-id-locations-file "~/Dropbox/org/.org-id-locations")
 
 (add-hook 'org-mode-hook (lambda ()
    "Beautify Org Checkbox Symbol"
@@ -639,6 +641,9 @@
 (setq org-confirm-babel-evaluate nil)
 
 ;; org-agenda-mode
+; agenda files
+;; (setq org-agenda-files '("~/Dropbox/org"))
+(add-to-list 'org-agenda-files org-directory)
 (add-hook 'org-agenda-mode-hook
 	(lambda ()
 		(local-set-key (kbd "j") 'org-agenda-next-line)
