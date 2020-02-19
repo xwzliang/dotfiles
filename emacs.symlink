@@ -647,6 +647,11 @@
 		(local-set-key (kbd "K") 'org-agenda-capture)
 	))
 
+;; calfw-org calendar framework for org-mode
+(require 'calfw-org)
+(setq cfw:display-calendar-holidays nil)
+
 
 ;; Customize key bindings
 (global-set-key (kbd "C-c m f") 'toggle-frame-fullscreen)
+(global-set-key (kbd "C-c m c") 'cfw:open-org-calendar)
