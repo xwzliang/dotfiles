@@ -7,6 +7,9 @@
 ;; Change backup dir
 (setq backup-directory-alist `(("." . "~/.emacs.d/my_backups")))
 
+;; Load macros
+(load-file "~/.emacs.d/macros")
+
 (load-theme 'clues t)
 
 ;; Disable bars
