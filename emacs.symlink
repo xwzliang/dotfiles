@@ -622,6 +622,7 @@
 (setq org-enforce-todo-checkbox-dependencies t)
 (setq org-track-ordered-property-with-tag t)
 (setq org-clock-into-drawer "CLOCKING")
+(setq org-id-link-to-org-use-id t)
 
 (add-hook 'org-mode-hook (lambda ()
    "Beautify Org Checkbox Symbol"
