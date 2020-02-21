@@ -695,6 +695,12 @@
 (setq cfw:display-calendar-holidays nil)
 
 
+;; org-brain
+(require 'org-brain)
+(with-eval-after-load 'evil
+    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
+
+
 ;; Customize key bindings
 (global-set-key (kbd "C-c m f") 'toggle-frame-fullscreen)
 (global-set-key (kbd "C-c m c") 'cfw:open-org-calendar)
