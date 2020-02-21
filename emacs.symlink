@@ -607,6 +607,13 @@
 ;; (setq org-id-locations-file "~/Dropbox/org/.org-id-locations")
 (setq org-id-locations-file (concat org-directory "/.org-id-locations"))
 
+;; evil-org
+(require 'evil-org)
+(add-hook 'org-mode-hook 'evil-org-mode)
+(evil-org-set-key-theme '(navigation insert textobjects calendar))
+(require 'evil-org-agenda)
+(evil-org-agenda-set-keys)
+
 (define-key org-mode-map (kbd "C-c a") 'org-agenda)
 (define-key org-mode-map (kbd "C-c l") 'org-agenda-list)
 (define-key org-mode-map (kbd "M-RET") 'org-insert-todo-heading)
@@ -673,13 +680,15 @@
 ; agenda files
 ;; (setq org-agenda-files '("~/Dropbox/org"))
 (add-to-list 'org-agenda-files org-directory)
-(add-hook 'org-agenda-mode-hook
-	(lambda ()
-		(local-set-key (kbd "j") 'org-agenda-next-line)
-		(local-set-key (kbd "k") 'org-agenda-previous-line)
-		(local-set-key (kbd "C-j") 'org-agenda-goto-date)
-		(local-set-key (kbd "K") 'org-agenda-capture)
-	))
+
+(evil-define-key 'motion org-agenda-mode-map (kbd "D") 'org-agenda-day-view)
+(evil-define-key 'motion org-agenda-mode-map (kbd "W") 'org-agenda-week-view)
+; Use M-h,j,k,l to move around windows
+(evil-define-key 'motion org-agenda-mode-map (kbd "M-h") 'windmove-left)
+(evil-define-key 'motion org-agenda-mode-map (kbd "M-l") 'windmove-right)
+(evil-define-key 'motion org-agenda-mode-map (kbd "M-j") 'windmove-down)
+(evil-define-key 'motion org-agenda-mode-map (kbd "M-k") 'windmove-up)
+
 
 ;; calfw-org calendar framework for org-mode
 (require 'calfw-org)
