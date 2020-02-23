@@ -710,6 +710,7 @@
 (global-set-key (kbd "C-c m f") 'toggle-frame-fullscreen)
 (global-set-key (kbd "C-c m c") 'cfw:open-org-calendar)
 (global-set-key (kbd "C-c m j") 'my_macro_copy_all_agenda_items_link_to_journal)
+(global-set-key (kbd "C-c m k") 'my_macro_close_checklist_item_and_linked_todo_item)
 (global-set-key (kbd "C-c o j") 'org-capture)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o l") 'org-store-link)
