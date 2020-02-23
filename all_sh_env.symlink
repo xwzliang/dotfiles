@@ -13,7 +13,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
 	export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 	export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 	export PATH="/usr/local/opt/ruby/bin:$PATH"
-	export unity_path=`find /usr/local/lib/ruby/gems/ -type d -name "unity" | grep -v cmock | head -1`/src
+	ceedling_path=$(gem which ceedling | sed 's|/lib/ceedling.rb||')
+	export PATH="$ceedling_path/bin:$PATH"
+	export unity_path=$ceedling_path/vendor/unity/src
 else
 	export unity_path=`find /var/lib/gems/ -type d -name "unity" | grep -v cmock | head -1`/src
 fi
