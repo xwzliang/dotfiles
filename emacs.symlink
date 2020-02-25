@@ -645,6 +645,18 @@
 (setq org-track-ordered-property-with-tag t)
 (setq org-clock-into-drawer "CLOCKING")
 (setq org-id-link-to-org-use-id t)
+(setq org-startup-indented t)
+(setq org-hide-leading-stars t)
+
+(setq org-todo-keywords
+   '((sequence "TODO(t!)" "NEXT(n!)" "SOMEDAY(s)" "WAITING(w@/!)" "|" "DONE(d@)" "CANCELED(c@)")))
+(setq org-tag-alist '(("URGENT" . ?u) ("optional" . ?o)))
+
+;; Log creation time when a TODO item is added.
+(require 'org-expiry)
+(org-expiry-insinuate)
+; Don't have everything in the agenda view
+(setq org-expiry-inactive-timestamps t)
 
 (add-hook 'org-mode-hook (lambda ()
    "Beautify Org Checkbox Symbol"
