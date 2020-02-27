@@ -721,6 +721,7 @@
 ;; anki-editor-mode
 ;; Don't log creation for anki-editor-mode
 (add-hook 'anki-editor-mode-hook 'org-expiry-deinsinuate)
+(setq anki-editor-create-decks t) ;; Allow anki-editor to create a new deck if it doesn't exist
 
 
 ;; Customize key bindings
