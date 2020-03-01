@@ -626,6 +626,8 @@
 (evil-define-key 'normal org-mode-map (kbd "M-k") 'windmove-up)
 ; Change evil default key binding for tab (Only "TAB" works in terminal, "<tab>" not working in terminal, but works in graphic)
 (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
+(evil-define-key 'normal org-mode-map (kbd "g j") 'evil-next-visual-line)
+(evil-define-key 'normal org-mode-map (kbd "g k") 'evil-previous-visual-line)
 
 ; Log into a logbook drawer
 (setq org-log-into-drawer t)
@@ -659,6 +661,7 @@
 (setq org-expiry-inactive-timestamps t)
 
 (add-hook 'org-mode-hook (lambda ()
+   (visual-line-mode)
    "Beautify Org Checkbox Symbol"
    (push '("[ ]" . "☐") prettify-symbols-alist)
    (push '("[X]" . "☑" ) prettify-symbols-alist)
