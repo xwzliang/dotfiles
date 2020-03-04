@@ -675,6 +675,9 @@
     ("j" "Journal Checklist"
          checkitem (file+olp+datetree (lambda () (concat org-directory "/journal.org")))
          "[/]\n- [ ] %?")
+    ("c" "Checklist Item"
+	     plain (function (lambda nil (goto-char (point))))
+         "*** Checklist\n- [ ] %?")
 ))
 
 ; Add beamer for exporting option
