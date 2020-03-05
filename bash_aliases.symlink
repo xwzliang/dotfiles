@@ -59,5 +59,3 @@ function mdless() {
 	local input_arg="${1:-README.md}"
 	pandoc "$input_arg" | w3m -T text/html
 }
-
-newest() { ls -dt "$@" | head -1; }		# Print the newest file or directory
