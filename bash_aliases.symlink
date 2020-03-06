@@ -31,29 +31,12 @@ fi
 
 # Aliases
 
-alias rm_invalid_chars="rename 's/[^A-Za-z0-9._-]/_/g'"
 alias mount_write_to_HFS="sudo mount -o remount,rw,force"
-alias oldlinks="find . -type l -print | perl -nle '-e || print'"
 # Use terminal emacs instead of GUI emacs
 alias emacs="emacs -nw"
 alias dropboxd="unset DISPLAY && dropboxd"
 
 # Functions
-
-del() {
-	# if files to delete are less than three, ask me to confirm for each one of them; if they are more than three, display them all and ask once
-	case $# in
-	0)	echo "`basename $0`: you didn't say which file(s) to delete"; exit 1;;
-	[123])	rm -i "$@" ;;
-	*)	echo "$*"
-		echo do you want to delete these files\?
-		read a
-		case "$a" in
-		[yY]*)	rm "$@" ;;
-		esac
-		;;
-	esac
-}
 
 function mdless() {
 	local input_arg="${1:-README.md}"
