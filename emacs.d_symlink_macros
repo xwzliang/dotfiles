@@ -6,3 +6,6 @@
 
 (fset 'my_macro_close_checklist_item_and_linked_todo_item
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("d" 0 "%d")) arg)))
+
+(fset 'my_macro_save_html_and_url
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("xhelm-modexfind-file-other-window~/tmp/linked_urldGkPjp:xxfind-file-other-window~/tmp/amazon_book.htmldGkgfggyGjp:xgfxhelm-mode" 0 "%d")) arg)))
