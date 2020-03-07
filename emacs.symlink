@@ -4,6 +4,9 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Enable debugging on error
+(toggle-debug-on-error)
+
 ;; Back up settings
 ;; (setq backup-directory-alist `(("." . "~/.emacs.d/my_backups")))
 (defvar backup-directory "~/.emacs.d/my_backups")
