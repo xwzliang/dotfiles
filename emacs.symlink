@@ -177,6 +177,9 @@
 (setq evil-want-keybinding nil)
 (require 'evil)
 (evil-mode 1)
+(require 'evil-collection)
+(delete 'w3m evil-collection-mode-list)
+;; (setq evil-collection-mode-list (remove 'w3m evil-collection-mode-list))
 (evil-collection-init)
 
 ;; Config evil mode
