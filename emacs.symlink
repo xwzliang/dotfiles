@@ -145,6 +145,12 @@
 
 ;; Package settings
 
+;; use-package
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
+
+
 ;; persp-mode
 (setq-default persp-keymap-prefix (kbd "C-c r"))
 ; Don't auto resume
