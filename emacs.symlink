@@ -787,3 +787,5 @@
 (global-set-key (kbd "C-c o j") 'org-capture)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o l") 'org-store-link)
+(global-set-key (kbd "C-c v") 'visual-line-mode)
+(global-set-key (kbd "C-c l") 'linum-mode)
