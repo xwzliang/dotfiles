@@ -134,13 +134,15 @@
   (require 'use-package))
 (require 'bind-key)
 
+;; other packages with use-package
 
-;; persp-mode
-(setq-default persp-keymap-prefix (kbd "C-c r"))
-; Don't auto resume
-(setq persp-auto-resume-time 0)
-(persp-mode)
-
+(use-package persp-mode
+  :init (add-hook 'after-init-hook 'persp-mode)
+  :config
+	; Don't auto resume
+	(setq persp-auto-resume-time 0)
+    (persp-set-keymap-prefix (kbd "C-c r"))
+  )
 
 ;; company-mode
 (add-hook 'after-init-hook 'global-company-mode)
@@ -771,6 +773,8 @@
 ;; iedit
 ; Terminal cannot send C-; (or / . ,)
 (global-set-key (kbd "C-c s") 'iedit-mode)
+
+;; (global-set-key (kbd "C-c r") 'persp-keymap-prefix)
 
 ;; magit
 (global-set-key (kbd "C-x g") 'magit-status)
