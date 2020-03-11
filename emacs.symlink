@@ -59,27 +59,11 @@
       mode-require-final-newline t      ; add a newline to end of file
 )
 
-; Use M-h,j,k,l to move around windows
-(global-set-key (kbd "M-h") 'windmove-left)
-(global-set-key (kbd "M-l") 'windmove-right)
-(global-set-key (kbd "M-j") 'windmove-down)
-(global-set-key (kbd "M-k") 'windmove-up)
-
 ;; Changing tab width
 (setq-default tab-width 4)
 
-;; Use tab key to complete
-(global-set-key "\t" 'dabbrev-expand)
-
-;; Use shift tab (<backtab>) to insert tab
-(global-set-key (kbd "<backtab>") (lambda () (interactive) (insert "\t")))
-
 ;; ibuffer settings
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 (setq ibuffer-use-other-window t) ;; always display ibuffer in another window
-
-;; activate whitespace-mode to view all whitespace characters
-(global-set-key (kbd "C-c w") 'whitespace-mode)
 
 ;; For all major mode, treat underscore as part of the whole word
 (add-hook 'after-change-major-mode-hook
@@ -218,25 +202,12 @@
 
 ;; settings for git-gutter
 (require 'git-gutter)
-(global-set-key (kbd "C-x v C-g") 'git-gutter)
-(global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
-;; Jump to next/previous hunk
-(global-set-key (kbd "C-x v p") 'git-gutter:previous-hunk)
-(global-set-key (kbd "C-x v n") 'git-gutter:next-hunk)
-;; Stage current hunk
-(global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
-;; Revert current hunk
-(global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
-;; Mark current hunk
-(global-set-key (kbd "C-x v SPC") #'git-gutter:mark-hunk)
 (global-git-gutter-mode +1)
 (add-to-list 'git-gutter:update-hooks 'focus-in-hook)
 
 
 ;; settings for neotree
 (require 'neotree)
-;; Use F8 to toggle neotree globally
-(global-set-key [f8] 'neotree-toggle)
 ;; Use ctrl+n to toggle neotree in evil normal state
 ;; (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
 (define-key evil-normal-state-map (kbd "C-n") 'neotree-refresh)
@@ -251,13 +222,6 @@
 (require 'helm)
 (require 'helm-config)
 (helm-mode 1)
-;; Change default prefix key
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-unset-key (kbd "C-x c"))
-; Bind helm-M-x to M-x
-(global-set-key (kbd "M-x") 'helm-M-x)
-;; Global key M-y for helm-show-kill-ring
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 ; Use C-h,j,k,l,b,w,n,p,z in helm mode
 (define-key helm-map (kbd "C-j") 'helm-next-line)
 (define-key helm-map (kbd "C-k") 'helm-previous-line)
@@ -287,12 +251,10 @@
                     (funcall fcn file))))
 
 ;; helm-mini
-(global-set-key (kbd "C-x b") 'helm-mini)
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
 
 ;; helm-find-files
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (define-key helm-find-files-map (kbd "C-l") 'right-char)
 
 ;; helm ack-grep (Ubuntu) or ack (MacOS)
@@ -319,11 +281,7 @@
       (push '(c-mode . semantic-format-tag-summarize) helm-semantic-display-style)
       (push '(c++-mode . semantic-format-tag-summarize) helm-semantic-display-style))
 
-;; helm-all-mark-rings
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
-
 ;; helm-occur
-(global-set-key (kbd "C-c h o") 'helm-occur)
 (setq helm-apropos-fuzzy-match t)
 
 ;; helm-eshell-history
@@ -395,8 +353,6 @@
 
 ;; iedit
 (require 'iedit)
-; Terminal cannot send C-; (or / . ,)
-(global-set-key (kbd "C-c s") 'iedit-mode)
 ;; evil-iedit-state
 (require 'evil-iedit-state)
 (define-key iedit-mode-keymap (kbd "M-e") 'evil-iedit-state)
@@ -433,7 +389,6 @@
 (require 'helm-c-yasnippet)
 ; helm pattern space match anyword greedy, "if else" replace to "if.*else"
 (setq helm-yas-space-match-any-greedy t)
-(global-set-key (kbd "C-c h y") 'helm-yas-complete)
 (yas-global-mode 1)
 
 
@@ -446,10 +401,8 @@
 
 ;; expand-region
 (require 'expand-region)
-(global-set-key (kbd "M-+") 'er/expand-region)
 ;; Unset M-_ in undo-tree-map (This line need to be placed after evil settings)
 (define-key undo-tree-map (kbd "M-_") nil)
-(global-set-key (kbd "M-_") 'er/contract-region)
 
 
 ;; ibuffer-vc
@@ -473,14 +426,8 @@
 
 ;; settings for magit
 (require 'magit)
-(global-set-key (kbd "C-x g") 'magit-status)
 (add-hook 'magit-post-refresh-hook
           #'git-gutter:update-all-windows)
-(global-set-key (kbd "C-c g l") 'magit-log)
-(global-set-key (kbd "C-c g c") 'magit-blame)
-(global-set-key (kbd "C-c g b") 'magit-branch)
-(global-set-key (kbd "C-c g s") 'magit-status)
-(global-set-key (kbd "C-c g t") 'magit-tag)
 
 ;; settings for evil-magit
 (require 'evil-magit)
@@ -607,7 +554,6 @@
 (setq compilation-ask-about-save nil          ; Just save before compiling
       compilation-always-kill t               ; Just kill old compile processes before starting the new one
       compilation-scroll-output 'first-error) ; Automatically scroll to first
-(global-set-key (kbd "C-c c") 'compile)
 
 
 ;; org-mode
@@ -773,10 +719,76 @@
 
 
 ;; Customize key bindings
-(global-set-key (kbd "C-c m f") 'toggle-frame-fullscreen)
-(global-set-key (kbd "C-c m c") 'cfw:open-org-calendar)
+
+; Use M-h,j,k,l to move around windows
+(global-set-key (kbd "M-h") 'windmove-left)
+(global-set-key (kbd "M-l") 'windmove-right)
+(global-set-key (kbd "M-j") 'windmove-down)
+(global-set-key (kbd "M-k") 'windmove-up)
+
+;; Use tab key to complete
+(global-set-key "\t" 'dabbrev-expand)
+;; Use shift tab (<backtab>) to insert tab
+(global-set-key (kbd "<backtab>") (lambda () (interactive) (insert "\t")))
+;; ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+;; helm
+;; Change default prefix key
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-unset-key (kbd "C-x c"))
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+;; helm show all marks
+(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-set-key (kbd "C-c h o") 'helm-occur)
+(global-set-key (kbd "C-c h y") 'helm-yas-complete)
+
+;; expand-region
+(global-set-key (kbd "M-+") 'er/expand-region)
+(global-set-key (kbd "M-_") 'er/contract-region)
+
+;; Use F8 to toggle neotree globally
+(global-set-key [f8] 'neotree-toggle)
+
+;; git-gutter
+(global-set-key (kbd "C-x v C-g") 'git-gutter)
+(global-set-key (kbd "C-x v =") 'git-gutter:popup-hunk)
+(global-set-key (kbd "C-x v p") 'git-gutter:previous-hunk)
+(global-set-key (kbd "C-x v n") 'git-gutter:next-hunk)
+(global-set-key (kbd "C-x v s") 'git-gutter:stage-hunk)
+(global-set-key (kbd "C-x v r") 'git-gutter:revert-hunk)
+(global-set-key (kbd "C-x v SPC") #'git-gutter:mark-hunk)
+
+;; activate whitespace-mode to view all whitespace characters
+(global-set-key (kbd "C-c w") 'whitespace-mode)
+(global-set-key (kbd "C-c v") 'visual-line-mode)
+(global-set-key (kbd "C-c l") 'linum-mode)
+(global-set-key (kbd "C-c c") 'compile)
+
+;; iedit
+; Terminal cannot send C-; (or / . ,)
+(global-set-key (kbd "C-c s") 'iedit-mode)
+
+;; magit
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-c g l") 'magit-log)
+(global-set-key (kbd "C-c g c") 'magit-blame)
+(global-set-key (kbd "C-c g b") 'magit-branch)
+(global-set-key (kbd "C-c g s") 'magit-status)
+(global-set-key (kbd "C-c g t") 'magit-tag)
+
+;; org-mode
+(global-set-key (kbd "C-c o j") 'org-capture)
+(global-set-key (kbd "C-c o a") 'org-agenda)
+(global-set-key (kbd "C-c o l") 'org-store-link)
+
+;; my macros
 (global-set-key (kbd "C-c m j") 'my_macro_copy_all_agenda_items_link_to_journal)
 (global-set-key (kbd "C-c m k") 'my_macro_close_checklist_item_and_linked_todo_item)
+;; anki-editor
 (global-set-key (kbd "C-c m i") 'anki-editor-insert-note)
 (global-set-key (kbd "C-c m p") 'anki-editor-push-tree)
 (global-set-key (kbd "C-c m P") 'anki-editor-push-notes)
@@ -784,8 +796,7 @@
 (global-set-key (kbd "C-c m z a") 'anki-editor-cloze-region-auto-incr)
 (global-set-key (kbd "C-c m z p") 'anki-editor-cloze-region-dont-incr)
 (global-set-key (kbd "C-c m z r") 'anki-editor-reset-cloze-number)
-(global-set-key (kbd "C-c o j") 'org-capture)
-(global-set-key (kbd "C-c o a") 'org-agenda)
-(global-set-key (kbd "C-c o l") 'org-store-link)
-(global-set-key (kbd "C-c v") 'visual-line-mode)
-(global-set-key (kbd "C-c l") 'linum-mode)
+
+(global-set-key (kbd "C-c m f") 'toggle-frame-fullscreen)
+(global-set-key (kbd "C-c m c") 'cfw:open-org-calendar)
+
