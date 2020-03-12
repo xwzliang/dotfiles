@@ -123,11 +123,12 @@
 ;; other packages with use-package
 
 (use-package persp-mode
-  :init (add-hook 'after-init-hook 'persp-mode)
+  :init
+  		(add-hook 'after-init-hook 'persp-mode)
   :config
-	; Don't auto resume
-	(setq persp-auto-resume-time 0)
-    (persp-set-keymap-prefix (kbd "C-c r"))
+		; Don't auto resume
+		(setq persp-auto-resume-time 0)
+		(persp-set-keymap-prefix (kbd "C-c r"))
   )
 
 ;; company-mode
@@ -163,8 +164,10 @@
   )
 
 (use-package evil
-  :init (setq evil-want-keybinding nil)		;; required by evil-collection
-  :bind (
+  :init
+		(setq evil-want-keybinding nil)		;; required by evil-collection
+  :bind
+		(
 			:map evil-motion-state-map
 			; Use B,E to move to the beggining and end of line
 			("B" . evil-beginning-of-line)
@@ -183,7 +186,8 @@
   		;; Don't use evil-collection in w3m
 		(delete 'w3m evil-collection-mode-list)
 		(evil-collection-init)
-  :custom (evil-collection-setup-minibuffer t)
+  :custom
+		(evil-collection-setup-minibuffer t)
   )
 
 ;; settings for smartparens package
