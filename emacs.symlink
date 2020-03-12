@@ -4,8 +4,8 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-;; Enable debugging on error
-(toggle-debug-on-error)
+;; Enable debugging on error (this will cause describe-bindings not working)
+;; (toggle-debug-on-error)
 
 ;; Back up settings
 ;; (setq backup-directory-alist `(("." . "~/.emacs.d/my_backups")))
