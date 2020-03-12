@@ -1,0 +1,6 @@
+# For macos, use "set startup-with-shell off"
+python
+import os
+if os.uname()[0] == "Darwin":
+	gdb.execute('set startup-with-shell off')
+end
