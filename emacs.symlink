@@ -199,11 +199,13 @@
 		; change granularity level of undo
 		(setq evil-want-fine-undo t)
  )
-(require 'evil-collection)
-(delete 'w3m evil-collection-mode-list)
-;; (setq evil-collection-mode-list (remove 'w3m evil-collection-mode-list))
-(evil-collection-init)
 
+(use-package evil-collection
+  :config
+  		;; Don't use evil-collection in w3m
+		(delete 'w3m evil-collection-mode-list)
+		(evil-collection-init)
+  )
 
 ;; settings for smartparens package
 (require 'smartparens-config)
