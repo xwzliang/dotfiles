@@ -101,14 +101,6 @@
 ;; Automatically reload changed file in buffer
 (global-auto-revert-mode t)
 
-;; Key bindings for mini-buffer
-(define-key minibuffer-local-map (kbd "C-u") 'backward-kill-sentence)
-(define-key minibuffer-local-map (kbd "C-h") 'left-char)
-(define-key minibuffer-local-map (kbd "C-l") 'right-char)
-(define-key minibuffer-local-map (kbd "C-b") 'left-word)
-(define-key minibuffer-local-map (kbd "C-w") 'right-word)
-(define-key minibuffer-local-map "\M-p" 'evil-paste-after)
-
 ;; Key bindings for *backtrace* buffer
 (add-hook 'debugger-mode-hook
   (lambda ()
@@ -179,14 +171,6 @@
 (use-package evil
   :init (setq evil-want-keybinding nil)		;; required by evil-collection
   :bind (
-			:map evil-ex-completion-map
-			; Use C-h,j,k,l,b,w in ex command lines
-			("C-b" . backward-word)
-			("C-w" . forward-word)
-			("C-h" . backward-char)
-			("C-l" . forward-char)
-			("C-k" . previous-complete-history-element)
-			("C-j" . next-complete-history-element)
 			:map evil-motion-state-map
 			; Use B,E to move to the beggining and end of line
 			("B" . evil-beginning-of-line)
@@ -205,6 +189,7 @@
   		;; Don't use evil-collection in w3m
 		(delete 'w3m evil-collection-mode-list)
 		(evil-collection-init)
+  :custom (evil-collection-setup-minibuffer t)
   )
 
 ;; settings for smartparens package
@@ -240,19 +225,9 @@
 (require 'helm)
 (require 'helm-config)
 (helm-mode 1)
-; Use C-h,j,k,l,b,w,n,p,z in helm mode
-(define-key helm-map (kbd "C-j") 'helm-next-line)
-(define-key helm-map (kbd "C-k") 'helm-previous-line)
-(define-key helm-map (kbd "C-h") 'left-char)
-(define-key helm-map (kbd "C-l") 'right-char)
-(define-key helm-map (kbd "C-n") 'helm-next-page)
-(define-key helm-map (kbd "C-p") 'helm-previous-page)
-(define-key helm-map (kbd "C-w") 'right-word)
-(define-key helm-map (kbd "C-b") 'left-word)
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 (define-key helm-map (kbd "C-u") 'helm-find-files-up-one-level)
 (define-key helm-map "\t" 'helm-execute-persistent-action)
-(define-key helm-read-file-map (kbd "C-l") 'right-char)
 
 (setq
       ;; helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
@@ -271,9 +246,6 @@
 ;; helm-mini
 (setq helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t)
-
-;; helm-find-files
-(define-key helm-find-files-map (kbd "C-l") 'right-char)
 
 ;; helm ack-grep (Ubuntu) or ack (MacOS)
 (if (eq system-type 'darwin)
