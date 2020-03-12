@@ -52,5 +52,8 @@ Plug 'airblade/vim-gitgutter'
 " FocusGained and FocusLost autocommand events are not working in terminal vim. This plugin restores them when using vim inside Tmux.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
+" FZF Vim integration
+Plug 'junegunn/fzf'
+
 " All of your Plugs must be added before the following line
 call plug#end()            " required
