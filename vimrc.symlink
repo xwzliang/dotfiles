@@ -137,5 +137,5 @@ map <C-n> :NERDTreeToggle<CR>
 
 
 " Vim-CtrlP-CmdPalette
-nnoremap : :CtrlPCmdPalette<CR>
+nnoremap <leader>: :CtrlPCmdPalette<CR>
 let g:ctrlp_cmdpalette_execute = 1
