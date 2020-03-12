@@ -176,30 +176,33 @@
 		(company-tooltip-selection ((t (:background "forestgreen"))))
   )
 
-;; evil-collection
-(setq evil-want-keybinding nil)
-(require 'evil)
-(evil-mode 1)
+(use-package evil
+  :init (setq evil-want-keybinding nil)		;; required by evil-collection
+  :bind (
+			:map evil-ex-completion-map
+			; Use C-h,j,k,l,b,w in ex command lines
+			("C-b" . backward-word)
+			("C-w" . forward-word)
+			("C-h" . backward-char)
+			("C-l" . forward-char)
+			("C-k" . previous-complete-history-element)
+			("C-j" . next-complete-history-element)
+			:map evil-motion-state-map
+			; Use B,E to move to the beggining and end of line
+			("B" . evil-beginning-of-line)
+			("E" . evil-end-of-line)
+			; Use C-b to evil-scroll-up instead of evil-scroll-page-up
+			("C-b" . evil-scroll-up)
+		 )
+  :config
+		(evil-mode 1)
+		; change granularity level of undo
+		(setq evil-want-fine-undo t)
+ )
 (require 'evil-collection)
 (delete 'w3m evil-collection-mode-list)
 ;; (setq evil-collection-mode-list (remove 'w3m evil-collection-mode-list))
 (evil-collection-init)
-
-;; Config evil mode
-; change granularity level of undo
-(setq evil-want-fine-undo t)
-; Use C-h,j,k,l,b,w in ex command lines
-(define-key evil-ex-completion-map "\C-b" 'backward-word)
-(define-key evil-ex-completion-map "\C-w" 'forward-word)
-(define-key evil-ex-completion-map "\C-h" 'backward-char)
-(define-key evil-ex-completion-map "\C-l" 'forward-char)
-(define-key evil-ex-completion-map "\C-k" 'previous-complete-history-element)
-(define-key evil-ex-completion-map "\C-j" 'next-complete-history-element)
-; Use B,E to move to the beggining and end of line
-(define-key evil-motion-state-map "B" 'evil-beginning-of-line)
-(define-key evil-motion-state-map "E" 'evil-end-of-line)
-; Use C-b to evil-scroll-up instead of evil-scroll-page-up
-(define-key evil-motion-state-map "\C-b" 'evil-scroll-up)
 
 
 ;; settings for smartparens package
