@@ -477,6 +477,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-preview ((t (:background "black" :foreground "brightblack"))))
+ '(company-preview-common ((t (:inherit company-preview :foreground "brightblack"))))
+ '(company-scrollbar-bg ((t (:background "black"))))
+ '(company-scrollbar-fg ((t (:background "black"))))
+ '(company-tooltip ((t (:background "black" :foreground "white"))))
+ '(company-tooltip-annotation ((t (:foreground "yellow"))))
+ '(company-tooltip-common ((t (:foreground "gold3"))))
+ '(company-tooltip-selection ((t (:background "forestgreen"))))
  '(git-gutter:added ((t (:foreground "white" :weight extra-light))))
  '(git-gutter:deleted ((t (:foreground "white" :weight extra-light))))
  '(git-gutter:modified ((t (:foreground "white" :weight extra-light))))
@@ -614,8 +622,8 @@
 (setq org-hide-leading-stars t)
 
 (setq org-todo-keywords
-   '((sequence "TODO(t!)" "NEXT(n!)" "SOMEDAY(s)" "WAITING(w@/!)" "|" "DONE(d@)" "CANCELED(c@)")))
-(setq org-tag-alist '(("URGENT" . ?u) ("optional" . ?o)))
+   '((sequence "SOMEDAY(s)" "TODO(t!)" "NEXT(n!)" "WAITING(w@/!)" "|" "DONE(d@)" "CANCELED(c@)")))
+(setq org-tag-alist '(("Research" . ?r) ("Learning" . ?l) ("Code" . ?c) ("URGENT" . ?u) ("optional" . ?o)))
 
 ;; Log creation time when a TODO item is added.
 (require 'org-expiry)
