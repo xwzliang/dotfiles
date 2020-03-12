@@ -101,12 +101,6 @@
 ;; Automatically reload changed file in buffer
 (global-auto-revert-mode t)
 
-;; Key bindings for *backtrace* buffer
-(add-hook 'debugger-mode-hook
-  (lambda ()
-    (define-key debugger-mode-map (kbd ":") 'evil-ex)
-))
-
 ;; Change code indentation style for C
 (add-hook 'c-mode-hook
 	'(lambda()
