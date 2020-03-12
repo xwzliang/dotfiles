@@ -55,5 +55,8 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " FZF Vim integration
 Plug 'junegunn/fzf'
 
+" This extension allows you to find and run vim commands 
+Plug 'fisadev/vim-ctrlp-cmdpalette'
+
 " All of your Plugs must be added before the following line
 call plug#end()            " required

@@ -134,3 +134,8 @@ let g:NERDSpaceDelims = 1
 " NerdTree
 " open NERDTree with Ctrl+n 
 map <C-n> :NERDTreeToggle<CR>
+
+
+" Vim-CtrlP-CmdPalette
+nnoremap : :CtrlPCmdPalette<CR>
+let g:ctrlp_cmdpalette_execute = 1
