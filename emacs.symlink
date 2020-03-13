@@ -220,16 +220,25 @@
   )
 
 
-;; settings for neotree
-(require 'neotree)
-;; Use ctrl+n to toggle neotree in evil normal state
-;; (define-key evil-normal-state-map (kbd "C-n") 'neotree-toggle)
-(define-key evil-normal-state-map (kbd "C-n") 'neotree-refresh)
-(add-hook 'neotree-mode-hook
-	(lambda ()
-		(define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
-		(define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
-))
+(use-package neotree
+  :bind
+  		(
+		 	([f8] . 'neotree-toggle)
+		 	;; :map neotree-mode-map
+			;; ("s" . neotree-enter-vertical-split)
+			;; This cannot override key binding defined by evil-collection
+  			:map evil-normal-state-map
+  			("C-n" . neotree-refresh)
+  		 )
+  :hook
+  		(neotree-mode . (lambda ()
+  			(define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
+  			(define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
+  		))
+  :custom
+		(neo-confirm-create-directory (quote off-p))
+		(neo-confirm-create-file (quote off-p))
+  )
 
 
 ;; settings for helm
@@ -456,9 +465,7 @@
 	 ("bats" . "bats"))))
  '(linum-format " %3d ")
  '(mac-command-modifier (quote super))
- '(mac-option-modifier (quote meta))
- '(neo-confirm-create-directory (quote off-p))
- '(neo-confirm-create-file (quote off-p)))
+ '(mac-option-modifier (quote meta)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -740,7 +747,7 @@
 (global-set-key (kbd "M-_") 'er/contract-region)
 
 ;; Use F8 to toggle neotree globally
-(global-set-key [f8] 'neotree-toggle)
+;; (global-set-key [f8] 'neotree-toggle)
 
 ;; git-gutter
 (global-set-key (kbd "C-x v C-g") 'git-gutter)
