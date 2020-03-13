@@ -190,15 +190,22 @@
 		(evil-collection-setup-minibuffer t)
   )
 
-;; settings for smartparens package
-(require 'smartparens-config)
-(smartparens-global-mode 1)
+(use-package smartparens-config
+  :commands
+  		smartparens-mode
+  ;; :config
+  ;; 		(smartparens-global-mode 1)
+  )
 
-;; settings for evil-surround
-(global-evil-surround-mode 1)
+(use-package evil-surround
+  :config
+		(global-evil-surround-mode 1)
+  )
 
-;; settings for evil-nerd-commenter
-(evilnc-default-hotkeys)
+(use-package evil-nerd-commenter
+  :config
+		(evilnc-default-hotkeys)
+  )
 
 
 ;; settings for git-gutter
