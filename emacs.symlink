@@ -207,11 +207,17 @@
 		(evilnc-default-hotkeys)
   )
 
-
-;; settings for git-gutter
-(require 'git-gutter)
-(global-git-gutter-mode +1)
-(add-to-list 'git-gutter:update-hooks 'focus-in-hook)
+(use-package git-gutter
+  :config
+		(global-git-gutter-mode +1)
+		(add-to-list 'git-gutter:update-hooks 'focus-in-hook)
+  :custom
+		(git-gutter:modified-sign "~")
+  :custom-face
+		(git-gutter:added ((t (:foreground "white" :weight extra-light))))
+		(git-gutter:deleted ((t (:foreground "white" :weight extra-light))))
+		(git-gutter:modified ((t (:foreground "white" :weight extra-light))))
+  )
 
 
 ;; settings for neotree
@@ -436,7 +442,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
- '(git-gutter:modified-sign "~")
  '(insert-shebang-file-types
    (quote
 	(("py" . "python3")
@@ -459,9 +464,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(git-gutter:added ((t (:foreground "white" :weight extra-light))))
- '(git-gutter:deleted ((t (:foreground "white" :weight extra-light))))
- '(git-gutter:modified ((t (:foreground "white" :weight extra-light))))
  '(linum ((t (:background "black" :foreground "#6a6a6a" :width condensed))))
  '(sh-heredoc ((t (:foreground "color-136" :weight normal)))))
 
