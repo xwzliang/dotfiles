@@ -241,68 +241,74 @@
   )
 
 
-;; settings for helm
-(require 'helm)
-(require 'helm-config)
-(helm-mode 1)
-(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-(define-key helm-map (kbd "C-u") 'helm-find-files-up-one-level)
-(define-key helm-map "\t" 'helm-execute-persistent-action)
-
-(setq
-      ;; helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-      helm-ff-file-name-history-use-recentf t
-      ;; helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-      ;; helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
-      ;; helm-echo-input-in-header-line		t
+(use-package helm
+  :bind-keymap
+		("C-c h" . helm-command-prefix)
+  :bind
+  		(
+			("M-x" . helm-M-x)
+			("M-y" . helm-show-kill-ring)
+			("C-x b" . helm-mini)
+			("C-x C-f" . helm-find-files)
+			("C-h SPC" . helm-all-mark-rings)
+  			:map helm-command-map
+			("o" . helm-occur)
+			("y" . helm-yas-complete)
+  			:map helm-map
+			("C-l" . helm-select-action) ; list actions
+			("C-u" . helm-find-files-up-one-level)
+			("TAB" . helm-execute-persistent-action)
+			:map minibuffer-local-map
+			("C-c C-l" . helm-minibuffer-history)
+  		)
+  :config
+		(require 'helm-config)
+		(global-unset-key (kbd "C-x c"))
+		(helm-mode 1)
+		(setq
+			;; helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+			helm-ff-file-name-history-use-recentf t
+			;; helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+			;; helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+			;; helm-echo-input-in-header-line		t
+		)
+		; Don't show the first two lines (current dir and parent dir)
+		(advice-add 'helm-ff-filter-candidate-one-by-one
+				:around (lambda (fcn file)
+						(unless (string-match "\\(?:/\\|\\`\\)\\.\\{1,2\\}\\'" file)
+							(funcall fcn file))))
+		;; helm-mini
+		(setq helm-buffers-fuzzy-matching t
+			helm-recentf-fuzzy-match    t)
+		;; helm ack-grep (Ubuntu) or ack (MacOS)
+		(if (eq system-type 'darwin)
+			(progn
+			(if (not (member "/usr/local/bin/" exec-path))
+				(add-to-list 'exec-path "/usr/local/bin/"))
+				(setq helm-grep-default-command
+					"ack -Hn --color --smart-case --no-group %e %p %f"
+					helm-grep-default-recurse-command
+					"ack -H --color --smart-case --no-group %e %p %f")
+			)
+			(setq helm-grep-default-command
+				"ack-grep -Hn --color --smart-case --no-group %e %p %f"
+				helm-grep-default-recurse-command
+				"ack-grep -H --color --smart-case --no-group %e %p %f"))
+		;; helm-semantic-or-imenu
+		(semantic-mode 1)
+		(setq helm-semantic-fuzzy-match	t
+			helm-imenu-fuzzy-match	t)
+		; Show type in C/C++
+		(with-eval-after-load 'helm-semantic
+			(push '(c-mode . semantic-format-tag-summarize) helm-semantic-display-style)
+			(push '(c++-mode . semantic-format-tag-summarize) helm-semantic-display-style))
+		;; helm-occur
+		(setq helm-apropos-fuzzy-match t)
+  :hook
+		(eshell-mode . (lambda ()
+				(define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)
+		))
 )
-
-; Don't show the first two lines (current dir and parent dir)
-(advice-add 'helm-ff-filter-candidate-one-by-one
-        :around (lambda (fcn file)
-                  (unless (string-match "\\(?:/\\|\\`\\)\\.\\{1,2\\}\\'" file)
-                    (funcall fcn file))))
-
-;; helm-mini
-(setq helm-buffers-fuzzy-matching t
-      helm-recentf-fuzzy-match    t)
-
-;; helm ack-grep (Ubuntu) or ack (MacOS)
-(if (eq system-type 'darwin)
-	(progn
-	  (if (not (member "/usr/local/bin/" exec-path))
-		(add-to-list 'exec-path "/usr/local/bin/"))
-		(setq helm-grep-default-command
-			"ack -Hn --color --smart-case --no-group %e %p %f"
-			helm-grep-default-recurse-command
-			"ack -H --color --smart-case --no-group %e %p %f")
-	)
-	(setq helm-grep-default-command
-		"ack-grep -Hn --color --smart-case --no-group %e %p %f"
-		helm-grep-default-recurse-command
-		"ack-grep -H --color --smart-case --no-group %e %p %f"))
-
-;; helm-semantic-or-imenu
-(semantic-mode 1)
-(setq helm-semantic-fuzzy-match	t
-      helm-imenu-fuzzy-match	t)
-; Show type in C/C++
-(with-eval-after-load 'helm-semantic
-      (push '(c-mode . semantic-format-tag-summarize) helm-semantic-display-style)
-      (push '(c++-mode . semantic-format-tag-summarize) helm-semantic-display-style))
-
-;; helm-occur
-(setq helm-apropos-fuzzy-match t)
-
-;; helm-eshell-history
-(require 'helm-eshell)
-(add-hook 'eshell-mode-hook
-	#'(lambda ()
-		(define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)
-))
-
-;; helm-mini-buffer-history
-(define-key minibuffer-local-map (kbd "C-c C-l") 'helm-minibuffer-history)
 
 ;; helm-descbinds
 (require 'helm-descbinds)
@@ -731,16 +737,16 @@
 
 ;; helm
 ;; Change default prefix key
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-unset-key (kbd "C-x c"))
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
-;; helm show all marks
-(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "C-c h o") 'helm-occur)
-(global-set-key (kbd "C-c h y") 'helm-yas-complete)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+;; (global-unset-key (kbd "C-x c"))
+;; (global-set-key (kbd "C-x b") 'helm-mini)
+;; (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;; ;; helm show all marks
+;; (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+;; (global-set-key (kbd "C-c h") 'helm-command-prefix)
+;; (global-set-key (kbd "C-c h o") 'helm-occur)
+;; (global-set-key (kbd "C-c h y") 'helm-yas-complete)
 
 ;; expand-region
 (global-set-key (kbd "M-+") 'er/expand-region)
