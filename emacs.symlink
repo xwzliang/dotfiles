@@ -320,9 +320,10 @@
 		))
 )
 
-;; helm-descbinds
-(require 'helm-descbinds)
-(helm-descbinds-mode)
+(use-package helm-descbinds
+  :config
+		(helm-descbinds-mode)
+  )
 
 ;; hydra for helm
 (defhydra helm-like-unite (:hint nil
