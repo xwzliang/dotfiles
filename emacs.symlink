@@ -328,14 +328,28 @@
 (use-package hydra
   )
 
-;; projectile and helm-projectile
-(projectile-global-mode)
-(setq projectile-completion-system 'helm)
-(helm-projectile-on)
-(setq projectile-switch-project-action 'helm-projectile)
-;; keymap prefix for projectile (C-c p)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p s a") 'helm-projectile-ack)
+(use-package projectile
+  :bind-keymap
+		("C-c p" . projectile-command-map)
+  :bind
+  		(
+			("C-c TAB" . projectile-find-other-file)
+			;; ("C-c P" . (lambda () (interactive)
+			;; 			(projectile-cleanup-known-projects)
+			;; 			(projectile-discover-projects-in-search-path)))
+			:map projectile-command-map
+			("s a" . helm-projectile-ack)
+  		 )
+  :config
+		(projectile-global-mode)
+		(setq projectile-completion-system 'helm)
+  )
+
+(use-package helm-projectile
+  :config
+		(helm-projectile-on)
+		;; (setq projectile-switch-project-action 'helm-projectile)
+  )
 
 
 ;; iedit
