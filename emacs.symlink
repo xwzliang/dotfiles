@@ -427,12 +427,12 @@
 (use-package bm
   )
 
-
-;; expand-region
-(require 'expand-region)
-;; Unset M-_ in undo-tree-map (This line need to be placed after evil settings)
-(define-key undo-tree-map (kbd "M-_") nil)
-
+(use-package expand-region
+  :bind
+  		(
+			("M-+" . er/expand-region)
+  		 )
+  )
 
 ;; ibuffer-vc
 (add-hook 'ibuffer-hook
@@ -762,8 +762,7 @@
 ;; (global-set-key (kbd "C-c h y") 'helm-yas-complete)
 
 ;; expand-region
-(global-set-key (kbd "M-+") 'er/expand-region)
-(global-set-key (kbd "M-_") 'er/contract-region)
+;; (global-set-key (kbd "M-+") 'er/expand-region)
 
 ;; Use F8 to toggle neotree globally
 ;; (global-set-key [f8] 'neotree-toggle)
