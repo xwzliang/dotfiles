@@ -29,6 +29,11 @@ if [ -f $HOME/.all_sh_env ]; then
 	source $HOME/.all_sh_env
 fi
 
+# Source fzf key binding for Ubuntu
+if [[ "$(uname)" == "Linux" ]]; then
+	source /usr/share/doc/fzf/examples/key-bindings.bash
+fi
+
 # Aliases
 
 alias mount_write_to_HFS="sudo mount -o remount,rw,force"
