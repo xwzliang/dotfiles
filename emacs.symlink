@@ -419,11 +419,13 @@
 		(setq helm-yas-space-match-any-greedy t)
   )
 
-;; bookmark+
-(add-to-list 'load-path "~/.emacs.d/custom/bookmark-plus/")
-(require 'bookmark+)
-;; bm
-(require 'bm)
+(use-package bookmark+
+  :load-path
+		"~/.emacs.d/custom/bookmark-plus/"
+  )
+
+(use-package bm
+  )
 
 
 ;; expand-region
