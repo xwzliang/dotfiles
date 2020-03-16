@@ -367,29 +367,37 @@
 		(iedit-mode)
   )
 
-;; ggtags and helm-gtags
-(add-hook 'c-mode-common-hook
-    (lambda ()
-      (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
-		(ggtags-mode 1)
-		(helm-gtags-mode)
-		)
-      (define-key evil-normal-state-local-map (kbd "M-.") 'ggtags-find-tag-dwim)
-	  ))
-(setq
-	helm-gtags-prefix-key "\C-c t"
-	helm-gtags-suggested-key-mapping t
-	helm-gtags-path-style 'relative
-	helm-gtags-ignore-case t
-	helm-gtags-auto-update t
-)
+(use-package ggtags
+  :hook
+		(c-mode-common . (lambda ()
+			(when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'asm-mode)
+				(ggtags-mode 1)
+				;; (helm-gtags-mode)
+				)
+			(define-key evil-normal-state-local-map (kbd "M-.") 'ggtags-find-tag-dwim)
+		))
+  )
 
-(with-eval-after-load 'helm-gtags
-	(define-key helm-gtags-mode-map (kbd "C-c t a") 'helm-gtags-tags-in-this-function)
-	(define-key helm-gtags-mode-map (kbd "C-c t f") 'helm-gtags-find-files)
-	(define-key helm-gtags-mode-map (kbd "C-c t p") 'helm-gtags-parse-file)
-	(define-key helm-gtags-mode-map (kbd "C-c t S") 'helm-gtags-show-stack)
-)
+(use-package helm-gtags
+  :after
+		(ggtags)
+  :bind
+  		(
+			:map helm-gtags-mode-map
+			("C-c t a" . helm-gtags-tags-in-this-function)
+			("C-c t f" . helm-gtags-find-files)
+			("C-c t p" . helm-gtags-parse-file)
+			("C-c t S" . helm-gtags-show-stack)
+  		 )
+  :hook
+		(ggtags-mode . helm-gtags-mode)
+  :custom
+		(helm-gtags-prefix-key "\C-c t")
+		(helm-gtags-suggested-key-mapping t)
+		(helm-gtags-path-style 'relative)
+		(helm-gtags-ignore-case t)
+		(helm-gtags-auto-update t)
+  )
 
 ;; yasnippet and helm-c-yasnippet
 ; Don't make aliases for the old style yas/ prefixed symbols
