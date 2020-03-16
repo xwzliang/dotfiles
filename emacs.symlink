@@ -62,9 +62,6 @@
 ;; Changing tab width
 (setq-default tab-width 4)
 
-;; ibuffer settings
-(setq ibuffer-use-other-window t) ;; always display ibuffer in another window
-
 ;; For all major mode, treat underscore as part of the whole word
 (add-hook 'after-change-major-mode-hook
                        (lambda ()
@@ -434,23 +431,36 @@
   		 )
   )
 
-;; ibuffer-vc
-(add-hook 'ibuffer-hook
-          (lambda ()
-            (ibuffer-vc-set-filter-groups-by-vc-root)
-            (unless (eq ibuffer-sorting-mode 'alphabetic)
-              (ibuffer-do-sort-by-alphabetic))))
-(setq ibuffer-formats
-      '((mark modified read-only vc-status-mini " "
-              (name 18 18 :left :elide)
-              " "
-              (size 9 -1 :right)
-              " "
-              (mode 16 16 :left :elide)
-              " "
-              (vc-status 16 16 :left)
-              " "
-              filename-and-process)))
+(use-package ibuffer
+  :bind
+  		(
+			("C-x C-b" . ibuffer)
+  		 )
+  :config
+		(setq ibuffer-use-other-window t) ;; always display ibuffer in another window
+  )
+
+(use-package ibuffer-vc
+  :after
+		(ibuffer)
+  :config
+		(setq ibuffer-formats
+			'((mark modified read-only vc-status-mini " "
+					(name 18 18 :left :elide)
+					" "
+					(size 9 -1 :right)
+					" "
+					(mode 16 16 :left :elide)
+					" "
+					(vc-status 16 16 :left)
+					" "
+					filename-and-process)))
+  :hook
+		(ibuffer . (lambda ()
+			(ibuffer-vc-set-filter-groups-by-vc-root)
+			(unless (eq ibuffer-sorting-mode 'alphabetic)
+				(ibuffer-do-sort-by-alphabetic))))
+  )
 
 
 ;; settings for magit
@@ -746,7 +756,7 @@
 ;; Use shift tab (<backtab>) to insert tab
 (global-set-key (kbd "<backtab>") (lambda () (interactive) (insert "\t")))
 ;; ibuffer
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; helm
 ;; Change default prefix key
