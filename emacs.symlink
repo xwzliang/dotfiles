@@ -208,6 +208,8 @@
   )
 
 (use-package git-gutter
+  :init
+		(add-hook 'after-init-hook 'global-git-gutter-mode)
   :bind
   		(
 			("C-x v C-g" . git-gutter)
@@ -219,7 +221,6 @@
 			("C-x v SPC" . git-gutter:mark-hunk)
   		 )
   :config
-		(global-git-gutter-mode +1)
 		(add-to-list 'git-gutter:update-hooks 'focus-in-hook)
   :custom
 		(git-gutter:modified-sign "~")
