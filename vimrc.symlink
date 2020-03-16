@@ -139,3 +139,9 @@ map <C-n> :NERDTreeToggle<CR>
 " Vim-CtrlP-CmdPalette
 nnoremap <leader>: :CtrlPCmdPalette<CR>
 let g:ctrlp_cmdpalette_execute = 1
+
+
+" fzf Linux
+if system('uname') == "Linux\n"
+	source /usr/share/doc/fzf/examples/fzf.vim
+endif
