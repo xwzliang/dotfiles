@@ -399,15 +399,25 @@
 		(helm-gtags-auto-update t)
   )
 
-;; yasnippet and helm-c-yasnippet
-; Don't make aliases for the old style yas/ prefixed symbols
-(setq yas-alias-to-yas/prefix-p nil)
-(require 'yasnippet)
-(require 'helm-c-yasnippet)
-; helm pattern space match anyword greedy, "if else" replace to "if.*else"
-(setq helm-yas-space-match-any-greedy t)
-(yas-global-mode 1)
+(use-package yasnippet
+  :config
+		(yas-global-mode 1)
+  :custom
+		; Don't make aliases for the old style yas/ prefixed symbols
+		(yas-alias-to-yas/prefix-p nil)
+  )
 
+(use-package helm-c-yasnippet
+  :after
+		(helm yasnippet)
+  :bind
+  		(
+			("C-c y" . helm-yas-complete)
+  		 )
+  :config
+		; helm pattern space match anyword greedy, "if else" replace to "if.*else"
+		(setq helm-yas-space-match-any-greedy t)
+  )
 
 ;; bookmark+
 (add-to-list 'load-path "~/.emacs.d/custom/bookmark-plus/")
@@ -789,6 +799,9 @@
 (global-set-key (kbd "C-c o j") 'org-capture)
 (global-set-key (kbd "C-c o a") 'org-agenda)
 (global-set-key (kbd "C-c o l") 'org-store-link)
+
+;; helm-c-yasnippet
+;; (global-set-key (kbd "C-c y") 'helm-yas-complete)
 
 ;; my macros
 (global-set-key (kbd "C-c m j") 'my_macro_copy_all_agenda_items_link_to_journal)
