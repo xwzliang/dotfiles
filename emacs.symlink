@@ -352,13 +352,20 @@
 		;; (setq projectile-switch-project-action 'helm-projectile)
   )
 
+(use-package iedit
+  :bind
+  		(
+			("C-c s" . iedit-mode)
+  		 )
+  )
 
-;; iedit
-(require 'iedit)
-;; evil-iedit-state
-(require 'evil-iedit-state)
-(define-key iedit-mode-keymap (kbd "M-e") 'evil-iedit-state)
-
+(use-package evil-iedit-state
+  :after
+		(evil iedit)
+  :hook
+		;; Use evil-iedit-state when iedit-mode is enabled.
+		(iedit-mode)
+  )
 
 ;; ggtags and helm-gtags
 (add-hook 'c-mode-common-hook
@@ -758,7 +765,7 @@
 
 ;; iedit
 ; Terminal cannot send C-; (or / . ,)
-(global-set-key (kbd "C-c s") 'iedit-mode)
+;; (global-set-key (kbd "C-c s") 'iedit-mode)
 
 ;; (global-set-key (kbd "C-c r") 'persp-keymap-prefix)
 
