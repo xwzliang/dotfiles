@@ -624,6 +624,8 @@
 (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
 (evil-define-key 'normal org-mode-map (kbd "g j") 'evil-next-visual-line)
 (evil-define-key 'normal org-mode-map (kbd "g k") 'evil-previous-visual-line)
+(evil-define-key 'normal org-mode-map (kbd "g ]") 'org-next-link)
+(evil-define-key 'normal org-mode-map (kbd "g [") 'org-previous-link)
 
 ; Log into a logbook drawer
 (setq org-log-into-drawer t)
