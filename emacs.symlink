@@ -484,7 +484,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(linum-format " %3d ")
  '(mac-command-modifier (quote super))
  '(mac-option-modifier (quote meta)))
 (custom-set-faces
@@ -492,7 +491,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(linum ((t (:background "black" :foreground "#6a6a6a" :width condensed))))
  '(sh-heredoc ((t (:foreground "color-136" :weight normal)))))
 
 (use-package insert-shebang
@@ -522,6 +520,17 @@
 			"org"
 			"c"
 		 )))
+  )
+
+(use-package linum
+  :bind
+  		(
+			("C-c l" . linum-mode)
+  		 )
+  :custom
+		(linum-format " %3d ")
+  :custom-face
+		(linum ((t (:background "black" :foreground "#6a6a6a" :width condensed))))
   )
 
 ;; Change appearance for w3m
@@ -793,7 +802,7 @@
 ;; activate whitespace-mode to view all whitespace characters
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 (global-set-key (kbd "C-c v") 'visual-line-mode)
-(global-set-key (kbd "C-c l") 'linum-mode)
+;; (global-set-key (kbd "C-c l") 'linum-mode)
 (global-set-key (kbd "C-c c") 'compile)
 
 ;; iedit
