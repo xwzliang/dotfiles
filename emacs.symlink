@@ -458,17 +458,26 @@
 				(ibuffer-do-sort-by-alphabetic))))
   )
 
+(use-package magit
+  :bind
+  		(
+			("C-x g" . magit-status)
+			("C-c g l" . magit-log)
+			("C-c g c" . magit-blame)
+			("C-c g b" . magit-branch)
+			("C-c g s" . magit-status)
+			("C-c g t" . magit-tag)
+			:map magit-mode-map
+			("o" . magit-file-checkout)
+  		 )
+  :hook
+		(magit-post-refresh . git-gutter:update-all-windows)
+  )
 
-;; settings for magit
-(require 'magit)
-(add-hook 'magit-post-refresh-hook
-          #'git-gutter:update-all-windows)
-
-;; settings for evil-magit
-(require 'evil-magit)
-
-(evil-define-key evil-magit-state magit-mode-map "o" 'magit-file-checkout)
-
+(use-package evil-magit
+  :after
+		(evil magit)
+  )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -794,12 +803,12 @@
 ;; (global-set-key (kbd "C-c r") 'persp-keymap-prefix)
 
 ;; magit
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-c g l") 'magit-log)
-(global-set-key (kbd "C-c g c") 'magit-blame)
-(global-set-key (kbd "C-c g b") 'magit-branch)
-(global-set-key (kbd "C-c g s") 'magit-status)
-(global-set-key (kbd "C-c g t") 'magit-tag)
+;; (global-set-key (kbd "C-x g") 'magit-status)
+;; (global-set-key (kbd "C-c g l") 'magit-log)
+;; (global-set-key (kbd "C-c g c") 'magit-blame)
+;; (global-set-key (kbd "C-c g b") 'magit-branch)
+;; (global-set-key (kbd "C-c g s") 'magit-status)
+;; (global-set-key (kbd "C-c g t") 'magit-tag)
 
 ;; org-mode
 (global-set-key (kbd "C-c o j") 'org-capture)
