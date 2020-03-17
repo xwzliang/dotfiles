@@ -484,18 +484,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(insert-shebang-file-types
-   (quote
-	(("py" . "python3")
-	 ("groovy" . "groovy")
-	 ("fish" . "fish")
-	 ("robot" . "robot")
-	 ("rb" . "ruby")
-	 ("lua" . "lua")
-	 ("php" . "php")
-	 ("sh" . "bash")
-	 ("pl" . "perl")
-	 ("bats" . "bats"))))
  '(linum-format " %3d ")
  '(mac-command-modifier (quote super))
  '(mac-option-modifier (quote meta)))
@@ -507,22 +495,34 @@
  '(linum ((t (:background "black" :foreground "#6a6a6a" :width condensed))))
  '(sh-heredoc ((t (:foreground "color-136" :weight normal)))))
 
-;; For file extension in my_insert_file_type_list and file has not been created yet, insert shebang, two newline and enter evil-insert-state
-(defun my_shebang_hook()
-  (setq my_insert_file_type_list (list
-    "sh"
-    "py"
-    "bats"
-   ))
-  (if (and (member (file-name-extension (buffer-name)) my_insert_file_type_list) (not (file-exists-p (buffer-name))))
-    (progn
-      (insert-shebang)
-      (newline)
-      (newline)
-      (evil-insert-state))))
-
-(add-hook 'find-file-hook 'my_shebang_hook)
-
+(use-package insert-shebang
+  :hook
+		;; For file extension in my_insert_file_type_list and file has not been created yet, insert shebang, two newline and enter evil-insert-state
+		(find-file . (lambda ()
+			(setq my_insert_file_type_list (list
+				"sh"
+				"py"
+				"bats"
+				))
+			(if (and (member (file-name-extension (buffer-name)) my_insert_file_type_list) (not (file-exists-p (buffer-name))))
+				(progn
+					(insert-shebang)
+					(newline)
+					(newline)
+					(evil-insert-state)
+					))))
+  :custom
+		(insert-shebang-file-types (quote
+			(("py" . "python3")
+			("sh" . "bash")
+			("pl" . "perl")
+			("bats" . "bats"))))
+		(insert-shebang-ignore-extensions (quote (
+			"txt"
+			"org"
+			"c"
+		 )))
+  )
 
 ;; Change appearance for w3m
 (defun my-w3m-faces ()
