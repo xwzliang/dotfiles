@@ -59,11 +59,6 @@
 ;; Changing tab width
 (setq-default tab-width 4)
 
-;; For all major mode, treat underscore as part of the whole word
-(add-hook 'after-change-major-mode-hook
-                       (lambda ()
-                         (modify-syntax-entry ?_ "w")))
-
 
 ;; Package settings
 
@@ -239,6 +234,11 @@
 		(evil-mode 1)
 		; change granularity level of undo
 		(setq evil-want-fine-undo t)
+  :hook
+		(after-change-major-mode . (lambda ()
+			;; Treat underscore as part of the whole word for all major mode
+			(modify-syntax-entry ?_ "w")
+		))
  )
 
 (use-package evil-collection
