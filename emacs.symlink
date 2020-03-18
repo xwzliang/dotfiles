@@ -564,16 +564,16 @@
 		(golden-ratio-mode 1)
   )
 
-
-;; pdf-tools
-(add-to-list 'auto-mode-alist '("\\.pdf\\'" . doc-view-mode))
-(add-hook 'doc-view-mode-hook
-		  (lambda ()
-				(pdf-tools-install)
-				; Use HiDPI for pdf.
-				(setq pdf-view-use-scaling t)
-			))
-
+(use-package pdf-tools
+  :mode
+  		("\\.pdf\\'" . doc-view-mode)
+  :hook
+		(doc-view-mode . (lambda ()
+			(pdf-tools-install)
+			; Use HiDPI for pdf.
+			(setq pdf-view-use-scaling t)
+		))
+  )
 
 ;; compliation-mode
 (require 'compile)
