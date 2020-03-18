@@ -130,6 +130,8 @@
   )
 
 (use-package cc-mode
+  :commands
+		(c-set-style)
   :hook
 		;; Change code indentation style for C
 		(c-mode . (lambda()
@@ -144,7 +146,7 @@
   )
 
 (use-package linum
-  :bind
+  :bind*
   		(
 			("C-c l" . linum-mode)
   		 )
@@ -200,7 +202,7 @@
   )
 
 (use-package compile
-  :bind
+  :bind*
   		(
 			("C-c c" . compile)
   		 )
