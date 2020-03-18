@@ -28,8 +28,6 @@
 ;; Load macros
 (load-file "~/.emacs.d/macros")
 
-(load-theme 'clues t)
-
 ;; Disable bars
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -178,6 +176,11 @@
 
 
 ;; Third party packages with use-package
+
+(use-package clues-theme
+  :init
+		(load-theme 'clues t)
+  )
 
 (use-package persp-mode
   :init
