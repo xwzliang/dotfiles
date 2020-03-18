@@ -50,7 +50,6 @@
 ;; Change color for prompt in mini-buffer
 (set-face-foreground 'minibuffer-prompt "white")
 
-
 ;; basic settings
 (setq
       global-mark-ring-max 5000         ; increase mark ring to contains 5000 entries
@@ -75,7 +74,51 @@
   (require 'use-package))
 (require 'bind-key)
 
-;; other packages with use-package
+
+;; built-in packages with use-package
+
+(use-package executable
+  :hook
+		;; Automatically give executable permissions if file begins with shebang
+		(after-save . executable-make-buffer-file-executable-if-script-p)
+  )
+
+(use-package elec-pair
+  :config
+		;; Enable electric-pair-mode for automatic parens pairing
+		(electric-pair-mode 1)
+  )
+
+(use-package autorevert
+  :config
+		;; Automatically reload changed file in buffer
+		(global-auto-revert-mode t)
+  )
+
+(use-package cc-mode
+  :hook
+		;; Change code indentation style for C
+		(c-mode . (lambda()
+			(c-set-style "cc-mode")))
+  )
+
+(use-package sh-script
+  :mode
+		("\\.bats\\'" . sh-mode)
+  :custom-face
+		(sh-heredoc ((t (:foreground "color-136" :weight normal))))
+  )
+
+(use-package linum
+  :bind
+  		(
+			("C-c l" . linum-mode)
+  		 )
+  :custom
+		(linum-format " %3d ")
+  :custom-face
+		(linum ((t (:background "black" :foreground "#6a6a6a" :width condensed))))
+  )
 
 (use-package dired
   :bind
@@ -107,11 +150,34 @@
 		)
   )
 
+(use-package ibuffer
+  :bind
+  		(
+			("C-x C-b" . ibuffer)
+  		 )
+  :config
+		(setq ibuffer-use-other-window t) ;; always display ibuffer in another window
+  )
+
 (use-package saveplace
   :config
 		;; saveplace: remembers your location in a file when saving files
 		(toggle-save-place-globally 1)
   )
+
+(use-package compile
+  :bind
+  		(
+			("C-c c" . compile)
+  		 )
+  :config
+		(setq compilation-ask-about-save nil          ; Just save before compiling
+			compilation-always-kill t               ; Just kill old compile processes before starting the new one
+			compilation-scroll-output 'first-error) ; Automatically scroll to first
+  )
+
+
+;; Third party packages with use-package
 
 (use-package persp-mode
   :init
@@ -421,15 +487,6 @@
   		 )
   )
 
-(use-package ibuffer
-  :bind
-  		(
-			("C-x C-b" . ibuffer)
-  		 )
-  :config
-		(setq ibuffer-use-other-window t) ;; always display ibuffer in another window
-  )
-
 (use-package ibuffer-vc
   :after
 		(ibuffer)
@@ -510,49 +567,6 @@
 		 )))
   )
 
-(use-package executable
-  :hook
-		;; Automatically give executable permissions if file begins with shebang
-		(after-save . executable-make-buffer-file-executable-if-script-p)
-  )
-
-(use-package elec-pair
-  :config
-		;; Enable electric-pair-mode for automatic parens pairing
-		(electric-pair-mode 1)
-  )
-
-(use-package autorevert
-  :config
-		;; Automatically reload changed file in buffer
-		(global-auto-revert-mode t)
-  )
-
-(use-package cc-mode
-  :hook
-		;; Change code indentation style for C
-		(c-mode . (lambda()
-			(c-set-style "cc-mode")))
-  )
-
-(use-package sh-script
-  :mode
-		("\\.bats\\'" . sh-mode)
-  :custom-face
-		(sh-heredoc ((t (:foreground "color-136" :weight normal))))
-  )
-
-(use-package linum
-  :bind
-  		(
-			("C-c l" . linum-mode)
-  		 )
-  :custom
-		(linum-format " %3d ")
-  :custom-face
-		(linum ((t (:background "black" :foreground "#6a6a6a" :width condensed))))
-  )
-
 (use-package flyspell
   :config
 		(if (executable-find "aspell")
@@ -593,17 +607,6 @@
 			; Use HiDPI for pdf.
 			(setq pdf-view-use-scaling t)
 		))
-  )
-
-(use-package compile
-  :bind
-  		(
-			("C-c c" . compile)
-  		 )
-  :config
-		(setq compilation-ask-about-save nil          ; Just save before compiling
-			compilation-always-kill t               ; Just kill old compile processes before starting the new one
-			compilation-scroll-output 'first-error) ; Automatically scroll to first
   )
 
 
