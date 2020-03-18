@@ -67,31 +67,6 @@
                        (lambda ()
                          (modify-syntax-entry ?_ "w")))
 
-;; dired
-(setq
-	dired-dwim-target t            ; if another Dired buffer is visible in another window, use that directory as target for Rename/Copy
-	dired-recursive-copies 'always         ; "always" means no asking
-	dired-recursive-deletes 'top           ; "top" means ask once for top level directory
-	dired-listing-switches "-lha"          ; human-readable listing
-)
-(require 'dired)
-;; automatically refresh dired buffer on changes
-(add-hook 'dired-mode-hook 'auto-revert-mode)
-;; if it is not Windows, use the following listing switches to group directories first.
-(when (not (eq system-type 'windows-nt))
-  (setq dired-listing-switches "-lha --group-directories-first"))
-(require 'wdired)
-(setq
-	wdired-allow-to-change-permissions t   ; allow to edit permission bits
-	wdired-allow-to-redirect-links t       ; allow to edit symlinks
- )
-; Use e to edit in dired mode.
-(define-key dired-mode-map (kbd "e") 'wdired-change-to-wdired-mode)
-
-;; saveplace: remembers your location in a file when saving files
-(require 'saveplace)
-(toggle-save-place-globally 1)
-
 ;; Enable electric-pair-mode for inserting new line and indent automatically after brace
 (electric-pair-mode 1)
 
@@ -118,6 +93,42 @@
 (require 'bind-key)
 
 ;; other packages with use-package
+
+(use-package dired
+  :bind
+		(
+			:map dired-mode-map
+			; Use "C-c e" to edit in dired mode.
+			("C-c e" . wdired-change-to-wdired-mode)
+		 )
+  :config
+		(setq
+			dired-dwim-target t            ; if another Dired buffer is visible in another window, use that directory as target for Rename/Copy
+			dired-recursive-copies 'always         ; "always" means no asking
+			dired-recursive-deletes 'top           ; "top" means ask once for top level directory
+			dired-listing-switches "-lha"          ; human-readable listing
+		)
+		;; if it is not Windows, use the following listing switches to group directories first.
+		(when (not (eq system-type 'windows-nt))
+			(setq dired-listing-switches "-lha --group-directories-first"))
+  :hook
+		;; automatically refresh dired buffer on changes
+		(dired-mode . auto-revert-mode)
+  )
+
+(use-package wdired
+  :config
+		(setq
+			wdired-allow-to-change-permissions t   ; allow to edit permission bits
+			wdired-allow-to-redirect-links t       ; allow to edit symlinks
+		)
+  )
+
+(use-package saveplace
+  :config
+		;; saveplace: remembers your location in a file when saving files
+		(toggle-save-place-globally 1)
+  )
 
 (use-package persp-mode
   :init
