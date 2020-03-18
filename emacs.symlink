@@ -38,16 +38,6 @@
 ;; Disable the startup splash screen
 (setq inhibit-splash-screen t)
 
-;; Change background color for modeline to dark orange
-(set-face-background 'mode-line "#af5f00")
-(set-face-background 'mode-line-inactive "#af5f00")
-
-;; Change foreground color for active modeline to black
-(set-face-foreground 'mode-line "black")
-
-;; Change color for prompt in mini-buffer
-(set-face-foreground 'minibuffer-prompt "white")
-
 ;; basic settings
 (setq
       global-mark-ring-max 5000         ; increase mark ring to contains 5000 entries
@@ -69,6 +59,19 @@
 
 
 ;; built-in packages with use-package
+
+(use-package faces
+  :after
+  		(clues-theme)
+  :config
+		;; Change background color for modeline to dark orange
+		(set-face-background 'mode-line "#af5f00")
+		(set-face-background 'mode-line-inactive "#af5f00")
+		;; Change foreground color for active modeline to black
+		(set-face-foreground 'mode-line "black")
+		;; Change color for prompt in mini-buffer
+		(set-face-foreground 'minibuffer-prompt "white")
+  )
 
 (use-package executable
   :hook
