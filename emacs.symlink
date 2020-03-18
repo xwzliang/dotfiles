@@ -533,20 +533,6 @@
 		(linum ((t (:background "black" :foreground "#6a6a6a" :width condensed))))
   )
 
-;; Change appearance for w3m
-(defun my-w3m-faces ()
-  "Buffer-local face remapping for `w3m-mode-hook'."
-  (setq left-margin-width 5)
-  (setq right-margin-width 5)
-  ; Wrap lines in w3m
-  (visual-line-mode 1)
-  (face-remap-add-relative 'default
-                           :background "white"
-                           :foreground "black"))
-
-(add-hook 'w3m-mode-hook #'my-w3m-faces)
-
-
 ;; flyspell-mode
 (if (executable-find "aspell")
     (progn
