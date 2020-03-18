@@ -67,23 +67,6 @@
                        (lambda ()
                          (modify-syntax-entry ?_ "w")))
 
-;; Enable electric-pair-mode for inserting new line and indent automatically after brace
-(electric-pair-mode 1)
-
-;; Automatically reload changed file in buffer
-(global-auto-revert-mode t)
-
-;; Change code indentation style for C
-(add-hook 'c-mode-hook
-	'(lambda()
-		(c-set-style "cc-mode")))
-
-;; Enable sh-mode for .bats file
-(add-to-list 'auto-mode-alist '("\\.bats\\'" . sh-mode))
-
-;; Automatically give executable permissions if file begins with shebang
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-
 
 ;; Package settings
 
@@ -497,12 +480,6 @@
  ;; If there is more than one, they won't work right.
  '(mac-command-modifier (quote super))
  '(mac-option-modifier (quote meta)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(sh-heredoc ((t (:foreground "color-136" :weight normal)))))
 
 (use-package insert-shebang
   :hook
@@ -531,6 +508,38 @@
 			"org"
 			"c"
 		 )))
+  )
+
+(use-package executable
+  :hook
+		;; Automatically give executable permissions if file begins with shebang
+		(after-save . executable-make-buffer-file-executable-if-script-p)
+  )
+
+(use-package elec-pair
+  :config
+		;; Enable electric-pair-mode for automatic parens pairing
+		(electric-pair-mode 1)
+  )
+
+(use-package autorevert
+  :config
+		;; Automatically reload changed file in buffer
+		(global-auto-revert-mode t)
+  )
+
+(use-package cc-mode
+  :hook
+		;; Change code indentation style for C
+		(c-mode . (lambda()
+			(c-set-style "cc-mode")))
+  )
+
+(use-package sh-script
+  :mode
+		("\\.bats\\'" . sh-mode)
+  :custom-face
+		(sh-heredoc ((t (:foreground "color-136" :weight normal))))
   )
 
 (use-package linum
