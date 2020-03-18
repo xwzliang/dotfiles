@@ -553,15 +553,16 @@
 		(global-flycheck-mode)
   )
 
-;; company-c-headers
-(require 'company-c-headers)
-(add-to-list 'company-backends 'company-c-headers)
-(add-to-list 'company-c-headers-path-system (getenv "unity_path"))
+(use-package company-c-headers
+  :config
+		(add-to-list 'company-backends 'company-c-headers)
+		(add-to-list 'company-c-headers-path-system (getenv "unity_path"))
+  )
 
-
-;; golden-ratio
-(require 'golden-ratio)
-(golden-ratio-mode 1)
+(use-package golden-ratio
+  :config
+		(golden-ratio-mode 1)
+  )
 
 
 ;; pdf-tools
