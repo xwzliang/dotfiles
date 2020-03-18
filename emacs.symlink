@@ -575,11 +575,16 @@
 		))
   )
 
-;; compliation-mode
-(require 'compile)
-(setq compilation-ask-about-save nil          ; Just save before compiling
-      compilation-always-kill t               ; Just kill old compile processes before starting the new one
-      compilation-scroll-output 'first-error) ; Automatically scroll to first
+(use-package compile
+  :bind
+  		(
+			("C-c c" . compile)
+  		 )
+  :config
+		(setq compilation-ask-about-save nil          ; Just save before compiling
+			compilation-always-kill t               ; Just kill old compile processes before starting the new one
+			compilation-scroll-output 'first-error) ; Automatically scroll to first
+  )
 
 
 ;; org-mode
@@ -793,7 +798,7 @@
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 (global-set-key (kbd "C-c v") 'visual-line-mode)
 ;; (global-set-key (kbd "C-c l") 'linum-mode)
-(global-set-key (kbd "C-c c") 'compile)
+;; (global-set-key (kbd "C-c c") 'compile)
 
 ;; iedit
 ; Terminal cannot send C-; (or / . ,)
