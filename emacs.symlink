@@ -597,17 +597,33 @@
 (use-package org-agenda
   :after
 		(org)
+  :general
+		(
+			:states 'motion
+			:keymaps 'org-agenda-mode-map
+			"D" 'org-agenda-day-view
+			"W" 'org-agenda-week-view
+  		 )
   :config
 		; agenda files
 		(add-to-list 'org-agenda-files org-directory)
   )
 
-;; evil-org
-(require 'evil-org)
-(add-hook 'org-mode-hook 'evil-org-mode)
-(evil-org-set-key-theme '(navigation insert textobjects calendar))
-(require 'evil-org-agenda)
-(evil-org-agenda-set-keys)
+(use-package evil-org
+  :after
+		(evil org)
+  :config
+		(evil-org-set-key-theme '(navigation insert textobjects calendar))
+  :hook
+		(org-mode . evil-org-mode)
+  )
+
+(use-package evil-org-agenda
+  :after
+		(evil org org-agenda)
+  :config
+		(evil-org-agenda-set-keys)
+  )
 
 
 ;; Log creation time when a TODO item is added.
@@ -615,8 +631,7 @@
 (org-expiry-insinuate)
 ; Don't have everything in the agenda view
 (setq org-expiry-inactive-timestamps t)
-(evil-define-key 'motion org-agenda-mode-map (kbd "D") 'org-agenda-day-view)
-(evil-define-key 'motion org-agenda-mode-map (kbd "W") 'org-agenda-week-view)
+
 
 
 ;; calfw-org calendar framework for org-mode
