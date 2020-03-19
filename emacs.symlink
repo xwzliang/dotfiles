@@ -215,6 +215,9 @@
 
 ;; Third party packages with use-package
 
+(use-package general
+  )
+
 (use-package clues-theme
   :init
 		(load-theme 'clues t)
