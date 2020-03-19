@@ -58,161 +58,6 @@
 (require 'bind-key)
 
 
-;; built-in packages with use-package
-
-(use-package faces
-  :after
-  		(clues-theme)
-  :config
-		;; Change background color for modeline to dark orange
-		(set-face-background 'mode-line "#af5f00")
-		(set-face-background 'mode-line-inactive "#af5f00")
-		;; Change foreground color for active modeline to black
-		(set-face-foreground 'mode-line "black")
-		;; Change color for prompt in mini-buffer
-		(set-face-foreground 'minibuffer-prompt "white")
-  )
-
-(use-package dabbrev
-  :commands
-		(dabbrev-expand)
-  :bind
-		(
-			("TAB" . dabbrev-expand)
-			;; Use shift tab (<backtab>) to insert tab
-			("<backtab>" . (lambda () (interactive) (insert "\t")))
-		 )
-  )
-
-(use-package whitespace
-  :commands
-		(whitespace-mode)
-  :bind
-		(
-			("C-c w" . whitespace-mode)
-		 )
-  )
-
-(use-package simple
-  :commands
-		(visual-line-mode)
-  :bind
-		(
-			("C-c v" . visual-line-mode)
-  		 )
-  )
-
-(use-package frame
-  :commands
-		(toggle-frame-fullscreen)
-  :bind
-		(
-			("C-c m f" . toggle-frame-fullscreen)
-  		 )
-  )
-
-(use-package executable
-  :hook
-		;; Automatically give executable permissions if file begins with shebang
-		(after-save . executable-make-buffer-file-executable-if-script-p)
-  )
-
-(use-package elec-pair
-  :config
-		;; Enable electric-pair-mode for automatic parens pairing
-		(electric-pair-mode 1)
-  )
-
-(use-package autorevert
-  :config
-		;; Automatically reload changed file in buffer
-		(global-auto-revert-mode t)
-  )
-
-(use-package cc-mode
-  :commands
-		(c-set-style)
-  :hook
-		;; Change code indentation style for C
-		(c-mode . (lambda()
-			(c-set-style "cc-mode")))
-  )
-
-(use-package sh-script
-  :mode
-		("\\.bats\\'" . sh-mode)
-  :custom-face
-		(sh-heredoc ((t (:foreground "color-136" :weight normal))))
-  )
-
-(use-package linum
-  :bind*
-  		(
-			("C-c l" . linum-mode)
-  		 )
-  :custom
-		(linum-format " %3d ")
-  :custom-face
-		(linum ((t (:background "black" :foreground "#6a6a6a" :width condensed))))
-  )
-
-(use-package dired
-  :bind
-		(
-			:map dired-mode-map
-			; Use "C-c e" to edit in dired mode.
-			("C-c e" . wdired-change-to-wdired-mode)
-		 )
-  :config
-		(setq
-			dired-dwim-target t            ; if another Dired buffer is visible in another window, use that directory as target for Rename/Copy
-			dired-recursive-copies 'always         ; "always" means no asking
-			dired-recursive-deletes 'top           ; "top" means ask once for top level directory
-			dired-listing-switches "-lha"          ; human-readable listing
-		)
-		;; if it is not Windows, use the following listing switches to group directories first.
-		(when (not (eq system-type 'windows-nt))
-			(setq dired-listing-switches "-lha --group-directories-first"))
-  :hook
-		;; automatically refresh dired buffer on changes
-		(dired-mode . auto-revert-mode)
-  )
-
-(use-package wdired
-  :config
-		(setq
-			wdired-allow-to-change-permissions t   ; allow to edit permission bits
-			wdired-allow-to-redirect-links t       ; allow to edit symlinks
-		)
-  )
-
-(use-package ibuffer
-  :bind
-  		(
-			("C-x C-b" . ibuffer)
-  		 )
-  :config
-		(setq ibuffer-use-other-window t) ;; always display ibuffer in another window
-  )
-
-(use-package saveplace
-  :config
-		;; saveplace: remembers your location in a file when saving files
-		(toggle-save-place-globally 1)
-  )
-
-(use-package compile
-  :bind*
-  		(
-			("C-c c" . compile)
-  		 )
-  :config
-		(setq compilation-ask-about-save nil          ; Just save before compiling
-			compilation-always-kill t               ; Just kill old compile processes before starting the new one
-			compilation-scroll-output 'first-error) ; Automatically scroll to first
-  )
-
-
 ;; Third party packages with use-package
 
 (use-package general
@@ -821,6 +666,161 @@
 	(unload-feature 'anki-editor)
 	(anki-editor-mode)
     )
+
+
+;; built-in packages with use-package
+
+(use-package faces
+  :after
+  		(clues-theme)
+  :config
+		;; Change background color for modeline to dark orange
+		(set-face-background 'mode-line "#af5f00")
+		(set-face-background 'mode-line-inactive "#af5f00")
+		;; Change foreground color for active modeline to black
+		(set-face-foreground 'mode-line "black")
+		;; Change color for prompt in mini-buffer
+		(set-face-foreground 'minibuffer-prompt "white")
+  )
+
+(use-package dabbrev
+  :commands
+		(dabbrev-expand)
+  :bind
+		(
+			("TAB" . dabbrev-expand)
+			;; Use shift tab (<backtab>) to insert tab
+			("<backtab>" . (lambda () (interactive) (insert "\t")))
+		 )
+  )
+
+(use-package whitespace
+  :commands
+		(whitespace-mode)
+  :bind
+		(
+			("C-c w" . whitespace-mode)
+		 )
+  )
+
+(use-package simple
+  :commands
+		(visual-line-mode)
+  :bind
+		(
+			("C-c v" . visual-line-mode)
+  		 )
+  )
+
+(use-package frame
+  :commands
+		(toggle-frame-fullscreen)
+  :bind
+		(
+			("C-c m f" . toggle-frame-fullscreen)
+  		 )
+  )
+
+(use-package executable
+  :hook
+		;; Automatically give executable permissions if file begins with shebang
+		(after-save . executable-make-buffer-file-executable-if-script-p)
+  )
+
+(use-package elec-pair
+  :config
+		;; Enable electric-pair-mode for automatic parens pairing
+		(electric-pair-mode 1)
+  )
+
+(use-package autorevert
+  :config
+		;; Automatically reload changed file in buffer
+		(global-auto-revert-mode t)
+  )
+
+(use-package cc-mode
+  :commands
+		(c-set-style)
+  :hook
+		;; Change code indentation style for C
+		(c-mode . (lambda()
+			(c-set-style "cc-mode")))
+  )
+
+(use-package sh-script
+  :mode
+		("\\.bats\\'" . sh-mode)
+  :custom-face
+		(sh-heredoc ((t (:foreground "color-136" :weight normal))))
+  )
+
+(use-package linum
+  :bind*
+  		(
+			("C-c l" . linum-mode)
+  		 )
+  :custom
+		(linum-format " %3d ")
+  :custom-face
+		(linum ((t (:background "black" :foreground "#6a6a6a" :width condensed))))
+  )
+
+(use-package dired
+  :bind
+		(
+			:map dired-mode-map
+			; Use "C-c e" to edit in dired mode.
+			("C-c e" . wdired-change-to-wdired-mode)
+		 )
+  :config
+		(setq
+			dired-dwim-target t            ; if another Dired buffer is visible in another window, use that directory as target for Rename/Copy
+			dired-recursive-copies 'always         ; "always" means no asking
+			dired-recursive-deletes 'top           ; "top" means ask once for top level directory
+			dired-listing-switches "-lha"          ; human-readable listing
+		)
+		;; if it is not Windows, use the following listing switches to group directories first.
+		(when (not (eq system-type 'windows-nt))
+			(setq dired-listing-switches "-lha --group-directories-first"))
+  :hook
+		;; automatically refresh dired buffer on changes
+		(dired-mode . auto-revert-mode)
+  )
+
+(use-package wdired
+  :config
+		(setq
+			wdired-allow-to-change-permissions t   ; allow to edit permission bits
+			wdired-allow-to-redirect-links t       ; allow to edit symlinks
+		)
+  )
+
+(use-package ibuffer
+  :bind
+  		(
+			("C-x C-b" . ibuffer)
+  		 )
+  :config
+		(setq ibuffer-use-other-window t) ;; always display ibuffer in another window
+  )
+
+(use-package saveplace
+  :config
+		;; saveplace: remembers your location in a file when saving files
+		(toggle-save-place-globally 1)
+  )
+
+(use-package compile
+  :bind*
+  		(
+			("C-c c" . compile)
+  		 )
+  :config
+		(setq compilation-ask-about-save nil          ; Just save before compiling
+			compilation-always-kill t               ; Just kill old compile processes before starting the new one
+			compilation-scroll-output 'first-error) ; Automatically scroll to first
+  )
 
 
 ;; Customize key bindings
