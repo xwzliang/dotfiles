@@ -192,11 +192,13 @@
   			:map evil-normal-state-map
   			("C-n" . neotree-refresh)
   		 )
-  :hook
-  		(neotree-mode . (lambda ()
-  			(define-key evil-normal-state-local-map (kbd "s") 'neotree-enter-vertical-split)
-  			(define-key evil-normal-state-local-map (kbd "S") 'neotree-enter-horizontal-split)
-  		))
+  :config
+		(general-define-key
+			:states 'normal
+			:keymaps 'neotree-mode-map
+  			"s" 'neotree-enter-vertical-split
+  			"S" 'neotree-enter-horizontal-split
+  		 )
   :custom
 		(neo-confirm-create-directory (quote off-p))
 		(neo-confirm-create-file (quote off-p))
