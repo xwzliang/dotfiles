@@ -525,11 +525,6 @@
 (define-key org-mode-map (kbd "M-RET") 'org-insert-todo-heading)
 (define-key org-mode-map (kbd "C-c C-x M-d") 'org-clock-remove-overlays)
 (define-key org-mode-map (kbd "C-c M-o") 'org-mark-ring-goto)
-; Use M-h,j,k,l to move around windows
-(evil-define-key 'normal org-mode-map (kbd "M-h") 'windmove-left)
-(evil-define-key 'normal org-mode-map (kbd "M-l") 'windmove-right)
-(evil-define-key 'normal org-mode-map (kbd "M-j") 'windmove-down)
-(evil-define-key 'normal org-mode-map (kbd "M-k") 'windmove-up)
 ; Change evil default key binding for tab (Only "TAB" works in terminal, "<tab>" not working in terminal, but works in graphic)
 (evil-define-key 'normal org-mode-map (kbd "TAB") 'org-cycle)
 (evil-define-key 'normal org-mode-map (kbd "g j") 'evil-next-visual-line)
@@ -609,11 +604,6 @@
 
 (evil-define-key 'motion org-agenda-mode-map (kbd "D") 'org-agenda-day-view)
 (evil-define-key 'motion org-agenda-mode-map (kbd "W") 'org-agenda-week-view)
-; Use M-h,j,k,l to move around windows
-(evil-define-key 'motion org-agenda-mode-map (kbd "M-h") 'windmove-left)
-(evil-define-key 'motion org-agenda-mode-map (kbd "M-l") 'windmove-right)
-(evil-define-key 'motion org-agenda-mode-map (kbd "M-j") 'windmove-down)
-(evil-define-key 'motion org-agenda-mode-map (kbd "M-k") 'windmove-up)
 
 
 ;; calfw-org calendar framework for org-mode
@@ -822,14 +812,28 @@
 			compilation-scroll-output 'first-error) ; Automatically scroll to first
   )
 
+(use-package windmove
+  :general
+		(
+			;; Enable in evil normal and motion state
+			:states '(normal motion)
+			;; Override all other key bindings
+			:keymaps 'override
+			"M-h" 'windmove-left
+			"M-l" 'windmove-right
+			"M-j" 'windmove-down
+			"M-k" 'windmove-up
+  		 )
+  )
+
 
 ;; Customize key bindings
 
 ; Use M-h,j,k,l to move around windows
-(global-set-key (kbd "M-h") 'windmove-left)
-(global-set-key (kbd "M-l") 'windmove-right)
-(global-set-key (kbd "M-j") 'windmove-down)
-(global-set-key (kbd "M-k") 'windmove-up)
+;; (global-set-key (kbd "M-h") 'windmove-left)
+;; (global-set-key (kbd "M-l") 'windmove-right)
+;; (global-set-key (kbd "M-j") 'windmove-down)
+;; (global-set-key (kbd "M-k") 'windmove-up)
 
 ;; Use tab key to complete
 ;; (global-set-key "\t" 'dabbrev-expand)
