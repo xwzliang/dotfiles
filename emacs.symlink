@@ -625,65 +625,96 @@
 		(evil-org-agenda-set-keys)
   )
 
+(use-package org-expiry
+  :after
+		(org)
+  :config
+		;; Log creation time when a TODO item is added.
+		(org-expiry-insinuate)
+		; Don't have everything in the agenda view
+		(setq org-expiry-inactive-timestamps t)
+  )
 
-;; Log creation time when a TODO item is added.
-(require 'org-expiry)
-(org-expiry-insinuate)
-; Don't have everything in the agenda view
-(setq org-expiry-inactive-timestamps t)
+(use-package calfw
+  )
 
+(use-package calfw-org
+  :after
+		(org calfw)
+  :bind
+  		(
+			("C-c m c" . cfw:open-org-calendar)
+  		 )
+  :config
+		(setq cfw:display-calendar-holidays nil)
+  )
 
+(use-package org-brain
+  :after
+		(org)
+  :hook
+  		(org-brain-visualize-mode . (lambda ()
+  			(evil-set-initial-state 'org-brain-visualize-mode 'emacs)))
+  )
 
-;; calfw-org calendar framework for org-mode
-(require 'calfw-org)
-(setq cfw:display-calendar-holidays nil)
+(use-package org-ref
+  :after
+		(org)
+  :config
+		(setq org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib"))
+  )
 
-
-;; org-brain
-(require 'org-brain)
-(with-eval-after-load 'evil
-    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
-
-
-;; org-ref
-(setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib"))
-(require 'org-ref)
-
-
-;; anki-editor-mode
-(require 'anki-editor)
-(add-hook 'anki-editor-mode-hook
-		  (lambda()
+(use-package anki-editor
+  :after
+		(org org-expiry)
+  :bind
+  		(
+			("C-c m i" . anki-editor-insert-note)
+			("C-c m p" . anki-editor-push-tree)
+			("C-c m P" . anki-editor-push-notes)
+			("C-c m z z" . anki-editor-cloze-dwim)
+			("C-c m z a" . anki-editor-cloze-region-auto-incr)
+			("C-c m z p" . anki-editor-cloze-region-dont-incr)
+			("C-c m z r" . anki-editor-reset-cloze-number)
+  		 )
+  :preface
+		(defun anki-editor-cloze-region-auto-incr (&optional arg)
+			"Cloze region without hint and increase card number."
+			(interactive)
+			(anki-editor-cloze-region my-anki-editor-cloze-number "")
+			(setq my-anki-editor-cloze-number (1+ my-anki-editor-cloze-number))
+			(forward-sexp))
+		(defun anki-editor-cloze-region-dont-incr (&optional arg)
+			"Cloze region without hint using the previous card number."
+			(interactive)
+			(anki-editor-cloze-region (1- my-anki-editor-cloze-number) "")
+			(forward-sexp))
+		(defun anki-editor-reset-cloze-number (&optional arg)
+			"Reset cloze number to ARG or 1"
+			(interactive)
+			(setq my-anki-editor-cloze-number (or arg 1)))
+		(defun anki-editor-push-tree ()
+			"Push all notes under a tree."
+			(interactive)
+			(anki-editor-push-notes '(4))
+			(anki-editor-reset-cloze-number))
+		(defun anki-reload ()
+			(interactive)
+			(unload-feature 'anki-editor)
+			(anki-editor-mode))
+  :config
+		(setq anki-editor-create-decks t) ;; Allow anki-editor to create a new deck if it doesn't exist
+  :hook
+		(find-file . (lambda ()
+			(when (and (stringp buffer-file-name)
+				(string-match "\\.anki\\.org\\'" buffer-file-name))
+				(anki-editor-mode))))
+		(anki-editor-mode . (lambda ()
 			(org-expiry-deinsinuate) 	;; Don't log creation for anki-editor-mode
 			(visual-line-mode)
 			(anki-editor-reset-cloze-number)
-			))
-(setq anki-editor-create-decks t) ;; Allow anki-editor to create a new deck if it doesn't exist
-(defun anki-editor-cloze-region-auto-incr (&optional arg)
-  "Cloze region without hint and increase card number."
-  (interactive)
-  (anki-editor-cloze-region my-anki-editor-cloze-number "")
-  (setq my-anki-editor-cloze-number (1+ my-anki-editor-cloze-number))
-  (forward-sexp))
-(defun anki-editor-cloze-region-dont-incr (&optional arg)
-  "Cloze region without hint using the previous card number."
-  (interactive)
-  (anki-editor-cloze-region (1- my-anki-editor-cloze-number) "")
-  (forward-sexp))
-(defun anki-editor-reset-cloze-number (&optional arg)
-  "Reset cloze number to ARG or 1"
-  (interactive)
-  (setq my-anki-editor-cloze-number (or arg 1)))
-(defun anki-editor-push-tree ()
-    "Push all notes under a tree."
-    (interactive)
-    (anki-editor-push-notes '(4))
-    (anki-editor-reset-cloze-number))
-(defun anki-reload ()
-    (interactive)
-	(unload-feature 'anki-editor)
-	(anki-editor-mode)
-    )
+		))
+  )
 
 
 ;; built-in packages with use-package
@@ -930,14 +961,14 @@
 (global-set-key (kbd "C-c m j") 'my_macro_copy_all_agenda_items_link_to_journal)
 (global-set-key (kbd "C-c m k") 'my_macro_close_checklist_item_and_linked_todo_item)
 ;; anki-editor
-(global-set-key (kbd "C-c m i") 'anki-editor-insert-note)
-(global-set-key (kbd "C-c m p") 'anki-editor-push-tree)
-(global-set-key (kbd "C-c m P") 'anki-editor-push-notes)
-(global-set-key (kbd "C-c m z z") 'anki-editor-cloze-dwim)
-(global-set-key (kbd "C-c m z a") 'anki-editor-cloze-region-auto-incr)
-(global-set-key (kbd "C-c m z p") 'anki-editor-cloze-region-dont-incr)
-(global-set-key (kbd "C-c m z r") 'anki-editor-reset-cloze-number)
+;; (global-set-key (kbd "C-c m i") 'anki-editor-insert-note)
+;; (global-set-key (kbd "C-c m p") 'anki-editor-push-tree)
+;; (global-set-key (kbd "C-c m P") 'anki-editor-push-notes)
+;; (global-set-key (kbd "C-c m z z") 'anki-editor-cloze-dwim)
+;; (global-set-key (kbd "C-c m z a") 'anki-editor-cloze-region-auto-incr)
+;; (global-set-key (kbd "C-c m z p") 'anki-editor-cloze-region-dont-incr)
+;; (global-set-key (kbd "C-c m z r") 'anki-editor-reset-cloze-number)
 
 ;; (global-set-key (kbd "C-c m f") 'toggle-frame-fullscreen)
-(global-set-key (kbd "C-c m c") 'cfw:open-org-calendar)
+;; (global-set-key (kbd "C-c m c") 'cfw:open-org-calendar)
 
