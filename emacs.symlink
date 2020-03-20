@@ -25,9 +25,6 @@
 	auto-save-interval 200 ; number of keystrokes between auto-saves (default: 300)
  )
 
-;; Load macros
-(load-file "~/.emacs.d/macros")
-
 ;; Disable bars
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -718,6 +715,16 @@
 		))
   )
 
+(use-package my_macros
+  :load-path
+		"~/.emacs.d/"
+  :bind
+		(
+			("C-c m j" . my_macro_copy_all_agenda_items_link_to_journal)
+			("C-c m k" . my_macro_close_checklist_item_and_linked_todo_item)
+  		 )
+  )
+
 
 ;; built-in packages with use-package
 
@@ -960,8 +967,8 @@
 ;; (global-set-key (kbd "C-c y") 'helm-yas-complete)
 
 ;; my macros
-(global-set-key (kbd "C-c m j") 'my_macro_copy_all_agenda_items_link_to_journal)
-(global-set-key (kbd "C-c m k") 'my_macro_close_checklist_item_and_linked_todo_item)
+;; (global-set-key (kbd "C-c m j") 'my_macro_copy_all_agenda_items_link_to_journal)
+;; (global-set-key (kbd "C-c m k") 'my_macro_close_checklist_item_and_linked_todo_item)
 ;; anki-editor
 ;; (global-set-key (kbd "C-c m i") 'anki-editor-insert-note)
 ;; (global-set-key (kbd "C-c m p") 'anki-editor-push-tree)
