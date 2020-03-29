@@ -34,6 +34,11 @@ if [[ "$(uname)" == "Linux" ]]; then
 	source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
 
+# Source bash-completion for Mac
+if [[ "$(uname)" == "Darwin" ]]; then
+	[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+fi
+
 # Aliases
 
 alias mount_write_to_HFS="sudo mount -o remount,rw,force"
