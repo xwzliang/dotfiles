@@ -52,3 +52,16 @@ function mdless() {
 	local input_arg="${1:-README.md}"
 	pandoc "$input_arg" | w3m -T text/html
 }
+
+# z set up: jump around easily
+if [ "$(uname)" == "Darwin" ]; then
+	# MacOS
+	z_path=/usr/local/etc/bash_completion.d/z.bash
+else
+	# Ubuntu
+	z_path=/etc/bash_completion.d/z.bash
+fi
+
+if [ -f $z_path ]; then
+	. $z_path
+fi
