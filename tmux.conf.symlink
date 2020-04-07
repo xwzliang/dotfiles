@@ -84,6 +84,7 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'
 ## tmux-continuum enables saving and restoring automaticcaly
 set -g @plugin 'tmux-plugins/tmux-continuum'
 
+set -g @resurrect-dir '~/Dropbox/System/tmux'
 set -g @continuum-restore 'on'
 # Other examples:
 # set -g @plugin 'github_username/plugin_name'
