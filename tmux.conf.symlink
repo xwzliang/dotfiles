@@ -59,9 +59,6 @@ bind-key -T copy-mode-vi 'y' send -X copy-selection
 bind P paste-buffer
 bind p previous-window
 
-unbind r
-bind r source-file ~/.tmux.conf
-
 
 # https://scripter.co/command-to-every-pane-window-session-in-tmux/
 # Send the same command to all panes/windows/sessions using prefix E
