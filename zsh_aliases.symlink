@@ -1,0 +1,13 @@
+# Additional settings for zsh
+
+# ohmyzsh setting
+
+ZSH_THEME="lukerandall"
+
+plugins=(
+	git
+	vi-mode
+	fzf
+	z
+)
+source $ZSH/oh-my-zsh.sh
