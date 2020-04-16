@@ -1,0 +1,38 @@
+# Additional settings for bash and zsh
+
+# Set remote display to let commands use default display
+export DISPLAY=:0
+
+# Set default editor to vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# for virtualenv
+if [ -f virtualenvwrapper.sh ]; then
+	source virtualenvwrapper.sh
+	echo virtualenvwrapper.sh sourced.
+fi
+
+# Set terminal to automatically use tmux, with a tmux session named 'default'
+if [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
+
+# Source custom env file if existed.
+if [ -f $HOME/.all_sh_env ]; then
+	source $HOME/.all_sh_env
+fi
+
+# Aliases
+
+alias mount_write_to_HFS="sudo mount -o remount,rw,force"
+# Use terminal emacs instead of GUI emacs
+alias emacs="emacs -nw"
+alias dropboxd="unset DISPLAY && dropboxd"
+
+# Functions
+
+function mdless() {
+	local input_arg="${1:-README.md}"
+	pandoc "$input_arg" | w3m -T text/html
+}
