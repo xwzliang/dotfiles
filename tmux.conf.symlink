@@ -1,5 +1,6 @@
 set -g default-terminal "xterm-256color"
 
+set-option -g default-shell $SHELL
 
 # Setting the prefix from C-b to C-a
 set -g prefix C-a
