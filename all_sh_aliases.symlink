@@ -18,11 +18,6 @@ if [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
 
-# Source custom env file if existed.
-if [ -f $HOME/.all_sh_env ]; then
-	source $HOME/.all_sh_env
-fi
-
 # Aliases
 
 alias mount_write_to_HFS="sudo mount -o remount,rw,force"
