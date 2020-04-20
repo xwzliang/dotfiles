@@ -18,6 +18,14 @@ if [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
 
+# Setup pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+# make sure eval "$(pyenv init -)" is placed toward the end of the shell configuration file since it manipulates PATH during the initialization
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
 # Aliases
 
 alias mount_write_to_HFS="sudo mount -o remount,rw,force"
