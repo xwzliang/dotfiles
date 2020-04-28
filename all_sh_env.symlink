@@ -3,13 +3,13 @@
 
 my_PATH=(
 	"$HOME/.local/bin"
+	"$HOME/bin"
 )
 
 if [[ "$(uname)" == "Darwin" ]]; then
 	ceedling_path=$(gem which ceedling | sed 's|/lib/ceedling.rb||')
 	export unity_path=$ceedling_path/vendor/unity/src
 	my_PATH+=(
-		"$HOME/bin"
 		"/usr/local/sbin"
 		"/usr/local/bin"
 		"/usr/local/opt/curl/bin"
