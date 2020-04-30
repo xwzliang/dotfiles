@@ -47,6 +47,11 @@ hi VertSplit ctermfg=brown ctermbg=black
 " Remove the pipe | in the vertical border when split
 set fillchars+=vert:\
 
+" Set the color of the status line for gui
+hi StatusLine guifg=#af5f00 guibg=black
+hi StatusLineNC guifg=#af5f00 guibg=black
+hi VertSplit guifg=#af5f00 guibg=black
+
 " Use ctrl+h,j,k,l to navigate through windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
