@@ -9,8 +9,8 @@ filetype plugin on
 
 " Automatically source vimrc on save when editting .vimrc
 augroup myvimrchooks
-	au!
-	autocmd bufwritepost .vimrc source $MYVIMRC
+    au!
+    autocmd bufwritepost .vimrc source $MYVIMRC
 augroup END
 
 
@@ -25,7 +25,7 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checkti
 
 
 " Settings for statusline
-" Always to show statusline 
+" Always to show statusline
 set laststatus=2
 " Define color UserNumber
 hi User1 ctermbg=brown ctermfg=black guibg=black guifg=green
@@ -45,7 +45,7 @@ hi StatusLineNC ctermfg=brown ctermbg=black
 " Set the color of vertical border when split
 hi VertSplit ctermfg=brown ctermbg=black
 " Remove the pipe | in the vertical border when split
-set fillchars+=vert:\ 
+set fillchars+=vert:\
 
 " Use ctrl+h,j,k,l to navigate through windows
 nnoremap <C-h> <C-w>h
@@ -90,7 +90,13 @@ cmap w!! w !sudo tee > /dev/null %
 nnoremap qn :w:bn
 
 " Change default leader key
-let mapleader = ","
+let mapleader = " "
+
+" Use leader+hjkl to jump windows
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
 " For shell script, highlight bash syntax, not POSIX shell.
 let g:is_bash = 1
@@ -98,17 +104,17 @@ let g:is_bash = 1
 " Automatically add shebang and two lines below, then go into insert mode
 " Below command will add shebang if filetype is in shebang_filetype_list
 let shebang_filetype_list=[
-	\ 'python3',
-	\ 'bash',
-	\ 'bats',
+    \ 'python3',
+    \ 'bash',
+    \ 'bats',
 \ ]
 autocmd BufNewFile * if (index(shebang_filetype_list, &filetype)>=0) | execute 'silent! 1s/.*/#!\/usr\/bin\/env ' . &filetype . '\r\r'| :startinsert | endif
 
 " automatically give executable permissions if file begins with shebang
 function MakeScriptExecuteable()
-	if getline(1) =~ "^#!.*/bin/"
-	silent !chmod +x %
-	endif
+    if getline(1) =~ "^#!.*/bin/"
+    silent !chmod +x %
+    endif
 endfunction
 
 au BufWritePost * call MakeScriptExecuteable()
@@ -122,17 +128,17 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 
 
 " Nerdcommenter
-let g:NERDCustomDelimiters = { 
-	\ 'bash': { 'left': '#','right': '' },
-	\ 'bats': { 'left': '#','right': '' },
-	\ 'python3': { 'left': '#','right': '' },
+let g:NERDCustomDelimiters = {
+    \ 'bash': { 'left': '#','right': '' },
+    \ 'bats': { 'left': '#','right': '' },
+    \ 'python3': { 'left': '#','right': '' },
 \ }
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
 
 " NerdTree
-" open NERDTree with Ctrl+n 
+" open NERDTree with Ctrl+n
 map <C-n> :NERDTreeToggle<CR>
 
 
@@ -143,5 +149,5 @@ let g:ctrlp_cmdpalette_execute = 1
 
 " fzf Linux
 if system('uname') == "Linux\n"
-	source /usr/share/doc/fzf/examples/fzf.vim
+    source /usr/share/doc/fzf/examples/fzf.vim
 endif
