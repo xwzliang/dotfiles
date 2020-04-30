@@ -98,6 +98,16 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 
+" Use leader+d/u to scroll down and up
+nnoremap <leader>d <C-d>
+nnoremap <leader>u <C-u>
+
+" swap ; : key
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
+
 " For shell script, highlight bash syntax, not POSIX shell.
 let g:is_bash = 1
 
