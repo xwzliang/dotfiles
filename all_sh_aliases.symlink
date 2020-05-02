@@ -9,13 +9,18 @@ export EDITOR="$VISUAL"
 
 # for virtualenv
 if [ -f virtualenvwrapper.sh ]; then
-	source virtualenvwrapper.sh
-	echo virtualenvwrapper.sh sourced.
+    source virtualenvwrapper.sh
+    echo virtualenvwrapper.sh sourced.
 fi
 
 # Set terminal to automatically use tmux, with a tmux session named 'default'
 if [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
+fi
+
+# Nix
+if [ -e /home/broliang/.nix-profile/etc/profile.d/nix.sh ]; then
+    source /home/broliang/.nix-profile/etc/profile.d/nix.sh
 fi
 
 # Setup pyenv
@@ -36,6 +41,6 @@ alias dropboxd="unset DISPLAY && dropboxd"
 # Functions
 
 function mdless() {
-	local input_arg="${1:-README.md}"
-	pandoc "$input_arg" | w3m -T text/html
+    local input_arg="${1:-README.md}"
+    pandoc "$input_arg" | w3m -T text/html
 }
