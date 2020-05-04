@@ -15,7 +15,10 @@ fi
 
 # Set terminal to automatically use tmux, with a tmux session named 'default'
 if [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
+    # Only run tmux for interactive shell
+    if [[ $- == *i* ]]; then
+        tmux attach -t default || tmux new -s default
+    fi
 fi
 
 # Nix
