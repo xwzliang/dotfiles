@@ -8,18 +8,19 @@ ZSH_THEME="lukerandall"
 ENABLE_CORRECTION="true"
 
 plugins=(
-	git
-	vi-mode
-	fzf
-	z
-	sudo
-	ripgrep
-	zsh-interactive-cd			# This plugin adds a fish-like interactive tab completion for the cd command
-	cp                          # This plugin defines a cpv function that uses rsync so that you get the features and security of this command
-	dircycle                    # cycle through your directory stack left or right
-	extract                     # This plugin defines a function called extract (or x in short) that extracts the archive file you pass it, and it supports a wide variety of archive filetypes.
-	python
-	emacs
+    git
+    vi-mode
+    fzf
+    z
+    sudo
+    ripgrep
+    zsh-interactive-cd			# This plugin adds a fish-like interactive tab completion for the cd command
+    cp                          # This plugin defines a cpv function that uses rsync so that you get the features and security of this command
+    dircycle                    # cycle through your directory stack left or right
+    extract                     # This plugin defines a function called extract (or x in short) that extracts the archive file you pass it, and it supports a wide variety of archive filetypes.
+    python
+    emacs
+    zsh-autosuggestions			# Fish-like autosuggestions for zsh
 )
 
 # Use alt+h/l to dircycle
@@ -27,14 +28,14 @@ bindkey 'h' insert-cycledleft
 bindkey 'l' insert-cycledright
 
 if [[ "$(uname)" == "Darwin" ]]; then
-	plugins+=(
-		gnu-utils               # This plugin binds GNU coreutils to their default names, so that you don't have to call them using their prefixed name, which starts with g
-	)
+    plugins+=(
+        gnu-utils               # This plugin binds GNU coreutils to their default names, so that you don't have to call them using their prefixed name, which starts with g
+    )
 else
-	# Ubuntu
-	plugins+=(
-		ubuntu
-	)
+    # Ubuntu
+    plugins+=(
+        ubuntu
+    )
 fi
 
 source $ZSH/oh-my-zsh.sh
