@@ -13,9 +13,11 @@ set -g status-justify centre
 
 # Enable activity alerts in the status line
 # monitor-activity highlights the window name in the status line when there's activity in that window
-setw -g monitor-activity on
+# setw -g monitor-activity on
+setw -g monitor-activity off
 # visual-activity tells tmux to show a message in the status line
-set -g visual-activity on
+# set -g visual-activity on
+set -g visual-activity off
 
 # Use prefix ctrl-h and prefix ctrl-l to cycle through the windows, -r means let the command be repeatable within a given window of time, default repeat-time limit is 500 miliseconds and can be changed by repeat-time option
 bind -r C-h select-window -t :-
