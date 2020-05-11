@@ -1,35 +1,35 @@
-
 # Environment variables
 
 my_PATH=(
-	"$HOME/.local/bin"
-	"$HOME/bin"
+    "$HOME/.local/bin"
+    "$HOME/bin"
+    "$HOME/.cask/bin"
 )
 
 if [[ "$(uname)" == "Darwin" ]]; then
-	ceedling_path=$(gem which ceedling | sed 's|/lib/ceedling.rb||')
-	export unity_path=$ceedling_path/vendor/unity/src
-	my_PATH+=(
-		"/usr/local/sbin"
-		"/usr/local/bin"
-		"/usr/local/opt/curl/bin"
-		"/usr/local/opt/ruby/bin"
-		"$ceedling_path/bin"
-	)
-	# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-	# export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-	# export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-	# export PATH="/usr/local/opt/gawk/libexec/gnubin:$PATH"
-	# export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-	# export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+    ceedling_path=$(gem which ceedling | sed 's|/lib/ceedling.rb||')
+    export unity_path=$ceedling_path/vendor/unity/src
+    my_PATH+=(
+        "/usr/local/sbin"
+        "/usr/local/bin"
+        "/usr/local/opt/curl/bin"
+        "/usr/local/opt/ruby/bin"
+        "$ceedling_path/bin"
+    )
+    # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    # export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+    # export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    # export PATH="/usr/local/opt/gawk/libexec/gnubin:$PATH"
+    # export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+    # export PATH="/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 else
-	export unity_path=`find /var/lib/gems/ -type d -name "unity" | grep -v cmock | head -1`/src
-	my_PATH+=(
-		"/snap/bin"
-	)
+    export unity_path=`find /var/lib/gems/ -type d -name "unity" | grep -v cmock | head -1`/src
+    my_PATH+=(
+        "/snap/bin"
+    )
 fi
 
 for my_path in "${my_PATH[@]}"; do
-	# Add to PATH only if not included already
-	[[ ":$PATH:" != *":$my_path:"* ]] && PATH="$my_path:${PATH}"
+    # Add to PATH only if not included already
+    [[ ":$PATH:" != *":$my_path:"* ]] && export PATH="$my_path:${PATH}"
 done
