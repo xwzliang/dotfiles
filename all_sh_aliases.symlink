@@ -45,6 +45,8 @@ alias mount_write_to_HFS="sudo mount -o remount,rw,force"
 # Use terminal emacs instead of GUI emacs
 alias emacs="emacs -nw"
 alias de="emacs --daemon"
+alias dek="emacsclient -e '(kill-emacs)'"
+alias der="emacsclient -e '(kill-emacs)' && emacs --daemon"
 alias dropboxd="unset DISPLAY && dropboxd"
 alias t="tmux attach -t default"
 
