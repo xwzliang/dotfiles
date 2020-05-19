@@ -27,6 +27,15 @@ else
     my_PATH+=(
         "/snap/bin"
     )
+    # For homebrew linux
+    # This is the result of following command, with $SHELL exported as /bin/bash
+    # eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+    export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+    export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+    export PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin${PATH+:$PATH}";
+    export MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:";
+    export INFOPATH="/home/linuxbrew/.linuxbrew/share/info${INFOPATH+:$INFOPATH}";
 fi
 
 for my_path in "${my_PATH[@]}"; do
