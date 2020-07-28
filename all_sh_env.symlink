@@ -1,9 +1,14 @@
 # Environment variables
 
+# Spark
+export SPARK_HOME=/opt/spark
+
 my_PATH=(
     "$HOME/.local/bin"
     "$HOME/bin"
     "$HOME/.cask/bin"
+    "$SPARK_HOME/bin"
+    "$SPARK_HOME/sbin"
 )
 
 if [[ "$(uname)" == "Darwin" ]]; then
