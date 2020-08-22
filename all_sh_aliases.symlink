@@ -39,9 +39,12 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# sdk
+source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 # Aliases
 
-# alias mount_write_to_HFS="sudo mount -o remount,rw,force"
+alias mount_write_to_HFS="sudo mount -o remount,rw,force"
 # Use terminal emacs instead of GUI emacs
 alias emacs="emacs -nw"
 alias de="emacs --daemon"
