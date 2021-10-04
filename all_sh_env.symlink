@@ -3,12 +3,16 @@
 # Spark
 export SPARK_HOME=/opt/spark
 
+# Go
+export GOPATH=$HOME/go
+
 my_PATH=(
     "$HOME/.local/bin"
     "$HOME/bin"
     "$HOME/.cask/bin"
     "$SPARK_HOME/bin"
     "$SPARK_HOME/sbin"
+    "$GOPATH/bin"
 )
 
 if [[ "$(uname)" == "Darwin" ]]; then
