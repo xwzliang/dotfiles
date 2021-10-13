@@ -1,0 +1,5 @@
+set pages-per-row 1
+# set statusbar-h-padding 0
+# set statusbar-v-padding 0
+map u scroll half-up
+map d scroll half-down
