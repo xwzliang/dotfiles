@@ -3,6 +3,9 @@
 # For a colored prompt
 # force_color_prompt=yes
 
+# Allow rm !(survivior.txt), delete all files except survivior.txt.
+shopt -s extglob
+
 # Enable vi mode for bash
 set -o vi
 

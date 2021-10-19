@@ -2,9 +2,12 @@
 
 # ohmyzsh setting
 
+# Allow rm ^survivior.txt, delete all files except survivior.txt.
+setopt extended_glob
+
 ZSH_THEME="lukerandall"
 
-# Uncomment the following line to enable command auto-correction.
+# enable command auto-correction.
 ENABLE_CORRECTION="true"
 
 plugins=(
