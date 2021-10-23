@@ -1,5 +1,8 @@
 # Additional settings for bash and zsh
 
+# Use english time format
+export LC_TIME="en_US.UTF-8"
+
 # Set remote display to let commands use default display
 export DISPLAY=:0
 
