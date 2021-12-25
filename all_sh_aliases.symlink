@@ -10,10 +10,11 @@ export DISPLAY=:0
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# Don't use xmodmap, this won't work on newer ubuntu version. Use evdev file instead
 # for xmodmap to change keyboard map
-if [ -f ~/.Xmodmap ]; then
-    xmodmap ~/.Xmodmap
-fi
+# if [ -f ~/.Xmodmap ]; then
+#     xmodmap ~/.Xmodmap
+# fi
 
 # for virtualenv
 if [ -f virtualenvwrapper.sh ]; then
