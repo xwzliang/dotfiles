@@ -1,0 +1,16 @@
+.CaretBrowsing_Caret {
+    /* position: absolute; */
+    /* z-index: 2147483647; */
+    /* min-height: 1em; */
+    /* min-width: 0.2em; */
+    /* animation: blink 1s step-end infinite; */
+    /* --inherited-color: inherit; */
+    /* background-color: var(--inherited-color, #0); */
+    /* color: var(--inherited-color, #0); */
+    /* mix-blend-mode: difference; */
+    /* filter: invert(45%); */
+    min-width: 0.4em;
+    background-color: #ffa500;
+    color: #ffa500;
+    filter: invert(0%);
+}
