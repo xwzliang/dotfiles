@@ -23,12 +23,12 @@ if [ -f virtualenvwrapper.sh ]; then
 fi
 
 # Set terminal to automatically use tmux, with a tmux session named 'default'
-if [ -z "$TMUX" ]; then
-    # Only run tmux for interactive shell
-    if [[ $- == *i* ]]; then
-        tmux attach -t default || tmux new -s default
-    fi
-fi
+# if [ -z "$TMUX" ]; then
+#     # Only run tmux for interactive shell
+#     if [[ $- == *i* ]]; then
+#         tmux attach -t default || tmux new -s default
+#     fi
+# fi
 
 # Nix
 if [ -e /home/broliang/.nix-profile/etc/profile.d/nix.sh ]; then
@@ -55,13 +55,13 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 alias mount_write_to_HFS="sudo mount -o remount,rw,force"
 # Use terminal emacs instead of GUI emacs
-alias emacs="emacs -nw"
+alias e="emacs -nw"
 alias de="emacs --daemon"
 alias dek="emacsclient -e '(kill-emacs)'"
 alias der="emacsclient -e '(kill-emacs)' && emacs --daemon"
 alias te="emacsclient -nw"
 alias dropboxd="unset DISPLAY && dropboxd"
-alias t="tmux attach -t default"
+alias t="tmux attach -t default || tmux new -s default"
 
 # Functions
 
