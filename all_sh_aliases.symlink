@@ -16,6 +16,11 @@ export EDITOR="$VISUAL"
 #     xmodmap ~/.Xmodmap
 # fi
 
+# Source custom env file if existed.
+if [ -f $HOME/.all_sh_env ]; then
+	source $HOME/.all_sh_env
+fi
+
 # for virtualenv
 if [ -f virtualenvwrapper.sh ]; then
     source virtualenvwrapper.sh
