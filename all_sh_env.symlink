@@ -13,6 +13,7 @@ my_PATH=(
     "$SPARK_HOME/bin"
     "$SPARK_HOME/sbin"
     "$GOPATH/bin"
+    "$HOME/git/Downloads/flutter/bin"
 )
 
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -26,6 +27,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
         "/usr/local/opt/ruby/bin"
         "$ceedling_path/bin"
         "$GEM_HOME/bin"
+        "$HOME/Library/Android/sdk/emulator"
     )
     # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     # export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
@@ -37,7 +39,6 @@ else
     export unity_path=`find /var/lib/gems/ -type d -name "unity" | grep -v cmock | head -1`/src
     my_PATH+=(
         "/snap/bin"
-        "$HOME/git/Downloads/flutter/bin"
     )
     # For homebrew linux
     # This is the result of following command, with $SHELL exported as /bin/bash
