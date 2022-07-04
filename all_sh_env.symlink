@@ -13,17 +13,21 @@ my_PATH=(
     "$SPARK_HOME/bin"
     "$SPARK_HOME/sbin"
     "$GOPATH/bin"
+    "$HOME/git/Downloads/flutter/bin"
 )
 
 if [[ "$(uname)" == "Darwin" ]]; then
     ceedling_path=$(gem which ceedling | sed 's|/lib/ceedling.rb||')
     export unity_path=$ceedling_path/vendor/unity/src
+    export GEM_HOME=$HOME/.gem
     my_PATH+=(
         "/usr/local/sbin"
         "/usr/local/bin"
         "/usr/local/opt/curl/bin"
         "/usr/local/opt/ruby/bin"
         "$ceedling_path/bin"
+        "$GEM_HOME/bin"
+        "$HOME/Library/Android/sdk/emulator"
     )
     # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     # export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"

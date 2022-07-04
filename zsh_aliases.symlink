@@ -22,7 +22,7 @@ plugins=(
     dircycle                    # cycle through your directory stack left or right
     extract                     # This plugin defines a function called extract (or x in short) that extracts the archive file you pass it, and it supports a wide variety of archive filetypes.
     python
-    emacs
+    # emacs
     zsh-autosuggestions			# Fish-like autosuggestions for zsh
 )
 

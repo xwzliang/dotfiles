@@ -54,6 +54,7 @@ set-option -g renumber-windows on
 setw -g mode-keys vi
 # Use prefix escape to enter copy mode
 bind Escape copy-mode
+bind '`' copy-mode
 # Use v to start visual mode
 bind-key -T copy-mode-vi 'v' send -X begin-selection
 # Use y to yank text into the buffer

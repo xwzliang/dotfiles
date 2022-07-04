@@ -9,11 +9,6 @@ shopt -s extglob
 # Enable vi mode for bash
 set -o vi
 
-# Source custom env file if existed.
-if [ -f $HOME/.all_sh_env ]; then
-	source $HOME/.all_sh_env
-fi
-
 # Source fzf key binding for Ubuntu
 if [[ "$(uname)" == "Linux" ]]; then
 	source /usr/share/doc/fzf/examples/key-bindings.bash
