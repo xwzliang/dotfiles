@@ -1,15 +1,11 @@
 Host imac
-    HostName 192.168.1.200
+    HostName 192.168.5.200
     User broliang
 
 Host macbook
-    HostName 192.168.1.201
+    HostName 192.168.5.201
     User broliang
 
 Host box
-    HostName 192.168.1.202
-    User broliang
-
-Host guix
-    HostName 192.168.1.203
+    HostName 192.168.5.202
     User broliang
