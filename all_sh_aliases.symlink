@@ -87,3 +87,9 @@ vterm_printf(){
         printf "\e]%s\e\\" "$1"
     fi
 }
+
+# miniconda
+if [ -f $HOME/miniconda3/bin/activate ]; then
+	source $HOME/miniconda3/bin/activate
+fi
+
