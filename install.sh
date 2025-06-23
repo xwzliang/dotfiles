@@ -28,4 +28,23 @@ for config_file in $dir/*symlink*; do
     fi
 done
 
+# source files
+#!/bin/bash
+
+FILES=($HOME/.bashrc $HOME/.zshrc)
+LINE='source ~/.all_sh_aliases'
+
+for file in "${FILES[@]}"; do
+    if [ -f "$file" ]; then
+        if ! grep -Fxq "$LINE" "$file"; then
+            echo "$LINE" >> "$file"
+            echo "Added '$LINE' to $file"
+        else
+            echo "'$LINE' already exists in $file"
+        fi
+    else
+        echo "$file does not exist"
+    fi
+done
+
 echo "Finished"
