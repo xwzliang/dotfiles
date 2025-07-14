@@ -54,7 +54,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # sdk
-source "$HOME/.sdkman/bin/sdkman-init.sh"
+if [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
+	source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
 
 # Aliases
 
@@ -87,3 +89,9 @@ vterm_printf(){
         printf "\e]%s\e\\" "$1"
     fi
 }
+
+# miniconda
+if [ -f $HOME/miniconda3/bin/activate ]; then
+	source $HOME/miniconda3/bin/activate
+fi
+
