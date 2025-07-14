@@ -1,3 +1,11 @@
+Host daily
+    HostName daily
+    User broliang
+
+Host pve-ubuntu.local
+    HostName pve-ubuntu.local
+    User broliang
+
 Host imac
     HostName 192.168.5.200
     User broliang

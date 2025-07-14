@@ -14,6 +14,8 @@ my_PATH=(
     "$SPARK_HOME/sbin"
     "$GOPATH/bin"
     "$HOME/git/Downloads/flutter/bin"
+    "$HOME/.cargo/env"
+    "$HOME/.local/share/solana/install/active_release/bin"
 )
 
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -28,7 +30,21 @@ if [[ "$(uname)" == "Darwin" ]]; then
         "$ceedling_path/bin"
         "$GEM_HOME/bin"
         "$HOME/Library/Android/sdk/emulator"
+        "/usr/local/anaconda3/bin"
     )
+    # <<< conda initialize <<<
+    __conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/usr/local/anaconda3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+
     # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     # export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
     # export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
