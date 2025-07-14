@@ -31,6 +31,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
         "$GEM_HOME/bin"
         "$HOME/Library/Android/sdk/emulator"
         "/usr/local/anaconda3/bin"
+        "/Applications/Docker.app/Contents/Resources/bin"
     )
     # different path for intel and apple silicon mac
     if [[ -d "/opt/homebrew/bin" ]]; then
