@@ -13,7 +13,7 @@ setopt extended_glob
 ZSH_THEME="lukerandall"
 
 # enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 plugins=(
     git
