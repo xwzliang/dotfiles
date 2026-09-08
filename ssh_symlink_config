@@ -1,13 +1,17 @@
-Host daily
-    HostName daily
+Host daily.local
+    HostName daily.local
     User broliang
 
 Host pve-ubuntu.local
     HostName pve-ubuntu.local
     User broliang
 
+Host *
+    UseKeychain yes
+    AddKeysToAgent yes
+
 Host imac
-    HostName 192.168.5.200
+    HostName imac.local
     User broliang
 
 Host macbook
