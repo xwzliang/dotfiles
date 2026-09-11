@@ -1,8 +1,8 @@
-Host daily.local
+Host daily
     HostName daily.local
     User broliang
 
-Host pve-ubuntu.local
+Host server
     HostName pve-ubuntu.local
     User broliang
 
@@ -12,6 +12,10 @@ Host *
 
 Host imac
     HostName imac.local
+    User broliang
+
+Host ha
+    HostName homeassistant.local
     User broliang
 
 Host macbook
