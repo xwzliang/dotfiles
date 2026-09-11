@@ -17,6 +17,7 @@ Host imac
 Host ha
     HostName homeassistant.local
     User broliang
+    AddressFamily inet
 
 Host macbook
     HostName 192.168.5.201
