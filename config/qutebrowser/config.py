@@ -58,7 +58,7 @@ c.zoom.default = '200%'
 
 c.fonts.default_size = '20pt'
 
-c.content.user_stylesheets = '~/git/dotfiles/qutebrowser_user_stylesheets.css'
+c.content.user_stylesheets = '~/.config/qutebrowser/user_stylesheets.css'
 
 # key binding in insert mode
 config.bind('<Ctrl-l>', 'fake-key <Right>', mode='insert')
