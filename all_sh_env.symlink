@@ -19,20 +19,25 @@ my_PATH=(
 )
 
 if [[ "$(uname)" == "Darwin" ]]; then
-    ceedling_path=$(gem which ceedling | sed 's|/lib/ceedling.rb||')
-    export unity_path=$ceedling_path/vendor/unity/src
     export GEM_HOME=$HOME/.gem
     my_PATH+=(
         "/usr/local/sbin"
         "/usr/local/bin"
         "/usr/local/opt/curl/bin"
         "/usr/local/opt/ruby/bin"
-        "$ceedling_path/bin"
         "$GEM_HOME/bin"
         "$HOME/Library/Android/sdk/emulator"
         "/usr/local/anaconda3/bin"
         "/Applications/Docker.app/Contents/Resources/bin"
     )
+    if command -v gem >/dev/null 2>&1; then
+        ceedling_rb=$(gem which ceedling 2>/dev/null)
+        if [[ -n "$ceedling_rb" ]]; then
+            ceedling_path="${ceedling_rb%/lib/ceedling.rb}"
+            export unity_path="$ceedling_path/vendor/unity/src"
+            my_PATH+=("$ceedling_path/bin")
+        fi
+    fi
     # different path for intel and apple silicon mac
     if [[ -d "/opt/homebrew/bin" ]]; then
         brew_install_path=/opt/homebrew
