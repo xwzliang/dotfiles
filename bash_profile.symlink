@@ -1,1 +1,2 @@
 source ~/.all_sh_aliases
+. "$HOME/.cargo/env"
