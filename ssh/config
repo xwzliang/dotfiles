@@ -1,3 +1,8 @@
+Host *
+	IgnoreUnknown UseKeychain
+    UseKeychain yes
+    AddKeysToAgent yes
+
 Host daily
     HostName daily.local
     User broliang
@@ -5,10 +10,6 @@ Host daily
 Host server
     HostName pve-ubuntu.local
     User broliang
-
-Host *
-    UseKeychain yes
-    AddKeysToAgent yes
 
 Host imac
     HostName imac.local
