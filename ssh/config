@@ -7,6 +7,10 @@ Host daily
     HostName daily.local
     User broliang
 
+Host pve
+    HostName broliang-pve.local
+    User root
+
 Host server
     HostName pve-ubuntu.local
     User broliang
