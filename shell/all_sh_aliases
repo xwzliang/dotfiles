@@ -69,6 +69,7 @@ alias der="emacsclient -e '(kill-emacs)' && emacs --daemon"
 alias te="emacsclient -nw"
 alias dropboxd="unset DISPLAY && dropboxd"
 alias t="tmux attach -t default || tmux new -s default"
+alias mysync="rsync -avh --progress --bwlimit=80000"
 
 # Functions
 
@@ -95,3 +96,12 @@ if [ -f $HOME/miniconda3/bin/activate ]; then
 	source $HOME/miniconda3/bin/activate
 fi
 
+
+# Antigravity CLI SSH session keyring fix
+if [ -n "$SSH_CONNECTION" ] || [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  agy() {
+    env -u SSH_CONNECTION -u SSH_CLIENT -u SSH_TTY \
+      DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=/run/user/$(id -u)/bus}" \
+      "$(which -p agy.real 2>/dev/null || which -p agy 2>/dev/null || which agy)" "$@"
+  }
+fi
