@@ -1,5 +1,5 @@
 Host *
-	IgnoreUnknown UseKeychain
+    IgnoreUnknown UseKeychain
     UseKeychain yes
     AddKeysToAgent yes
 
@@ -27,6 +27,10 @@ Host ha
 Host omv
     HostName omv.local
     User root
+
+Host macbookair
+    HostName zouzijiandebijibendiannao.local
+    User broliang
 
 Host macbook
     HostName 192.168.5.201
