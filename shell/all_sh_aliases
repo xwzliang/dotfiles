@@ -69,7 +69,8 @@ alias der="emacsclient -e '(kill-emacs)' && emacs --daemon"
 alias te="emacsclient -nw"
 alias dropboxd="unset DISPLAY && dropboxd"
 alias t="tmux attach -t default || tmux new -s default"
-alias mysync="rsync -rtWh --info=progress2 --stats"
+# Use per-file progress for compatibility with macOS's bundled rsync.
+alias mysync="rsync -rtWh --progress --stats"
 
 # Functions
 
