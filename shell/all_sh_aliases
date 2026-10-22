@@ -18,7 +18,7 @@ export EDITOR="$VISUAL"
 
 # Source custom env file if existed.
 if [ -f $HOME/.all_sh_env ]; then
-	source $HOME/.all_sh_env
+    source $HOME/.all_sh_env
 fi
 
 # for virtualenv
@@ -55,7 +55,7 @@ fi
 
 # sdk
 if [ -f "$HOME/.sdkman/bin/sdkman-init.sh" ]; then
-	source "$HOME/.sdkman/bin/sdkman-init.sh"
+    source "$HOME/.sdkman/bin/sdkman-init.sh"
 fi
 
 # Aliases
@@ -69,7 +69,7 @@ alias der="emacsclient -e '(kill-emacs)' && emacs --daemon"
 alias te="emacsclient -nw"
 alias dropboxd="unset DISPLAY && dropboxd"
 alias t="tmux attach -t default || tmux new -s default"
-alias mysync="rsync -avh --progress --bwlimit=80000"
+alias mysync="rsync -rtWh --info=progress2 --stats"
 
 # Functions
 
@@ -93,7 +93,7 @@ vterm_printf(){
 
 # miniconda
 if [ -f $HOME/miniconda3/bin/activate ]; then
-	source $HOME/miniconda3/bin/activate
+    source $HOME/miniconda3/bin/activate
 fi
 
 
