@@ -6,6 +6,8 @@ Clean, organized dotfiles configuration with automated symlink management.
 
 ```
 dotfiles/
+├── agents/
+│   └── AGENTS.md        # Shared global instructions for Codex, Antigravity, Claude
 ├── config/              # Directly maps to ~/.config/
 │   ├── browsh/          # browsh config.toml
 │   ├── fish/            # fish shell config and prompt functions
@@ -45,6 +47,20 @@ All configurations in `$HOME` are symbolic links pointing directly to the files 
 - `git status` in this repository shows any changes made from either location.
 
 ## Management Script
+
+Global agent instructions share one source, `agents/AGENTS.md`, initially copied
+from the existing Codex instructions. The installer links it to:
+
+- Codex: `~/.codex/AGENTS.md`
+- Antigravity: `~/.gemini/GEMINI.md`
+- Claude Code: `~/.claude/CLAUDE.md`
+
+Editing any of these links updates the shared instructions for all three tools.
+Tool-specific instructions apply when the named tools are available.
+Existing regular files are backed up as `<filename>.bak-<timestamp>` before
+linking; review those backups for any machine-specific instructions to retain.
+The `status` and `unlink` commands include these files. Unlinking preserves the
+repository source and backups but does not restore backups automatically.
 
 `./install.sh` manages all symlinks:
 

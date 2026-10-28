@@ -14,6 +14,11 @@ NC='\033[0m'
 
 # Declare all managed mappings: "source_relative_to_repo:target_relative_to_home"
 MAPPINGS=(
+    # Shared global AI agent instructions
+    "agents/AGENTS.md:.codex/AGENTS.md"
+    "agents/AGENTS.md:.gemini/GEMINI.md"
+    "agents/AGENTS.md:.claude/CLAUDE.md"
+
     # Shell
     "shell/all_sh_aliases:.all_sh_aliases"
     "shell/all_sh_env:.all_sh_env"
