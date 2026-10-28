@@ -7,7 +7,10 @@ Clean, organized dotfiles configuration with automated symlink management.
 ```
 dotfiles/
 ├── agents/
-│   └── AGENTS.md        # Shared global instructions for Codex, Antigravity, Claude
+│   ├── AGENTS.md        # Shared global instructions
+│   ├── codex.md         # Codex-only instructions
+│   ├── antigravity.md   # Antigravity-only instructions
+│   └── claude.md        # Claude-only instructions
 ├── config/              # Directly maps to ~/.config/
 │   ├── browsh/          # browsh config.toml
 │   ├── fish/            # fish shell config and prompt functions
@@ -48,19 +51,31 @@ All configurations in `$HOME` are symbolic links pointing directly to the files 
 
 ## Management Script
 
-Global agent instructions share one source, `agents/AGENTS.md`, initially copied
-from the existing Codex instructions. The installer links it to:
+Global agent instructions use shared rules plus a separate file for each agent:
 
-- Codex: `~/.codex/AGENTS.md`
-- Antigravity: `~/.gemini/GEMINI.md`
-- Claude Code: `~/.claude/CLAUDE.md`
+| Edit this source | Applies to |
+| --- | --- |
+| `agents/AGENTS.md` | All three agents |
+| `agents/codex.md` | Codex only |
+| `agents/antigravity.md` | Antigravity only |
+| `agents/claude.md` | Claude Code only |
 
-Editing any of these links updates the shared instructions for all three tools.
-Tool-specific instructions apply when the named tools are available.
-Existing regular files are backed up as `<filename>.bak-<timestamp>` before
-linking; review those backups for any machine-specific instructions to retain.
-The `status` and `unlink` commands include these files. Unlinking preserves the
-repository source and backups but does not restore backups automatically.
+After editing a source, run `./install.sh link`. It combines the shared rules
+with each agent's own rules into `agents/generated/<agent>.md` and links:
+
+- `~/.codex/AGENTS.md` → generated `codex.md`
+- `~/.gemini/GEMINI.md` → generated `antigravity.md`
+- `~/.claude/CLAUDE.md` → generated `claude.md`
+
+Generated files are ignored by Git. Do not edit the installed instruction links
+or generated files directly: the next install replaces their contents. This is
+an exception to the two-way editing behavior of the other dotfiles.
+Run the installer after pulling source changes on another machine as well.
+
+Existing regular files receive timestamped backups before linking. Existing
+links from the earlier shared-file setup are migrated automatically. `status`
+and `unlink` include all three links; unlinking leaves sources, generated files,
+and backups intact. Backups are not restored automatically.
 
 `./install.sh` manages all symlinks:
 
