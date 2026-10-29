@@ -10,7 +10,8 @@ dotfiles/
 │   ├── AGENTS.md        # Shared global instructions
 │   ├── codex.md         # Codex-only instructions
 │   ├── antigravity.md   # Antigravity-only instructions
-│   └── claude.md        # Claude-only instructions
+│   ├── claude.md        # Claude-only instructions
+│   └── opencode.md      # OpenCode-only instructions
 ├── config/              # Directly maps to ~/.config/
 │   ├── browsh/          # browsh config.toml
 │   ├── fish/            # fish shell config and prompt functions
@@ -55,10 +56,11 @@ Global agent instructions use shared rules plus a separate file for each agent:
 
 | Edit this source | Applies to |
 | --- | --- |
-| `agents/AGENTS.md` | All three agents |
+| `agents/AGENTS.md` | All four agents |
 | `agents/codex.md` | Codex only |
 | `agents/antigravity.md` | Antigravity only |
 | `agents/claude.md` | Claude Code only |
+| `agents/opencode.md` | OpenCode only |
 
 After editing a source, run `./install.sh link`. It combines the shared rules
 with each agent's own rules into `agents/generated/<agent>.md` and links:
@@ -66,6 +68,7 @@ with each agent's own rules into `agents/generated/<agent>.md` and links:
 - `~/.codex/AGENTS.md` → generated `codex.md`
 - `~/.gemini/GEMINI.md` → generated `antigravity.md`
 - `~/.claude/CLAUDE.md` → generated `claude.md`
+- `~/.config/opencode/AGENTS.md` → generated `opencode.md`
 
 Generated files are ignored by Git. Do not edit the installed instruction links
 or generated files directly: the next install replaces their contents. This is
@@ -74,7 +77,7 @@ Run the installer after pulling source changes on another machine as well.
 
 Existing regular files receive timestamped backups before linking. Existing
 links from the earlier shared-file setup are migrated automatically. `status`
-and `unlink` include all three links; unlinking leaves sources, generated files,
+and `unlink` include all four links; unlinking leaves sources, generated files,
 and backups intact. Backups are not restored automatically.
 
 `./install.sh` manages all symlinks:
