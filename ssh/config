@@ -19,6 +19,14 @@ Host imac
     HostName imac.local
     User broliang
 
+Host macminim4
+    HostName macminim4.local
+    User broliang
+
+Host macminim2
+    HostName macminim2.local
+    User broliang
+
 Host ha
     HostName homeassistant.local
     User broliang
