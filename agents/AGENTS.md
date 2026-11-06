@@ -1,5 +1,12 @@
 # Agent Guidelines
 
+## Run large pytest suites in parallel
+
+For large pytest suites, prefer `pytest -n auto` with `pytest-xdist` when the
+plugin is available and the suite supports parallel execution. Follow any
+repository-specific test instructions and run tests that require serial
+execution without xdist.
+
 ## Automatically commit completed work
 
 Use judgment to commit code changes automatically when a coherent fix or feature
