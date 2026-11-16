@@ -59,45 +59,45 @@ Follow the repository's enforced convention; otherwise use:
 
 ## Git synchronization and publishing
 
-- Standing authorization: automatically commit validated task changes,
-  pull/integrate remote updates, and push when a remote exists. No routine
-  confirmation is needed. Explicit task restrictions override this rule.
+- Use the branch explicitly requested by the user; otherwise record the
+  checked-out branch at task start and keep working on it. Do not create
+  or switch to task branches, including through worktrees, unless requested.
+  If HEAD is detached, establish the intended branch before proceeding.
 
-- Inspect branch, tracking/push configuration, staged/unstaged changes, and
-  ongoing Git operations. Preserve unrelated work and staging; never discard,
-  auto-stash, or commit it. Use an isolated worktree when needed, accounting
-  for uncommitted dependencies. Do not continue or abort others' operations.
+- Pull and push the SAME branch name on the selected remote.
+  Work started on `main` must be published to `origin/main`, not `codex/*`,
+  `feature/*`, or another substitute branch. Ordinary direct pushes to
+  `main` are authorized; do not ask for routine confirmation.
 
-- Honor explicit targets and repository configuration. Otherwise select
-  `origin`, or the sole remote; pull the configured upstream or same-named
-  remote branch, and publish the task branch under its own name. Tracking
-  `origin/main` does not authorize pushing a feature branch over `main`.
-  Report unresolved destination ambiguity rather than guessing.
+- Use the explicitly assigned remote; otherwise use `origin`, or the sole
+  remote. Use explicit branch arguments so stale upstream or push settings
+  cannot redirect publication. Report genuinely ambiguous destinations.
 
-- Workflow: pull before editing when safe → implement → validate → commit →
-  pull/integrate again → rerun affected checks → push. If pull and push
-  destinations differ, also integrate updates from the publishing branch.
+- Preserve unrelated edits, staging, and commits. Do not discard, auto-stash,
+  or commit unrelated work. Coordinate concurrent agents and serialize Git
+  mutations. Do not continue or abort someone else's Git operation.
 
-- Prefer fast-forward integration. On divergence, follow repository policy;
-  otherwise rebase only your own unpublished commits while preserving intended
-  history, or merge when existing history must remain intact. Resolve clear
-  conflicts autonomously, review both sides, and fix task-related failures.
+- Workflow: pull when safe → implement → validate → commit → pull/integrate
+  latest changes → rerun affected checks → push. Prefer fast-forward;
+  otherwise follow repository policy, rebasing only your own unpublished
+  commits or merging to preserve existing history.
 
-- Review outgoing commits to avoid publishing unrelated work. Push one explicit
-  remote/branch and verify success. For a new remote branch, fetch, verify the
-  base, then push and establish tracking if missing. Preserve existing tracking;
-  investigate vanished upstreams instead of silently recreating them.
+- Resolve clear conflicts autonomously, preserving relevant changes from
+  both sides. Report unresolved ambiguity rather than guessing.
 
-- If the remote advances and rejects the push, synchronize, revalidate, and
-  retry up to two additional times. Never substitute force-pushing, bypass
-  hooks/protections, or alter signing, global configuration, credentials, or
-  remote URLs merely to succeed.
+- Review outgoing commits and push with an explicit matching source and
+  destination:
+  `git push <remote> refs/heads/<branch>:refs/heads/<branch>`
+  Verify success. Never publish to an alternative branch as a workaround.
 
-- With no remote, retain local commits and report publication skipped; do not
-  invent a remote or pull an arbitrary branch. Access failures do not mean
-  a remote is absent. Preserve work and report genuine access, protection,
-  validation, or unresolved conflict blockers precisely.
+- If the remote advances, synchronize, revalidate, and retry up to twice.
+  Do not force-push, bypass hooks/protections, or alter credentials or
+  repository settings merely to succeed.
 
-- Finish with branch, final commit IDs, validation results, and push destination
-  or exact blocker. Do not stop at suggesting Git commands or claim publication
-  succeeded without verification. Preserve unrelated remaining changes.
+- If no remote exists, retain local commits and report publication skipped.
+  If the matching remote branch is new, create only that same-named branch;
+  investigate an unexpectedly missing upstream before recreating it.
+
+- Finish with the branch, final commit IDs, validation results, and exact
+  push destination. If publication is blocked, preserve the work and report
+  the blocker; do not claim completion by pushing somewhere else.
